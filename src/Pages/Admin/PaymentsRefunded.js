@@ -9,7 +9,7 @@ const PaymentsRefunded = () => {
   const itemsPerPage = 10;
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/orders`)
+    fetch(`http://localhost:5000/orders`)
       .then((res) => res.json())
       .then((info) => setOrders(info.reverse()));
   }, []);
@@ -32,7 +32,7 @@ const PaymentsRefunded = () => {
 
   return (
     <>
-      <div className="hight-full">
+      <div className="p-3">
         <h4 className="text-center">Total Refunded Payments</h4>
         <OrderMenu></OrderMenu>
         <table className="rwd-table">
@@ -70,20 +70,25 @@ const PaymentsRefunded = () => {
             ))}
           </tbody>
         </table>
-        <div className="pagination mb-15">
-          <ul>
-            {Array.from({ length: totalPages }, (_, index) => (
-              <li key={index}>
+        <div class="row">
+            <div class="col-md-12">
+              <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                  {Array.from({ length: totalPages }, (_, index) => (
+              <li className="page-item" key={index}>
                 <Link
                   onClick={() => changePage(index + 1)}
-                  className={currentPage === index + 1 ? "active" : ""}
+                  className={currentPage === index + 1 ? "active , page-item" : ""}
                 >
                   {index + 1}
                 </Link>
               </li>
             ))}
-          </ul>
-        </div>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
       </div>
     </>
   );

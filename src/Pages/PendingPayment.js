@@ -8,7 +8,7 @@ const PendingPayment = () => {
   const [user] = useAuthState(auth);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/orders`)
+    fetch(`http://localhost:5000/orders`)
       .then((res) => res.json())
       .then((info) => setOrders(info.reverse()));
   }, []);
@@ -33,13 +33,13 @@ const PendingPayment = () => {
             ) {
               return (
                 <tr key={order._id}>
-                  <td>{rowNumber++}</td>
-                  <td>{order.orderId}</td>
-                  <td>{order.packageName}</td>
-                  <td>{order.packagePrice}$</td>
-                  <td>
+                  <td data-th="SL No.">{rowNumber++}</td>
+                  <td data-th="Order ID">{order.orderId}</td>
+                  <td data-th="Package Name">{order.packageName}</td>
+                  <td data-th="Amount">{order.packagePrice}$</td>
+                  <td data-th="Pay Now">
                     <Link to={`/pay-now/${order._id}`}>
-                      Pay Now With PayPal
+                      Pay With PayPal
                     </Link>
                   </td>
                 </tr>

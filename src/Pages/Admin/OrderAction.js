@@ -8,7 +8,7 @@ const OrderAction = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/order/${id}`)
+    fetch(`http://localhost:5000/order/${id}`)
       .then((res) => res.json())
       .then((info) => setOrder(info));
   }, [id]);
@@ -22,7 +22,7 @@ const OrderAction = () => {
       paymentStatus,
     };
 
-    const url = `https://nft-seo-server.onrender.com/order/${id}`;
+    const url = `http://localhost:5000/order/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -40,12 +40,19 @@ const OrderAction = () => {
     <div className="hight-full">
       <BackToAdminDashboard></BackToAdminDashboard>
 
-      <form class="form" onSubmit={handelOrderAction}>
+      <form
+        class="form seo-form centered-form-container"
+        onSubmit={handelOrderAction}
+      >
         <div class="container">
           <div className="mb-30">
-          <h5 className="mb-30">Current Payment Status :- {order.paymentStatus}</h5>
-            <h5 className="mb-30">Current Order Status :- {order.orderStatus}</h5>
-          
+            <h5 className="mb-30">
+              Current Payment Status :- {order.paymentStatus}
+            </h5>
+            <h5 className="mb-30">
+              Current Order Status :- {order.orderStatus}
+            </h5>
+
             <h5 className="mb-30">Customer Name:- {order.customerName}</h5>
           </div>
           <div class="justify-content-center align-items-baseline">
@@ -72,8 +79,11 @@ const OrderAction = () => {
               </div>
             </div>
 
-            <div class="col-sm mb-15">
-              <button type="submit" class="action-btn">
+            <div class="col-sm-4">
+              <button
+                type="submit"
+                class="btn btn-md btn-primary tra-black-hover"
+              >
                 <span>Update</span>
               </button>
             </div>

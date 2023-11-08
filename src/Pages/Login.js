@@ -7,6 +7,7 @@ import auth from "../firebase.init";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import PageHero from "../components/Shared/PageHero";
 
 const Login = () => {
   const [logo, setLogo] = useState([]);
@@ -18,13 +19,12 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/logo`)
+    fetch(`http://localhost:5000/logo`)
       .then((res) => res.json())
       .then((info) => setLogo(info));
   }, []);
 
-  const [signInWithEmailAndPassword] =
-    useSignInWithEmailAndPassword(auth);
+  const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
   const [loginError, setLoginError] = useState(null);
 
   const [userMail] = useAuthState(auth);
@@ -46,7 +46,11 @@ const Login = () => {
 
   return (
     <>
-      <div className="main-content payment-setting" data-aos="fade-up" data-aos-duration={2000}>
+      <div
+        className="main-content payment-setting mt-100"
+        data-aos="fade-up"
+        data-aos-duration={2000}
+      >
         <div className="page-content">
           <section className="bg-auth">
             <div className="container">
@@ -54,7 +58,7 @@ const Login = () => {
                 <div className="col-lg-12">
                   <div
                     className="card auth-box mb-15"
-                    style={{ background: "#0c0f2d" }}
+                    style={{ background: "#35344c" }}
                   >
                     <div className="row g-0">
                       <div className="col-lg-6 text-center">
@@ -66,9 +70,9 @@ const Login = () => {
                           ))}
                           <div className="mt-5">
                             <img
-                              src="https://themesdesign.in/jobcy/layout/assets/images/auth/sign-in.png"
+                              src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg"
                               alt=""
-                              className="img-fluid"
+                              className="img-fluid login__img"
                             />
                           </div>
                         </div>
@@ -78,7 +82,7 @@ const Login = () => {
                         <div className="auth-content card-body p-5 h-100 text-white">
                           <div className="w-100">
                             <div className="text-center mb-4">
-                              <h4>Welcome Back !</h4>
+                              <h2 className="text-white">Welcome Back !</h2>
                               <p className="text-white-70">
                                 Sign in to continue.
                               </p>
@@ -147,7 +151,7 @@ const Login = () => {
                               <div className="text-center">
                                 <button
                                   type="submit"
-                                  className="action-btn w-full text-center"
+                                  className="btn btn-green tra-white-hover text-center"
                                 >
                                   <span> Sign In</span>
                                 </button>
@@ -188,7 +192,6 @@ const Login = () => {
           </section>
         </div>
       </div>
-      {loginError && <div className="alert alert-danger">{loginError}</div>}
     </>
   );
 };

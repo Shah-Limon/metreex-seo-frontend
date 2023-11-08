@@ -29,11 +29,11 @@ const EditPackage = () => {
   };
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/package/${id}`)
+    fetch(`http://localhost:5000/package/${id}`)
       .then((res) => res.json())
       .then((info) => setPackage(info));
     setImgUrl(p.img || "");
-  }, []);
+  }, [id]);
 
   let rowNumber = 1;
 
@@ -68,7 +68,7 @@ const EditPackage = () => {
       featureTen,
     };
 
-    const url = `https://nft-seo-server.onrender.com/edit-package/${id}`;
+    const url = `http://localhost:5000/edit-package/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -85,43 +85,43 @@ const EditPackage = () => {
   return (
     <div>
       <BackToAdminDashboard></BackToAdminDashboard>
-      <form class="form" onSubmit={handlePackages}>
-        <div class="container">
-          <div class="justify-content-center align-items-baseline">
-            <div class="col-sm">
+      <form className="form seo-form centered-form-container" onSubmit={handlePackages}>
+        <div className="container">
+          <div className="justify-content-center align-items-baseline">
+            <div className="col-sm">
               <label className="mt-1 mb-15">Package Name</label>
-              <div class="form-group mb-3">
+              <div className="form-group mb-3">
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control email"
                   placeholder="Type Package Name"
                   name="packageName"
                   defaultValue={p.packageName}
                 />
               </div>
             </div>
-            <div class="col-sm">
+            <div className="col-sm">
               <label className="mt-1">Enter Package Price</label>
-              <div class="form-group mb-3">
+              <div className="form-group mb-3">
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   defaultValue={p.price}
                   placeholder="Enter Package Price"
                   name="price"
                 />
               </div>
             </div>
-            <div class="col-sm">
+            <div className="col-sm">
               <label className="mt-1">Upload Image</label>
-              <div class="form-group mb-3">
-                <label for="file-upload" className="custom-file-upload">
+              <div className="form-group mb-3">
+                <label for="file-upload" className="custom-file-input">
                   Choose File
                 </label>
                 <input
                   type="file"
                   id="file-upload"
-                  className="custom-file-input"
+                  className="custom-file-input__1"
                   name="image"
                   accept="image/*"
                   onChange={handleImageUpload}
@@ -132,120 +132,120 @@ const EditPackage = () => {
               </div>
             </div>
 
-            <div class="col-sm">
+            <div className="col-sm">
               <label className="mt-1">Feature One</label>
-              <div class="form-group mb-3">
+              <div className="form-group mb-3">
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Type Feature One"
                   name="featureOne"
                   defaultValue={p.featureOne}
                 />
               </div>
             </div>
-            <div class="col-sm">
+            <div className="col-sm">
               <label className="mt-1">Feature Two</label>
-              <div class="form-group mb-3">
+              <div className="form-group mb-3">
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Type Feature Two"
                   name="featureTwo"
                   defaultValue={p.featureTwo}
                 />
               </div>
             </div>
-            <div class="col-sm">
+            <div className="col-sm">
               <label className="mt-1">Feature Three</label>
-              <div class="form-group mb-3">
+              <div className="form-group mb-3">
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Type feature Three"
                   name="featureThree"
                   defaultValue={p.featureThree}
                 />
               </div>
             </div>
-            <div class="col-sm">
+            <div className="col-sm">
               <label className="mt-1">Feature Four</label>
-              <div class="form-group mb-3">
+              <div className="form-group mb-3">
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Type Feature Four"
                   name="featureFour"
                   defaultValue={p.featureFour}
                 />
               </div>
             </div>
-            <div class="col-sm">
+            <div className="col-sm">
               <label className="mt-1">Feature Five</label>
-              <div class="form-group mb-3">
+              <div className="form-group mb-3">
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Type Feature Five"
                   name="featureFive"
                   defaultValue={p.featureFive}
                 />
               </div>
             </div>
-            <div class="col-sm">
+            <div className="col-sm">
               <label className="mt-1">Feature Six</label>
-              <div class="form-group mb-3">
+              <div className="form-group mb-3">
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Type Feature Six"
                   name="featureSix"
                   defaultValue={p.featureSix}
                 />
               </div>
             </div>
-            <div class="col-sm">
+            <div className="col-sm">
               <label className="mt-1">Feature Seven</label>
-              <div class="form-group mb-3">
+              <div className="form-group mb-3">
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Type Feature Seven"
                   name="featureSeven"
                   defaultValue={p.featureSeven}
                 />
               </div>
             </div>
-            <div class="col-sm">
+            <div className="col-sm">
               <label className="mt-1">Feature Eight</label>
-              <div class="form-group mb-3">
+              <div className="form-group mb-3">
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Type Feature Eight"
                   name="featureEight"
                   defaultValue={p.featureEight}
                 />
               </div>
             </div>
-            <div class="col-sm">
+            <div className="col-sm">
               <label className="mt-1">Feature Nine</label>
-              <div class="form-group mb-3">
+              <div className="form-group mb-3">
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Type Feature Nine"
                   name="featureNine"
                   defaultValue={p.featureNine}
                 />
               </div>
             </div>
-            <div class="col-sm">
+            <div className="col-sm">
               <label className="mt-1">Feature Ten</label>
-              <div class="form-group mb-3">
+              <div className="form-group mb-3">
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Type Feature Ten"
                   name="featureTen"
                   defaultValue={p.featureTen}
@@ -253,8 +253,11 @@ const EditPackage = () => {
               </div>
             </div>
 
-            <div class="col-sm">
-              <button type="submit" class="action-btn">
+            <div className="col-sm-4">
+              <button
+                type="submit"
+                className="btn btn-md btn-primary tra-black-hover"
+              >
                 <span>Update Package</span>
               </button>
             </div>

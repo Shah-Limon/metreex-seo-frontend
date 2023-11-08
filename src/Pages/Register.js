@@ -8,7 +8,6 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-
 const Register = () => {
   const [gUser, gLoading] = useSignInWithGoogle(auth);
   const {
@@ -20,7 +19,7 @@ const Register = () => {
   const [logo, setLogo] = useState([]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/logo`)
+    fetch(`http://localhost:5000/logo`)
       .then((res) => res.json())
       .then((info) => setLogo(info));
   }, []);
@@ -41,46 +40,28 @@ const Register = () => {
     navigate("/");
   };
 
- 
   return (
     <>
-      <div className="main-content payment-setting" data-aos="fade-up" data-aos-duration={2000}>
+      <div
+        className="main-content payment-setting mt-100"
+        data-aos="fade-up"
+        data-aos-duration={2000}
+      >
         <div className="page-content">
           <section className="bg-auth">
             <div className="container">
               <div className="row justify-content-center">
-                <div className="col-xl-10 col-lg-12">
+                <div className="col-lg-12">
                   <div
                     className="card auth-box mb-15"
-                    style={{ background: "#0c0f2d" }}
+                    style={{ background: "#35344c" }}
                   >
                     <div className="row g-0">
-                      <div className="col-lg-6 text-center">
-                        <div className="card-body p-4">
-                        {
-                            logo.map(e =>
-                              <Link to="/">
-                            <img
-                              src={e.logo}
-                              alt="logo"
-                            />
-                          </Link>)
-                          }
-                          <div className="mt-5">
-                            <img
-                              src="https://themesdesign.in/jobcy/layout/assets/images/auth/sign-up.png"
-                              alt=""
-                              className="img-fluid"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      {/*end col*/}
                       <div className="col-lg-6">
                         <div className="auth-content card-body p-5 h-100 text-white">
                           <div className="w-100">
                             <div className="text-center mb-4">
-                              <h4>Welcome!</h4>
+                              <h2 className="text-white">Welcome!</h2>
                               <p className="text-white-70">
                                 Register to continue
                               </p>
@@ -149,7 +130,7 @@ const Register = () => {
                               <div className="text-center">
                                 <button
                                   type="submit"
-                                  className="action-btn w-full text-center"
+                                  className="btn btn-green tra-white-hover text-center"
                                 >
                                   <span> Register</span>
                                 </button>
@@ -170,21 +151,29 @@ const Register = () => {
                           </div>
                         </div>
                       </div>
-                      {/*end col*/}
+                      <div className="col-lg-6 text-center">
+                        <div className="card-body p-4">
+                          {logo.map((e) => (
+                            <Link to="/">
+                              <img src={e.logo} alt="logo" />
+                            </Link>
+                          ))}
+                          <div className="mt-5">
+                            <img
+                              src="https://img.freepik.com/free-vector/sign-up-concept-illustration_114360-7965.jpg"
+                              alt=""
+                              className="img-fluid login__img"
+                            />
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    {/*end row*/}
                   </div>
-                  {/*end auth-box*/}
                 </div>
-                {/*end col*/}
               </div>
-              {/*end row*/}
             </div>
-            {/*end container*/}
           </section>
-          {/* END SIGN-IN */}
         </div>
-        {/* End Page-content */}
       </div>
     </>
   );

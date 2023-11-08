@@ -18,17 +18,15 @@ const ResetPassword = () => {
   };
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/logo`)
+    fetch(`http://localhost:5000/logo`)
       .then((res) => res.json())
       .then((info) => setLogo(info));
   }, []);
 
   return (
     <>
-      <div></div>
-
       <div
-        className="main-content payment-setting"
+        className="main-content payment-setting mt-100"
         data-aos="fade-up"
         data-aos-duration={2000}
       >
@@ -39,7 +37,7 @@ const ResetPassword = () => {
                 <div className="col-lg-12">
                   <div
                     className="card auth-box mb-15"
-                    style={{ background: "#0c0f2d" }}
+                    style={{ background: "#35344c" }}
                   >
                     <div className="row g-0">
                       <div className="col-lg-6 text-center">
@@ -51,9 +49,9 @@ const ResetPassword = () => {
                           ))}
                           <div className="mt-5">
                             <img
-                              src="https://i.ibb.co/zRfFpt1/reset.png"
+                              src="https://img.freepik.com/free-vector/forgot-password-concept-illustration_114360-1123.jpg"
                               alt=""
-                              className="img-fluid"
+                              className="img-fluid login__img"
                             />
                           </div>
                         </div>
@@ -61,31 +59,30 @@ const ResetPassword = () => {
 
                       <div className="col-lg-6">
                         <div className="auth-content card-body p-5 h-100 text-white">
-                          <div className="w-100">
+                          <div className="w-100 mt-100">
                             <div className="text-center mb-4">
-                              <h4>Reset Password !</h4>
+                              <h2 className="text-white">Reset Password !</h2>
                             </div>
 
                             {resetSent ? (
                               <div className="text-center mb-4">
-                              <h5>Password reset. Check your inbox!</h5>
-                            </div>
+                                <h5 className="text-white">Password reset. Check your inbox!</h5>
+                              </div>
                             ) : (
                               <>
                                 <input
                                   type="email"
                                   className="form-control mb-30"
-                                  placeholder="Enter your email"
+                                  placeholder="Enter your exiting email"
                                   value={email}
                                   onChange={(e) => setEmail(e.target.value)}
                                 />
-                                
 
                                 <div className="text-center">
                                   <button
                                     onClick={handleResetPassword}
                                     type="submit"
-                                    className="action-btn w-full text-center"
+                                    className="btn btn-green tra-white-hover last-link"
                                   >
                                     <span> Send Reset Email</span>
                                   </button>

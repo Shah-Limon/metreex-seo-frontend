@@ -3,8 +3,6 @@ import React from "react";
 const Loading = () => {
   return (
     <>
-      {/* PRELOADER SPINNER
-		============================================= */}
       <div id="loader-wrapper">
         <div id="loading">
           <div id="loading-center">

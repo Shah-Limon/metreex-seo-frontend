@@ -11,7 +11,7 @@ const Updatepaypal = () => {
   const [user] = useAuthState(auth);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/payments`)
+    fetch(`http://localhost:5000/payments`)
       .then((res) => res.json())
       .then((info) => setPaymentEmail(info));
   }, []);
@@ -24,7 +24,7 @@ const Updatepaypal = () => {
       email,
     };
 
-    const url = `https://nft-seo-server.onrender.com/payment/${id}`;
+    const url = `http://localhost:5000/payment/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -40,25 +40,26 @@ const Updatepaypal = () => {
 
   return (
     <>
-    <BackToAdminDashboard></BackToAdminDashboard>
-      {paymentEmail.map((payment, i ) => (
+      <BackToAdminDashboard></BackToAdminDashboard>
+      {paymentEmail.map((payment, i) => (
         <>
-          <section className="banner s2 payment-setting" data-aos="fade-up" data-aos-duration={3000} key={i}>
+          <section
+            className="banner s2 payment-setting"
+            data-aos="fade-up"
+            data-aos-duration={3000}
+            key={i}
+          >
             <div className="shape" />
             <div className="shape right" />
-            <div className="container">
+            <div className="container p-3">
               <div className="row">
-                <div className="col-12">
-                  <div className="block-text center">
-                    <h4 className="heading">
-                      Update Your Paypal <br /> Email
-                      <span className="arlo_tm_animation_text_word" /> <br />
-                    </h4>
+                <div className="col-12 centered-form-container">
+                  <div className="text-center ">
+                    <h4 className="heading ">Update Your Paypal Email</h4>
 
                     <form
                       onSubmit={handleUpdatePayment}
-                      class="form card-box"
-                      style={{ width: "100%" }}
+                      className="row form seo-form"
                     >
                       <div class="container">
                         <div class="row justify-content-center align-items-baseline">
@@ -75,8 +76,11 @@ const Updatepaypal = () => {
                             </div>
                           </div>
 
-                          <div class="col-sm">
-                            <button type="submit" class="action-btn">
+                          <div class="col-sm-3">
+                            <button
+                              type="submit"
+                              className="btn btn-primary black-hover submit"
+                            >
                               <span>Update</span>
                             </button>
                           </div>

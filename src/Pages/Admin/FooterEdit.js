@@ -11,12 +11,12 @@ const FooterEdit = () => {
   const [social, setSocial] = useState([]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/footer-links/`)
+    fetch(`http://localhost:5000/footer-links/`)
       .then((res) => res.json())
       .then((info) => setFooterLink(info));
   }, [id]);
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/footer-social/`)
+    fetch(`http://localhost:5000/footer-social/`)
       .then((res) => res.json())
       .then((info) => setSocial(info));
   }, [id]);
@@ -35,7 +35,7 @@ const FooterEdit = () => {
   //     youtube,
   //   };
 
-  //   const url = `https://nft-seo-server.onrender.com/footer-social/`;
+  //   const url = `http://localhost:5000/footer-social/`;
   //   fetch(url, {
   //     method: "POST",
   //     headers: {
@@ -65,7 +65,7 @@ const FooterEdit = () => {
   //     linkFive,
   //   };
 
-  //   const url = `https://nft-seo-server.onrender.com/footer-link`;
+  //   const url = `http://localhost:5000/footer-link`;
   //   fetch(url, {
   //     method: "POST",
   //     headers: {
@@ -208,44 +208,53 @@ const FooterEdit = () => {
         </div>
       </form> */}
 
-      <section className="participants payment-setting" data-aos="fade-up" data-aos-duration={3000}>
+      <section
+        className="participants payment-setting"
+        data-aos="fade-up"
+        data-aos-duration={3000}
+      >
         <div className="container">
-        <BackToAdminDashboard></BackToAdminDashboard>
-          <div className="row mt-15">
-            <div className="col-lg-4">
-              <div className="block-text center">
-                <div className="col">
-                  <h5 className="heading">Contact Options</h5>
+          <BackToAdminDashboard></BackToAdminDashboard>
 
-                  {social.map((e) => (
-                    <Link
-                      to={`/admin/edit-social/${e._id}`}
-                      className="action-btn"
-                    >
-                      <span>Edit</span>
-                    </Link>
-                  ))}
+          <div className="row">
+            <div className="col-md-6 col-lg-3">
+              <div className="project-2 wow fadeInUp" data-wow-delay="0.4s">
+                {footerLink.map((e) => (
+                  <Link to={`/admin/edit-footer/${e._id}`}>
+                    <div className="hover-overlay">
+                      <img
+                        className="img-fluid"
+                        src="https://img.freepik.com/free-vector/purple-labels-set_1146-79.jpg"
+                        alt="project-preview"
+                      />
+                      <div className="item-overlay" />
 
-                  <hr></hr>
-                </div>
+                      <div className="project-description white-color">
+                        <h3 className="p-md"> Footer about (edit)</h3>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
               </div>
             </div>
-            <div className="col-lg-4">
-              <div className="block-text center">
-                <div className="col">
-                  <h5 className="heading">Footer About Options</h5>
+            <div className="col-md-6 col-lg-3">
+              <div className="project-2 wow fadeInUp" data-wow-delay="0.4s">
+                {social.map((e) => (
+                  <Link to={`/admin/edit-social/${e._id}`}>
+                    <div className="hover-overlay">
+                      <img
+                        className="img-fluid"
+                        src="https://img.freepik.com/free-vector/purple-labels-set_1146-79.jpg"
+                        alt="project-preview"
+                      />
+                      <div className="item-overlay" />
 
-                  {footerLink.map((e) => (
-                    <Link
-                      to={`/admin/edit-footer/${e._id}`}
-                      className="action-btn"
-                    >
-                      <span>Edit</span>
-                    </Link>
-                  ))}
-
-                  <hr></hr>
-                </div>
+                      <div className="project-description white-color">
+                        <h3 className="p-md">Social Links (edit)</h3>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
               </div>
             </div>
           </div>

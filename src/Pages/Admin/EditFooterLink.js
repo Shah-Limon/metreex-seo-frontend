@@ -16,11 +16,11 @@ const EditFooterLink = () => {
 
     const footerLink = {
       FooterAbout,
-     
+
       CopyRight,
     };
 
-    const url = `https://nft-seo-server.onrender.com/footer-link/${id}/`;
+    const url = `http://localhost:5000/footer-link/${id}/`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -35,55 +35,64 @@ const EditFooterLink = () => {
   };
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/footer-link/${id}`)
+    fetch(`http://localhost:5000/footer-link/${id}`)
       .then((res) => res.json())
       .then((info) => setFooterLink(info));
   }, [id]);
 
   return (
-    <div className="payment-setting" data-aos="fade-up" data-aos-duration={2000}>
+    <>
       <BackToAdminDashboard></BackToAdminDashboard>
-      <form class="form mb-15" onSubmit={handleLinks}>
-        <h4 className="mb-15">Update About & CopyRight</h4>
-        <div class="container">
-          <div class="justify-content-center align-items-baseline">
-            <div class="col-sm">
-              <label className="mt-1">Enter Short About</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Type short About"
-                  name="FooterAbout"
-                  defaultValue={footerLink.FooterAbout}
-                />
-              </div>
-            </div>
-            
-            <div class="col-sm">
-              <label className="mt-1">Enter CopyRight Text</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Enter CopyRight Text"
-                  name="CopyRight"
-                  defaultValue={footerLink.CopyRight}
-                />
-              </div>
-            </div>
 
-            <div class="col-sm">
-              <button type="submit" class="action-btn">
-                <span>Update</span>
-              </button>
+      <div
+        className="payment-setting "
+        data-aos="fade-up"
+        data-aos-duration={2000}
+      >
+        <h4 className="mb-15 text-center">Update About & CopyRight</h4>
+        <form
+          class="form mb-15 form seo-form centered-form-container"
+          onSubmit={handleLinks}
+        >
+          <div class="container">
+            <div class="justify-content-center align-items-baseline">
+              <div class="col-sm">
+                <label className="mt-1">Enter Short About</label>
+                <div class="form-group mb-3">
+                  <textarea
+                    style={{ width: "100%", height: "100px" }}
+                    type="text"
+                    className="form-control"
+                    placeholder="Type short About"
+                    name="FooterAbout"
+                    defaultValue={footerLink.FooterAbout}
+                  />
+                </div>
+              </div>
+
+              <div class="col-sm">
+                <label className="mt-1">Enter CopyRight Text</label>
+                <div class="form-group mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter CopyRight Text"
+                    name="CopyRight"
+                    defaultValue={footerLink.CopyRight}
+                  />
+                </div>
+              </div>
+
+              <div class="col-sm-4">
+                <button type="submit" class="btn btn-md btn-primary tra-black-hover">
+                  <span>Update</span>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      </form>
-
-      
-    </div>
+        </form>
+      </div>
+    </>
   );
 };
 

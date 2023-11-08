@@ -10,7 +10,7 @@ const EditSocialLinks = () => {
 
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/footer-social/${id}`)
+    fetch(`http://localhost:5000/footer-social/${id}`)
       .then((res) => res.json())
       .then((info) => setSocial(info));
   }, [id]);
@@ -32,7 +32,7 @@ const EditSocialLinks = () => {
       email
     };
 
-    const url = `https://nft-seo-server.onrender.com/footer-social/${id}`;
+    const url = `http://localhost:5000/footer-social/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -49,10 +49,10 @@ const EditSocialLinks = () => {
   return (
     <div>
       <BackToAdminDashboard></BackToAdminDashboard>
-      <form class="form mb-15" onSubmit={handleFooter}>
+      <form class="form mb-15 seo-form centered-form-container" onSubmit={handleFooter}>
         <div class="container">
           <div class="justify-content-center align-items-baseline">
-            <h4 className="mb-15">Update Social Account</h4>
+            <h4 className="mb-15 text-center">Update Social Account</h4>
             <div class="col-sm">
               <label className="mt-1">Enter Facebook Link</label>
               <div class="form-group mb-3">
@@ -114,8 +114,8 @@ const EditSocialLinks = () => {
               </div>
             </div>
 
-            <div class="col-sm">
-              <button type="submit" class="action-btn">
+            <div class="col-sm-4">
+              <button type="submit" class="btn btn-md btn-primary tra-black-hover">
                 <span>Update</span>
               </button>
             </div>

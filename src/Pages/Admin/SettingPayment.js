@@ -11,7 +11,7 @@ const SettingPayment = () => {
   const [user] = useAuthState(auth);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/payments`)
+    fetch(`http://localhost:5000/payments`)
       .then((res) => res.json())
       .then((info) => setPaymentEmail(info));
   }, []);
@@ -20,45 +20,51 @@ const SettingPayment = () => {
     <>
       {paymentEmail.map((payment) => (
         <>
-          <section className="banner s2 payment-setting" data-aos="fade-up" data-aos-duration={3000}>
+          <section
+            className="banner s2"
+            data-aos="fade-up"
+            data-aos-duration={3000}
+          >
             <div className="shape" />
             <div className="shape right" />
             <div className="container">
-            <BackToAdminDashboard></BackToAdminDashboard>
-              <div className="row mt-15">
+              <BackToAdminDashboard></BackToAdminDashboard>
+
+              <div className="form-holder text-center centered-form-container">
                 <div className="col-12">
-                  <div className="block-text center">
-                    <h4 className="heading">
-                      Your Paypal <br /> Email
-                      <span className="arlo_tm_animation_text_word" /> <br />
-                    </h4>
-
-                    <form class="form card-box" style={{ width: "100%" }}>
-                      <div class="container">
-                        <div class="row justify-content-center align-items-baseline">
-                          <div class="col-sm">
-                            <div class="form-group mb-3">
-                              <h5>{payment.email}</h5>
-                            </div>
-                          </div>
-
-                          <div class="col-sm">
-                            <Link
-                              to={`/admin/paypal/${payment._id}`}
-                              class="action-btn"
-                            >
-                              <span>Want to Update</span>
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
+                  <h4 className="heading text-center mb-20">
+                    Your Paypal Email
+                  </h4>
                 </div>
+                <form name="seoForm" className="row form seo-form">
+                  <div id="input-email" className="col-lg-6">
+                    <input
+                      readOnly
+                      type="text"
+                      name="email"
+                      className="form-control email text-center"
+                      placeholder="Email Address*"
+                      value={payment.email}
+                    />
+                  </div>
+
+                  <div className="col-lg-3 form-btn">
+                    <Link
+                      to={`/admin/paypal/${payment._id}`}
+                      type="submit"
+                      className="btn btn-primary black-hover submit"
+                    >
+                      Want to Update
+                    </Link>
+                  </div>
+
+                  <div className="col-lg-12 seo-form-msg">
+                    <span className="loading" />
+                  </div>
+                </form>
               </div>
             </div>
           </section>
-          
         </>
       ))}
     </>

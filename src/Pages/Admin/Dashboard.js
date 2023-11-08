@@ -11,19 +11,19 @@ const Dashboard = () => {
   const [user] = useAuthState(auth);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/users`)
+    fetch(`http://localhost:5000/users`)
       .then((res) => res.json())
       .then((info) => setUsers(info.reverse()));
   }, []);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/website`)
+    fetch(`http://localhost:5000/website`)
       .then((res) => res.json())
       .then((info) => setData(info.reverse()));
   }, []);
 
   return (
-    <div>
+    <>
       <div>
         <DashboardMenu></DashboardMenu>
 
@@ -44,7 +44,7 @@ const Dashboard = () => {
                   <td>{index + 1}</td>
                   <td data-th="Website Name">{item.website}</td>
                   <td data-th="Email">{item.email}</td>
-                  <td data-th="Email">{item.auditStatus}</td>
+                  <td data-th="Audit Status">{item.auditStatus}</td>
                   <td data-th="Edit">
                     <Link to={`/admin/website-edit/${item._id}`}>Edit</Link>
                   </td>
@@ -55,7 +55,7 @@ const Dashboard = () => {
           </table>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

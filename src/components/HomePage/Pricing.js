@@ -10,14 +10,14 @@ const Pricing = () => {
   const [packages, setPackages] = useState([]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/packages`)
+    fetch(`http://localhost:5000/packages`)
       .then((res) => res.json())
       .then((info) => setPackages(info));
   }, []);
   const [title, setTitle] = useState([]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/package-titles/`)
+    fetch(`http://localhost:5000/package-titles/`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, []);
@@ -144,8 +144,8 @@ const Pricing = () => {
                                 ></img>
                                 <span>{p.featureTen}</span>
                               </li>
-                              <Link class="action-btn" to={`/package/${p._id}`}>
-                                {" "}
+                              <Link class="btn btn-md btn-primary tra-black-hover" to={`/package/${p._id}`}>
+                               
                                 <span>Buy Now</span>
                               </Link>
                             </div>

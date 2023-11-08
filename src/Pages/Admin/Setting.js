@@ -10,7 +10,7 @@ const Setting = () => {
   const [contact, setContact] = useState([]);
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/contact/`)
+    fetch(`http://localhost:5000/contact/`)
       .then((res) => res.json())
       .then((info) => setContact(info));
   }, [id]);
@@ -25,7 +25,7 @@ const Setting = () => {
         <div className="container">
           <BackToAdminDashboard></BackToAdminDashboard>
           <div className="row mt-15">
-            <div className="col-xl-3 col-md-6">
+            {/* <div className="col-xl-3 col-md-6">
               <div className="project-box">
                 <div className="image"></div>
                 <div className="content">
@@ -62,6 +62,121 @@ const Setting = () => {
                 <div className="content">
                   <Link to="/admin/setting-homepage" className="h5 title">
                     HomePage Setting
+                  </Link>
+                </div>
+              </div>
+            </div> */}
+            <div className="row">
+              <div className="col-md-6 col-lg-3">
+                <div className="project-2 wow fadeInUp" data-wow-delay="0.4s">
+                  <Link to="/admin/setting-general/">
+                    <div className="hover-overlay">
+                      <img
+                        className="img-fluid"
+                        src="https://img.freepik.com/free-vector/working-concept-illustration_114360-330.jpg"
+                        alt="project-preview"
+                      />
+                      <div className="item-overlay" />
+
+                      <div className="project-description white-color">
+                        <h3 className="p-md"> General Setting</h3>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+
+              <div className="col-md-6 col-lg-3">
+                <div className="project-2 wow fadeInUp" data-wow-delay="0.4s">
+                  <Link to="/admin/setting-footer">
+                    <div className="hover-overlay">
+                      <img
+                        className="img-fluid"
+                        src="https://img.freepik.com/free-vector/operating-system-upgrade-concept-illustration_114360-8293.jpg"
+                        alt="project-preview"
+                      />
+                      <div className="item-overlay" />
+
+                      <div className="project-description white-color">
+                        <h3 className="p-md"> Footer Setting</h3>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+              <div className="col-md-6 col-lg-3">
+                <div className="project-2 wow fadeInUp" data-wow-delay="0.4s">
+                  <Link to="/admin/setting-payment">
+                    {/* Project Preview */}
+                    <div className="hover-overlay">
+                      <img
+                        className="img-fluid"
+                        src="https://img.freepik.com/free-vector/payment-information-concept-illustration_114360-4064.jpg"
+                        alt="project-preview"
+                      />
+                      <div className="item-overlay" />
+                      {/* Project Description */}
+                      <div className="project-description white-color">
+                        <h3 className="p-md">Payment Setting</h3>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+              <div className="col-md-6 col-lg-3">
+                <div className="project-2 wow fadeInUp" data-wow-delay="0.4s">
+                  <Link to="/admin/setting-homepage">
+                    {/* Project Preview */}
+                    <div className="hover-overlay">
+                      <img
+                        className="img-fluid"
+                        src="https://img.freepik.com/free-vector/web-page-visualization-protocol-procedure-dynamic-software-workflow-full-stack-development-markup-administrate-system-driver-shared-memory-vector-isolated-concept-metaphor-illustration_335657-4299.jpg"
+                        alt="project-preview"
+                      />
+                      <div className="item-overlay" />
+                      {/* Project Description */}
+                      <div className="project-description white-color">
+                        <h3 className="p-md">HomePage Setting</h3>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+              <div className="col-md-6 col-lg-3">
+                <div className="project-2 wow fadeInUp" data-wow-delay="0.4s">
+                  <Link to="/admin/subscription-email/">
+                    {/* Project Preview */}
+                    <div className="hover-overlay">
+                      <img
+                        className="img-fluid"
+                        src="https://img.freepik.com/free-vector/contact-center-abstract-concept_335657-3032.jpg"
+                        alt="project-preview"
+                      />
+                      <div className="item-overlay" />
+                      {/* Project Description */}
+                      <div className="project-description white-color">
+                        <h3 className="p-md"> Contact Page Setting</h3>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+              <div className="col-md-6 col-lg-3">
+                <div className="project-2 wow fadeInUp" data-wow-delay="0.4s">
+                  <Link to="/admin/contact-messages/">
+                    {/* Project Preview */}
+                    <div className="hover-overlay">
+                      <img
+                        className="img-fluid"
+                        src="https://img.freepik.com/free-vector/software-requirement-description-abstract-concept-illustration_335657-3813.jpg"
+                        alt="project-preview"
+                      />
+                      <div className="item-overlay" />
+                      {/* Project Description */}
+                      <div className="project-description white-color">
+                        <h3 className="p-md"> Features Page Setting</h3>
+                      </div>
+                    </div>
                   </Link>
                 </div>
               </div>

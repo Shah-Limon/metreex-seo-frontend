@@ -89,6 +89,7 @@ import RepliedTicket from './Pages/RepliedTicket';
 import SolvedTicket from './Pages/SolvedTicket';
 import DeliveredOrders from './Pages/Admin/DeliveredOrders';
 import ErrorPage from './Pages/ErrorPage';
+import ServicesPage from './Pages/ServicesPage';
 
 
 function App() {
@@ -98,8 +99,13 @@ function App() {
       <NavBar></NavBar>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
-        <Route path='*' element={<ErrorPage></ErrorPage>}></Route>
+        <Route path='/contact-us' element={<ContactPage></ContactPage>}></Route>
         <Route path='/about-us' element={<AboutPage></AboutPage>}></Route>
+        <Route path='/services' element={<ServicesPage></ServicesPage>}></Route>
+
+
+        <Route path='*' element={<ErrorPage></ErrorPage>}></Route>
+       
         <Route path='/pricing' element={<PricePage></PricePage>}></Route>
 
 
@@ -114,7 +120,7 @@ function App() {
         <Route path='/user-dashboard/spend/' element={<RequireAuth><TotalSpend></TotalSpend></RequireAuth>}></Route>
 
 
-        <Route path='/contact-us' element={<ContactPage></ContactPage>}></Route>
+        
         
         
         <Route path='/login' element={<Login></Login>}></Route>
@@ -134,7 +140,7 @@ function App() {
         <Route path='/received-payment/:id' element={<RequireAuth><ReceivedPayment></ReceivedPayment></RequireAuth>}></Route>
 
 
-        <Route path='/admin/dashboard' element={<RequireAuth><ManagerRoute><Dashboard></Dashboard></ManagerRoute></RequireAuth>}></Route>
+        <Route path='/admin/dashboard' element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}></Route>
 
 
         <Route path='/admin/help-desk' element={<RequireAuth><AdminRoute><HelpDesk></HelpDesk></AdminRoute></RequireAuth>}></Route>

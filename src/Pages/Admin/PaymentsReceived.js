@@ -11,7 +11,7 @@ const PaymentsReceived = () => {
 
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/orders`)
+    fetch(`http://localhost:5000/orders`)
       .then((res) => res.json())
       .then((info) => setOrders(info.reverse()));
   }, []);
@@ -76,26 +76,42 @@ const currentItems = PaymentsReceived.slice(indexOfFirstItem, indexOfLastItem);
             ))}
           </tbody>
         </table>
-        <div className="pagination pagination__margin">
-                 <ul>
-                  <li className="d-flex">
+        <div className="row">
+            <div class="col-md-12">
+              <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
                   {currentPage > 1 && (
-                    <Link onClick={() => paginate(currentPage - 1)}>{"<"}</Link>
-                  )}
-                  {Array.from({ length: endDigit - startDigit + 1 }, (_, index) => (
                     <Link
-                      key={startDigit + index}
-                      onClick={() => paginate(startDigit + index)}
+                      className="page-link"
+                      onClick={() => paginate(currentPage - 1)}
                     >
-                      {startDigit + index}
+                      <i class="fas fa-angle-left"></i>
                     </Link>
-                  ))}
-                  {currentPage < totalPages && (
-                    <Link onClick={() => paginate(currentPage + 1)}>{">"}</Link>
                   )}
-                  </li>
-                 </ul>
-                </div>
+                  {Array.from(
+                    { length: endDigit - startDigit + 1 },
+                    (_, index) => (
+                      <Link
+                        className="page-link"
+                        key={startDigit + index}
+                        onClick={() => paginate(startDigit + index)}
+                      >
+                        {startDigit + index}
+                      </Link>
+                    )
+                  )}
+                  {currentPage < totalPages && (
+                    <Link
+                      className="page-link"
+                      onClick={() => paginate(currentPage + 1)}
+                    >
+                      <i class="fas fa-angle-right"></i>
+                    </Link>
+                  )}
+                </ul>
+              </nav>
+            </div>
+          </div>
       </div>
     </>
   );

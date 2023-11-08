@@ -6,17 +6,14 @@ import OrderMenu from "./OrderMenu";
 const TotalOrders = () => {
   const [orders, setOrders] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
+  const itemsPerPage = 2;
   const paginationDigits = 3;
 
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/orders`)
+    fetch(`http://localhost:5000/orders`)
       .then((res) => res.json())
       .then((info) => setOrders(info.reverse()));
   }, []);
-
-
-
 
   // Filter the orders with paymentStatus === "Received"
   const receivedOrders = orders.filter(
@@ -45,26 +42,29 @@ const TotalOrders = () => {
   //   setCurrentPage(page);
   // };
 
-// Pagination function
-const paginate = (pageNumber) => {
-  setCurrentPage(pageNumber);
-};
+  // Pagination function
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
-const totalPages = Math.ceil(orders.length / itemsPerPage);
+  const totalPages = Math.ceil(orders.length / itemsPerPage);
 
-// Calculate the range of pagination digits
-const startDigit = Math.max(1, currentPage - Math.floor(paginationDigits / 2));
-const endDigit = Math.min(startDigit + paginationDigits - 1, totalPages);
+  // Calculate the range of pagination digits
+  const startDigit = Math.max(
+    1,
+    currentPage - Math.floor(paginationDigits / 2)
+  );
+  const endDigit = Math.min(startDigit + paginationDigits - 1, totalPages);
 
-// Calculate the index range for the current page
-const indexOfLastItem = currentPage * itemsPerPage;
-const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-const currentItems = orders.slice(indexOfFirstItem, indexOfLastItem);
+  // Calculate the index range for the current page
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = orders.slice(indexOfFirstItem, indexOfLastItem);
 
   return (
     <>
       <div className="project s2">
-        <div className="container">
+        <div className="p-3">
           <h4 className="text-center">Total Sales $({totalSpend})usd</h4>
           <h4 className="text-center">Total Orders</h4>
           <OrderMenu></OrderMenu>
@@ -106,26 +106,43 @@ const currentItems = orders.slice(indexOfFirstItem, indexOfLastItem);
               ))}
             </tbody>
           </table>
-          <div className="pagination pagination__margin">
-                 <ul>
-                  <li className="d-flex">
+
+          <div className="row">
+            <div class="col-md-12">
+              <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
                   {currentPage > 1 && (
-                    <Link onClick={() => paginate(currentPage - 1)}>{"<"}</Link>
-                  )}
-                  {Array.from({ length: endDigit - startDigit + 1 }, (_, index) => (
                     <Link
-                      key={startDigit + index}
-                      onClick={() => paginate(startDigit + index)}
+                      className="page-link"
+                      onClick={() => paginate(currentPage - 1)}
                     >
-                      {startDigit + index}
+                      <i class="fas fa-angle-left"></i>
                     </Link>
-                  ))}
-                  {currentPage < totalPages && (
-                    <Link onClick={() => paginate(currentPage + 1)}>{">"}</Link>
                   )}
-                  </li>
-                 </ul>
-                </div>
+                  {Array.from(
+                    { length: endDigit - startDigit + 1 },
+                    (_, index) => (
+                      <Link
+                        className="page-link"
+                        key={startDigit + index}
+                        onClick={() => paginate(startDigit + index)}
+                      >
+                        {startDigit + index}
+                      </Link>
+                    )
+                  )}
+                  {currentPage < totalPages && (
+                    <Link
+                      className="page-link"
+                      onClick={() => paginate(currentPage + 1)}
+                    >
+                      <i class="fas fa-angle-right"></i>
+                    </Link>
+                  )}
+                </ul>
+              </nav>
+            </div>
+          </div>
         </div>
       </div>
     </>

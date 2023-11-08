@@ -5,18 +5,17 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 const ContactPage = () => {
   const { id } = useParams();
   const [contact, setContact] = useState([]);
   const [currentDate, setCurrentDate] = useState(getCurrentDate());
   const navigate = useNavigate();
-  
+
   const notifySuccess = () => {
     toast.success("Message sent successfully!");
   };
   useEffect(() => {
-    fetch(`https://nft-seo-server.onrender.com/contact/`)
+    fetch(`http://localhost:5000/contact/`)
       .then((res) => res.json())
       .then((info) => setContact(info));
   }, [id]);
@@ -39,7 +38,7 @@ const ContactPage = () => {
       messageStatus,
     };
 
-    const url = `https://nft-seo-server.onrender.com/add-contact-message`;
+    const url = `http://localhost:5000/add-contact-message`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -64,8 +63,8 @@ const ContactPage = () => {
 
   return (
     <>
-      <section className="touch" data-aos="fade-up" data-aos-duration={2000}>
-      <ToastContainer />
+      {/* <section className="touch" data-aos="fade-up" data-aos-duration={2000}>
+      
 
         <div className="container">
           <div className="row">
@@ -225,6 +224,102 @@ const ContactPage = () => {
           </div>
         </div>
        
+      </section> */}
+      <section id="contacts-1" className="wide-60 contacts-section division"
+      style={{
+        backgroundImage: `url(https://i.ibb.co/SBH8fTs/banner-bg.png)`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}>
+        <div className="container">
+          <div className="row">
+            {/* CONTACT FORM */}
+            <div className="col-lg-8">
+              <div className="form-holder mb-40 pc-25">
+                <form name="contactform" className="row contact-form">
+                  {/* Contact Form Input */}
+                  <div id="input-name" className="col-md-6">
+                    <input
+                      type="text"
+                      name="name"
+                      className="form-control name"
+                      placeholder="Your Name"
+                    />
+                  </div>
+                  <div id="input-email" className="col-md-6">
+                    <input
+                      type="text"
+                      name="email"
+                      className="form-control email"
+                      placeholder="Email Address"
+                    />
+                  </div>
+                  <div id="input-subject" className="col-md-12">
+                    <input
+                      type="text"
+                      name="subject"
+                      className="form-control subject"
+                      placeholder="What's this about?"
+                    />
+                  </div>
+                  <div id="input-message" className="col-md-12 input-message">
+                    <textarea
+                      className="form-control message"
+                      name="message"
+                      rows={6}
+                      placeholder="Your Message ..."
+                      defaultValue={""}
+                    />
+                  </div>
+                  {/* Contact Form Button */}
+                  <div className="col-lg-12 mt-10 form-btn text-right">
+                    <button
+                      type="submit"
+                      className="btn btn-md btn-green deepgreen-hover submit"
+                    >
+                      Send Message
+                    </button>
+                  </div>
+                  {/* Contact Form Message */}
+                  <div className="col-lg-12 contact-form-msg">
+                    <span className="loading" />
+                  </div>
+                </form>
+              </div>
+            </div>
+            {/* END CONTACT FORM */}
+            {/* CONTACTS INFO */}
+            <div className="col-lg-4">
+              <div className="contacts-info pc-25">
+                {/* LOCATION */}
+                <div className="contact-box wow fadeInUp" data-wow-delay="0.4s">
+                  <h5 className="h5-sm">Our Location:</h5>
+                  <p className="grey-color">Merteex Processing, Inc</p>
+                  <p className="grey-color">
+                    121 King Street, Melbourne, <br />
+                    Victoria 3000 Australia
+                  </p>
+                </div>
+                {/* PHONES */}
+                <div className="contact-box wow fadeInUp" data-wow-delay="0.6s">
+                  <h5 className="h5-sm">Contact Phones:</h5>
+                  <p className="grey-color">Phone : +12 3 3456 7890</p>
+                  <p className="grey-color">Fax : +12 9 8765 4321</p>
+                </div>
+                {/* WORKING HOURS */}
+                <div className="contact-box wow fadeInUp" data-wow-delay="0.8s">
+                  <h5 className="h5-sm">Office Hours:</h5>
+                  <p className="grey-color">Mon - Fri: 8:30am - 7:30pm</p>
+                  <p className="grey-color">Saturday: 8:30am - 3:30pm</p>
+                  <p className="grey-color">Sunday: Closed</p>
+                </div>
+              </div>
+            </div>
+            {/* END CONTACTS INFO */}
+          </div>
+          {/* End row */}
+        </div>
+        {/* End container */}
       </section>
     </>
   );
