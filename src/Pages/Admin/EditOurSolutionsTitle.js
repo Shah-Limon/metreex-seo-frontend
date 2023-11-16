@@ -3,7 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import auth from "../../firebase.init";
 import BackToAdminDashboard from "./BackToAdminDashboard";
-const PackageTitleEdit = () => {
+const EditOurSolutionsTitle = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState([]);
   const [user] = useAuthState(auth);
@@ -19,12 +19,10 @@ const PackageTitleEdit = () => {
     event.preventDefault();
 
     const titleOne = event.target.titleOne.value;
-
     const description = event.target.description.value;
 
     const packageTitle = {
       titleOne,
-
       description,
     };
 
@@ -96,4 +94,4 @@ const PackageTitleEdit = () => {
   );
 };
 
-export default PackageTitleEdit;
+export default EditOurSolutionsTitle;

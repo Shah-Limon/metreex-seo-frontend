@@ -21,7 +21,6 @@ const EditBannerSlider = () => {
   const handleSlider = async (event) => {
     event.preventDefault();
 
-    const sliderTitle = event.target.sliderTitle.value;
     const sliderDesc = event.target.sliderDesc.value;
     const fileInput = event.target.sliderImg.files[0]; // Get the selected file
 
@@ -39,7 +38,6 @@ const EditBannerSlider = () => {
       const sliderImg = imgbbResponse.data.data.url; // Get the image URL from the imgbb response
 
       const sliderUpdate = {
-        sliderTitle,
         sliderDesc,
         sliderImg,
       };
@@ -62,26 +60,19 @@ const EditBannerSlider = () => {
   };
 
   return (
-    <div className="payment-setting" data-aos="fade-up" data-aos-duration={3000}>
+    <div
+      className="centered-form-container"
+      data-aos="fade-up"
+      data-aos-duration={3000}
+    >
       <BackToAdminDashboard></BackToAdminDashboard>
-      <form class="form" onSubmit={handleSlider}>
+      <form class="form seo-form" onSubmit={handleSlider}>
         <div class="container">
           <div class="justify-content-center align-items-baseline">
             <h4 className="sub-heading">
-              <span>Update Slider</span>
+              <span>Update Brand Slider</span>
             </h4>
-            <div class="col-sm">
-              <label className="mt-1">Enter Slider Title</label>
-              <div class="form-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Enter Slider Title"
-                  name="sliderTitle"
-                  defaultValue={sliders.sliderTitle}
-                />
-              </div>
-            </div>
+
             <div class="col-sm">
               <label className="mt-1">Enter Slider Short Description</label>
               <div class="form-group mb-3">
@@ -97,16 +88,12 @@ const EditBannerSlider = () => {
             <div class="col-sm">
               <label className="mt-1">Upload Slider Image</label>
               <div class="form-group mb-3">
-                <input
-                  type="file"
-                  class="form-control"
-                  name="sliderImg"
-                />
+                <input type="file" class="form-control" name="sliderImg" />
               </div>
             </div>
 
-            <div class="col-sm">
-              <button type="submit" class="action-btn">
+            <div class="col-sm-4">
+              <button type="submit" class="btn btn-md btn-primary tra-black-hover">
                 <span>Update Slider</span>
               </button>
             </div>

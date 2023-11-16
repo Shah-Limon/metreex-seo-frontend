@@ -79,7 +79,7 @@ const Setting = () => {
                       <div className="item-overlay" />
 
                       <div className="project-description white-color">
-                        <h3 className="p-md"> General Setting</h3>
+                        <h3 className="p-md"> Logo Setting</h3>
                       </div>
                     </div>
                   </Link>

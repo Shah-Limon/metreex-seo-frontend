@@ -19,17 +19,23 @@ const EditFeature = () => {
 
   const handleFeature = async (event) => {
     event.preventDefault();
-    // const topText = event.target.topText.value;
-    // const title = event.target.title.value;
-    // const subText = event.target.subText.value;
-    const featureDesc = event.target.featureDesc.value;
+
     const featureTitle = event.target.featureTitle.value;
+    const featureDescOne = event.target.featureDescOne.value;
+    const featureDescTwo = event.target.featureDescTwo.value;
+    const featureDescThree = event.target.featureDescThree.value;
+    const counterTitleOne = event.target.counterTitleOne.value;
+    const couterDescOne = event.target.couterDescOne.value;
+    const counterNumberOne = event.target.counterNumberOne.value;
+    const counterTitleTwo = event.target.counterTitleTwo.value;
+    const couterDescTwo = event.target.couterDescTwo.value;
+    const counterNumberTwo = event.target.counterNumberTwo.value;
 
     // Determine if an image is being uploaded or if a stored image link should be used
-    let featureImg = feature.img; 
+    let featureImg = feature.img;
 
     if (!imageFile && feature.featureImg) {
-      featureImg = feature.featureImg; 
+      featureImg = feature.featureImg;
     }
 
     // If an image is being uploaded, send it to imgbb
@@ -47,17 +53,22 @@ const EditFeature = () => {
         featureImg = imgbbResponse.data.data.url;
       } catch (error) {
         console.error("Image upload to imgbb failed:", error);
-        return; 
+        return;
       }
     }
 
     const updatedFeature = {
-      // topText,
-      // title,
-      // subText,
       featureImg,
-      featureDesc,
       featureTitle,
+      featureDescOne,
+      featureDescTwo,
+      featureDescThree,
+      counterTitleOne,
+      couterDescOne,
+      counterNumberOne,
+      counterTitleTwo,
+      couterDescTwo,
+      counterNumberTwo,
     };
 
     const url = `http://localhost:5000/feature/${id}`;
@@ -70,7 +81,7 @@ const EditFeature = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        navigate("/admin/setting");
+        navigate("/admin/feature-page");
       });
   };
 
@@ -85,48 +96,12 @@ const EditFeature = () => {
   return (
     <div>
       <BackToAdminDashboard></BackToAdminDashboard>
-      <form className="form mb-15" onSubmit={handleFeature}>
+      <form className="form mb-15 seo-form" onSubmit={handleFeature}>
         <div className="container">
           <div className="justify-content-center align-items-baseline">
             <h4 className="sub-heading">
-              <span>Edit Features</span>
+              <span>Edit Features One</span>
             </h4>
-            {/* <div className="col-sm">
-              <label className="mt-1">Enter Title Top Text</label>
-              <div className="form-group mb-3">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Enter Title Top Text"
-                  name="topText"
-                  defaultValue={feature.topText}
-                />
-              </div>
-            </div>
-            <div className="col-sm">
-              <label className="mt-1">Enter Title</label>
-              <div className="form-group mb-3">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Enter Feature Title"
-                  name="title"
-                  defaultValue={feature.title}
-                />
-              </div>
-            </div>
-            <div className="col-sm">
-              <label className="mt-1">Enter Short Sub Text</label>
-              <div className="form-group mb-3">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Enter Feature Title"
-                  name="subText"
-                  defaultValue={feature.subText}
-                />
-              </div>
-            </div> */}
 
             <div className="col-sm">
               <label className="mt-1">Enter Feature Title</label>
@@ -136,24 +111,131 @@ const EditFeature = () => {
                   className="form-control"
                   placeholder="Enter Feature Title"
                   name="featureTitle"
-                  defaultValue={feature.featureTitle} // Set the default value
+                  defaultValue={feature.featureTitle}
                 />
               </div>
             </div>
+
             <div className="col-sm">
-              <label className="mt-1">Enter Feature Short Description</label>
+              <label className="mt-1">
+                Enter Feature Short Description One
+              </label>
               <div className="form-group mb-3">
                 <input
                   type="text"
                   className="form-control"
                   placeholder="Enter Feature Short Description"
-                  name="featureDesc"
-                  defaultValue={feature.featureDesc}
+                  name="featureDescOne"
+                  defaultValue={feature.featureDescOne}
                 />
               </div>
             </div>
             <div className="col-sm">
-              <label className="mt-1">Upload Image</label>
+              <label className="mt-1">
+                Enter Feature Short Description Two
+              </label>
+              <div className="form-group mb-3">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter Feature Short Description"
+                  name="featureDescTwo"
+                  defaultValue={feature.featureDescTwo}
+                />
+              </div>
+            </div>
+            <div className="col-sm">
+              <label className="mt-1">
+                Enter Feature Short Description Three
+              </label>
+              <div className="form-group mb-3">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter Feature Short Description"
+                  name="featureDescThree"
+                  defaultValue={feature.featureDescThree}
+                />
+              </div>
+            </div>
+
+            <div className="col-sm">
+              <label className="mt-1">Enter Counter Title One</label>
+              <div className="form-group mb-3">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter Counter Title One"
+                  name="counterTitleOne"
+                  defaultValue={feature.counterTitleOne}
+                />
+              </div>
+            </div>
+            <div className="col-sm">
+              <label className="mt-1">Enter Counter Description One</label>
+              <div className="form-group mb-3">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter Counter Description One"
+                  name="couterDescOne"
+                  defaultValue={feature.couterDescOne}
+                />
+              </div>
+            </div>
+            <div className="col-sm">
+              <label className="mt-1">Enter Counter Number One</label>
+              <div className="form-group mb-3">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter Counter Number One"
+                  name="counterNumberOne"
+                  defaultValue={feature.counterNumberOne}
+                />
+              </div>
+            </div>
+
+            {/* Two */}
+            <div className="col-sm">
+              <label className="mt-1">Enter Counter Title Two</label>
+              <div className="form-group mb-3">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter Counter Title Two"
+                  name="counterTitleTwo"
+                  defaultValue={feature.counterTitleTwo}
+                />
+              </div>
+            </div>
+            <div className="col-sm">
+              <label className="mt-1">Enter Counter Description Two</label>
+              <div className="form-group mb-3">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter Counter Description Two"
+                  name="couterDescTwo"
+                  defaultValue={feature.couterDescTwo}
+                />
+              </div>
+            </div>
+            <div className="col-sm">
+              <label className="mt-1">Enter Counter Number Two</label>
+              <div className="form-group mb-3">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter Counter Number Two"
+                  name="counterNumberTwo"
+                  defaultValue={feature.counterNumberTwo}
+                />
+              </div>
+            </div>
+
+            <div className="col-sm">
+              <label className="mt-1">Upload Feature Image</label>
               <div className="form-group mb-3">
                 <input
                   type="file"
@@ -179,13 +261,16 @@ const EditFeature = () => {
               {!imageFile && !imagePreview && !feature.featureImg && (
                 <img
                   src="default-image-url-here"
-                  alt="Default Image"
+                  alt="features_image"
                   style={{ maxWidth: "100px" }}
                 />
               )}
             </div>
-            <div className="col-sm">
-              <button type="submit" className="action-btn">
+            <div className="col-sm-4">
+              <button
+                type="submit"
+                className=" mt-20 btn btn-md btn-primary tra-black-hover"
+              >
                 <span>Update Feature</span>
               </button>
             </div>

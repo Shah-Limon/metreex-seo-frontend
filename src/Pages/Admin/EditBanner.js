@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import auth from "../../firebase.init";
 import BackToAdminDashboard from "./BackToAdminDashboard";
 
@@ -8,33 +8,33 @@ const EditBanner = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [banner, setBanner] = useState([]);
+  const [image, setImage] = useState(null);
+  const [imageURL, setImageURL] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/banner/`)
+    fetch(`http://localhost:5000/banner/${id}`)
       .then((res) => res.json())
-      .then((info) => setBanner(info));
+      .then((info) => {
+        setBanner(info);
+        if (info.length > 0) {
+          setImageURL(info[0].bunnerImage);
+        }
+      });
   }, [id]);
 
   const [user] = useAuthState(auth);
 
   const handleBanner = (event) => {
     event.preventDefault();
-    const bannerToptext = event.target.bannerToptext.value;
-    const bannerHeadingText1 = event.target.bannerHeadingText1.value;
-    const bannerHeadingText2 = event.target.bannerHeadingText2.value;
-    const typingHeading1 = event.target.typingHeading1.value;
-    const typingHeading2 = event.target.typingHeading2.value;
-    const typingHeading3 = event.target.typingHeading3.value;
+    const bannerHeading = event.target.bannerHeading.value;
+    const buttonText = event.target.buttonText.value;
     const bannertext = event.target.bannertext.value;
 
     const updateBanner = {
-      bannerToptext,
-      bannerHeadingText1,
-      bannerHeadingText2,
-      typingHeading1,
-      typingHeading2,
-      typingHeading3,
+      bannerHeading,
+      buttonText,
       bannertext,
+      bunnerImage: imageURL,
     };
 
     const url = `http://localhost:5000/edit-banner/${id}`;
@@ -51,114 +51,89 @@ const EditBanner = () => {
       });
   };
 
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+
+    fetch("https://api.imgbb.com/1/upload?key=1f8cc98e0f42a06989fb5e2589a9a8a4", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setImageURL(data.data.url);
+      })
+      .catch((error) => {
+        console.error("Image upload error:", error);
+      });
+  };
+
   return (
     <div>
-      <BackToAdminDashboard></BackToAdminDashboard>
-      <form class="form mb-15" onSubmit={handleBanner}>
+      <BackToAdminDashboard />
+      <form className="form mb-15 seo-form" onSubmit={handleBanner}>
         {banner.map((e) => (
-          <div class="container">
-            <div class="justify-content-center align-items-baseline">
-              <div class="col-sm">
-                <label className="mt-1">Banner Top Text</label>
-                <div class="form-group mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Banner Top Text"
-                    name="bannerToptext"
-                    defaultValue={e.bannerToptext}
-                  />
-                </div>
+          <div className="container" key={e._id}>
+            <div className="col-sm">
+              <label className="mt-1">Enter Banner Heading</label>
+              <div className="form-group mb-3">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter Banner Heading"
+                  name="bannerHeading"
+                  defaultValue={e.bannerHeading}
+                />
               </div>
-              <div class="col-sm">
-                <label className="mt-1">
-                  Enter Banner Heading Text(1sT Line)
-                </label>
-                <div class="form-group mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter Banner Heading Text(1sT Line)"
-                    name="bannerHeadingText1"
-                    defaultValue={e.bannerHeadingText1}
-                  />
-                </div>
+            </div>
+            <div className="col-sm">
+              <label className="mt-1">Enter Banner Button Text</label>
+              <div className="form-group mb-3">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter Banner Button Text"
+                  name="buttonText"
+                  defaultValue={e.buttonText}
+                />
               </div>
-              <div class="col-sm">
-                <label className="mt-1">
-                  Enter Banner Heading Text(2sT Line)
-                </label>
-                <div class="form-group mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter Banner Heading Text(1sT Line)"
-                    name="bannerHeadingText2"
-                    defaultValue={e.bannerHeadingText2}
-                  />
-                </div>
+            </div>
+            <div className="col-sm">
+              <label className="mt-1">Upload Banner Image</label>
+              <div className="form-group mb-3">
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                  className="form-control"
+                />
               </div>
-              <div class="col-sm">
-                <label className="mt-1">Enter Banner Typing Text(1)</label>
-                <div class="form-group mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter Banner Typing Text(1)"
-                    name="typingHeading1"
-                    defaultValue={e.typingHeading1}
-                  />
-                </div>
+              {imageURL && (
+                <img src={imageURL} alt="Banner Preview" style={{ maxWidth: "50%", maxHeight:"200px" }} />
+              )}
+            </div>
+            <div className="col-sm">
+              <label className="mt-1">Enter Banner Paragraph</label>
+              <div className="form-group mb-3">
+                <textarea
+                  type="text"
+                  style={{ width: "100%", height: "100px" }}
+                  className="form-control"
+                  placeholder="Enter Banner Paragraph"
+                  name="bannertext"
+                  defaultValue={e.bannertext}
+                />
               </div>
-              <div class="col-sm">
-                <label className="mt-1">Enter Banner Typing Text(2)</label>
-                <div class="form-group mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter Banner Typing Text(2)"
-                    name="typingHeading2"
-                    defaultValue={e.typingHeading2}
-                  />
-                </div>
-              </div>
-              <div class="col-sm">
-                <label className="mt-1">Enter Banner Typing Text(3)</label>
-                <div class="form-group mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter Banner Typing Text(3)"
-                    name="typingHeading3"
-                    defaultValue={e.typingHeading3}
-                  />
-                </div>
-              </div>
-
-              <div class="col-sm">
-                <label className="mt-1">Enter Banner Paragraph</label>
-                <div class="form-group mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter Banner Paragraph"
-                    name="bannertext"
-                    defaultValue={e.bannertext}
-                  />
-                </div>
-              </div>
-
-              <div class="col-sm">
-                <button type="submit" class="action-btn">
-                  <span>Update Bannner</span>
-                </button>
-              </div>
+            </div>
+            <div className="col-sm-4">
+              <button type="submit" className="btn btn-md btn-primary tra-black-hover">
+                <span>Update Banner</span>
+              </button>
             </div>
           </div>
         ))}
       </form>
-
-     
     </div>
   );
 };

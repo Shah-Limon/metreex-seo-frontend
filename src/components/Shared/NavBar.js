@@ -34,20 +34,24 @@ const NavBar = () => {
                 <span />
               </Link>
               <span className="smllogo smllogo-black">
-                <img
-                  src="https://jthemes.net/themes/html/metreex/files/images/logo.png"
-                  width={162}
-                  height={40}
-                  alt="mobile-logo"
-                />
+                {logo.length > 0 && (
+                  <img
+                    src={logo[0].logo}
+                    width={162}
+                    height={40}
+                    alt="header-logo"
+                  />
+                )}
               </span>
               <span className="smllogo smllogo-white">
-                <img
-                  src="https://jthemes.net/themes/html/metreex/files/images/logo-white.png"
-                  width={162}
-                  height={40}
-                  alt="mobile-logo"
-                />
+                {logo.length > 0 && (
+                  <img
+                    src={logo[0].logo}
+                    width={162}
+                    height={40}
+                    alt="header-logo"
+                  />
+                )}
               </span>
               <a href="mailto:email@website.com" className="callusbtn">
                 <i className="fas fa-envelope" />
@@ -60,22 +64,26 @@ const NavBar = () => {
                 {/* For Retina Ready displays take a image with double the amount of pixels that your image will be displayed (e.g 334 x 80 pixels) */}
                 <div className="desktoplogo">
                   <Link to="/" className="logo-black">
-                    <img
-                      src="https://jthemes.net/themes/html/metreex/files/images/logo.png"
-                      width={162}
-                      height={40}
-                      alt="header-logo"
-                    />
+                    {logo.length > 0 && (
+                      <img
+                        src={logo[1].logo}
+                        width={162}
+                        height={40}
+                        alt="header-logo"
+                      />
+                    )}
                   </Link>
                 </div>
                 <div className="desktoplogo">
                   <Link to="/" className="logo-white">
-                    <img
-                      src="https://jthemes.net/themes/html/metreex/files/images/logo-white.png"
-                      width={162}
-                      height={40}
-                      alt="header-logo"
-                    />
+                    {logo.length > 0 && (
+                      <img
+                        src={logo[0].logo}
+                        width={162}
+                        height={40}
+                        alt="header-logo"
+                      />
+                    )}
                   </Link>
                 </div>
                 {/* MAIN MENU */}
@@ -103,10 +111,9 @@ const NavBar = () => {
                     </li>
                     <li className="nl-simple">
                       <Link to="/admin/dashboard" aria-haspopup="true">
-                       Admin
+                        Admin
                       </Link>
                     </li>
-                    
 
                     <li className="nl-simple green-scroll">
                       <a

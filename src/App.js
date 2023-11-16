@@ -90,6 +90,8 @@ import SolvedTicket from './Pages/SolvedTicket';
 import DeliveredOrders from './Pages/Admin/DeliveredOrders';
 import ErrorPage from './Pages/ErrorPage';
 import ServicesPage from './Pages/ServicesPage';
+import OurSolutionsList from './Pages/Admin/OurSolutionsList';
+import EditOurSolutions from './Pages/Admin/EditOurSolutions';
 
 
 function App() {
@@ -183,6 +185,15 @@ function App() {
 
         <Route path='/admin/feature-page/' element={<RequireAuth><AdminRoute><EditFeaturesPage></EditFeaturesPage></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/edit-feature/:id' element={<RequireAuth><AdminRoute><EditFeature></EditFeature></AdminRoute></RequireAuth>}></Route>
+
+
+        <Route path='/admin/solution-lists/' element={<RequireAuth><AdminRoute><OurSolutionsList></OurSolutionsList> </AdminRoute></RequireAuth>}></Route>
+        <Route path='/admin/edit-solution/:id' element={<RequireAuth><AdminRoute><EditOurSolutions></EditOurSolutions></AdminRoute></RequireAuth>}></Route>
+       
+
+
+
+
 
 
         <Route path='/admin/about-edit/:id' element={<RequireAuth><AdminRoute><AboutUsEdit></AboutUsEdit></AdminRoute></RequireAuth>}></Route>

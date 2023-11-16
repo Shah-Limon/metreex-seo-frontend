@@ -11,7 +11,6 @@ const HelpDeskAction = () => {
   const [tickets, setTickets] = useState([]);
   const [ticket, setTicket] = useState([]);
 
-
   useEffect(() => {
     fetch(`http://localhost:5000/ticket/${id}`)
       .then((res) => res.json())
@@ -25,7 +24,7 @@ const HelpDeskAction = () => {
   }, []);
 
   // State variable to store the current date
-  
+
   const [currentDateTime, setCurrentDateTime] = useState("");
 
   useEffect(() => {
@@ -33,22 +32,22 @@ const HelpDeskAction = () => {
       .then((res) => res.json())
       .then((info) => {
         const apiDateTime = new Date(info.utc_datetime);
-        const formattedTime = apiDateTime.toLocaleTimeString('en-US', {
-          hour: '2-digit',
-          minute: '2-digit',
+        const formattedTime = apiDateTime.toLocaleTimeString("en-US", {
+          hour: "2-digit",
+          minute: "2-digit",
           hour12: true,
-          timeZoneName: 'short' // Display the timezone abbreviation
+          timeZoneName: "short", // Display the timezone abbreviation
         });
-        const formattedDate = apiDateTime.toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
+        const formattedDate = apiDateTime.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
         });
         setCurrentDateTime(`${formattedTime} - ${formattedDate}`);
       });
   }, []);
 
-  const currentDate = currentDateTime
+  const currentDate = currentDateTime;
 
   const HandleTicketReply = (event) => {
     event.preventDefault();
@@ -154,7 +153,7 @@ const HelpDeskAction = () => {
                   <input hidden type="text" name="whoReplied" value="Admin" />
 
                   <input
-                   hidden
+                    hidden
                     type="text"
                     value={currentDate}
                     name="currentDate"
@@ -252,6 +251,7 @@ const HelpDeskAction = () => {
           </div>
         </div>
       </section>
+     
     </>
   );
 };

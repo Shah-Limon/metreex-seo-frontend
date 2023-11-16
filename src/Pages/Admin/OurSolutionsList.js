@@ -4,17 +4,11 @@ import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import auth from "../../firebase.init";
 import BackToAdminDashboard from "./BackToAdminDashboard";
 
-const BannerSliderList = () => {
+const OurSolutionsList = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [sliders, setSliders] = useState([]);
-  const [image, setImage] = useState(null); // To store the uploaded image
-
-  useEffect(() => {
-    fetch(`http://localhost:5000/sliders`)
-      .then((res) => res.json())
-      .then((info) => setSliders(info));
-  }, []);
+  const [feature, setFeature] = useState([]);
+  const [image, setImage] = useState(null);
 
   let rowNumber = 1;
 
@@ -23,10 +17,11 @@ const BannerSliderList = () => {
     setImage(file);
   };
 
-  const handleSlider = async (event) => {
+  const handleFeature = async (event) => {
     event.preventDefault();
 
-    const sliderDesc = event.target.sliderDesc.value;
+    const featureDesc = event.target.featureDesc.value;
+    const featureTitle = event.target.featureTitle.value;
 
     if (!image) {
       alert("Please select an image for the slider.");
@@ -48,26 +43,27 @@ const BannerSliderList = () => {
 
       if (response.ok) {
         const data = await response.json();
-        const sliderImg = data.data.url;
+        const featureImg = data.data.url;
 
-        const slider = {
-          sliderDesc,
-          sliderImg,
+        const solution = {
+          featureDesc,
+          featureTitle,
+          featureImg,
         };
 
-        const url = `http://localhost:5000/slider`;
+        const url = `http://localhost:5000/add-solution`;
         const sliderResponse = await fetch(url, {
           method: "POST",
           headers: {
             "content-type": "application/json",
           },
-          body: JSON.stringify(slider),
+          body: JSON.stringify(solution),
         });
 
         if (sliderResponse.ok) {
-          navigate("/admin/setting-homepage/");
+          navigate("/admin/setting-homepage");
         } else {
-          alert("Failed to add slider.");
+          alert("Failed to add feature.");
         }
       } else {
         alert("Image upload failed.");
@@ -77,29 +73,45 @@ const BannerSliderList = () => {
     }
   };
 
+  useEffect(() => {
+    fetch(`http://localhost:5000/solutions`)
+      .then((res) => res.json())
+      .then((info) => setFeature(info));
+  }, []);
+
   return (
-    <div className="centered-form-container">
+    <div>
       <BackToAdminDashboard></BackToAdminDashboard>
-      <form className="form seo-form" onSubmit={handleSlider}>
+      <form className="form seo-form" onSubmit={handleFeature}>
         <div className="container">
           <div className="justify-content-center align-items-baseline">
             <h4 className="sub-heading">
-              <span>Add brand Slider</span>
+              <span>Add Our Solutions Items</span>
             </h4>
-
             <div className="col-sm">
-              <label className="mt-1">Enter Slider Short Description</label>
+              <label className="mt-1">Enter Feature Title</label>
               <div className="form-group mb-3">
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Enter Slider Short Description"
-                  name="sliderDesc"
+                  placeholder="Enter Feature Title"
+                  name="featureTitle"
                 />
               </div>
             </div>
             <div className="col-sm">
-              <label className="mt-1">Upload Slider Image</label>
+              <label className="mt-1">Enter Feature Short Description</label>
+              <div className="form-group mb-3">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter Feature Short Description"
+                  name="featureDesc"
+                />
+              </div>
+            </div>
+            <div className="col-sm">
+              <label className="mt-1">Upload Feature Image</label>
               <div className="form-group mb-3">
                 <input
                   type="file"
@@ -113,7 +125,7 @@ const BannerSliderList = () => {
                 type="submit"
                 className="btn btn-md btn-primary tra-black-hover"
               >
-                <span>Add Brand Slider</span>
+                <span>Add Now</span>
               </button>
             </div>
           </div>
@@ -121,22 +133,20 @@ const BannerSliderList = () => {
       </form>
 
       <div className="container">
+       
         <table className="rwd-table">
-          <h5 className="sub-heading mb-15">
-            <span>Slider List</span>
-          </h5>
           <tbody>
             <tr>
               <th>SL No.</th>
-              <th>Slider Description</th>
+              <th>Title</th>
               <th>Edit</th>
             </tr>
-            {sliders.map((item) => (
+            {feature.map((item) => (
               <tr key={item._id}>
                 <td data-th="SL No.">{rowNumber++}</td>
-                <td data-th="Description">{item.sliderDesc}</td>
+                <td data-th="Title">{item.featureTitle}</td>
                 <td data-th="Edit">
-                  <Link to={`/admin/edit-slider/${item._id}`}>Edit</Link>
+                  <Link to={`/admin/edit-solution/${item._id}`}>Edit</Link>
                 </td>
               </tr>
             ))}
@@ -147,4 +157,4 @@ const BannerSliderList = () => {
   );
 };
 
-export default BannerSliderList;
+export default OurSolutionsList;

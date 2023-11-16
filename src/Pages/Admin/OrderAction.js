@@ -44,7 +44,7 @@ const OrderAction = () => {
         class="form seo-form centered-form-container"
         onSubmit={handelOrderAction}
       >
-        <div class="container">
+        <div class="p-3">
           <div className="mb-30">
             <h5 className="mb-30">
               Current Payment Status :- {order.paymentStatus}

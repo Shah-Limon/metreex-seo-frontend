@@ -6,7 +6,6 @@ import BackToAdminDashboard from "./BackToAdminDashboard";
 
 const GeneralOption = () => {
   const { id } = useParams();
-  const [paymentEmail, setPaymentEmail] = useState([]);
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
 
@@ -20,29 +19,36 @@ const GeneralOption = () => {
 
   return (
     <div>
-      <section className="participants payment-setting" data-aos="fade-up" data-aos-duration={3000}>
+      <section
+        className="participants payment-setting"
+        data-aos="fade-up"
+        data-aos-duration={3000}
+      >
         <div className="container">
           <div className="row">
-          <BackToAdminDashboard></BackToAdminDashboard>
+            <BackToAdminDashboard></BackToAdminDashboard>
             <div className="col-12">
               <div className="block-text center">
                 <div className="col-md-4">
-                  <h5 className="heading">Logo Option</h5>
-
                   {logo.map((logoImg) => (
-                    <div className="blog-box">
+                    <div key={logoImg._id} className="blog-box mt-20">
+                      <h5 className="heading mb-3">
+                        Logo Option for {logoImg.logoFor}
+                      </h5>
                       <img
                         className="mb-15 footer__logo"
                         src={logoImg.logo}
+                        width={190}
+                        height={45}
                         alt=""
                       />
-                      <hr></hr>
-                      <p>Logo Size: width="160px" height: "38px"</p>
+                      <hr />
+                      <p>Logo Size: width="160px" height: "40px"</p>
                       <Link
                         to={`/admin/update-logo/${logoImg._id}`}
-                        className="action-btn "
+                        className="btn btn-md btn-primary tra-black-hover"
                       >
-                        <span>update Logo</span>
+                        <span>Update Logo</span>
                       </Link>
                     </div>
                   ))}

@@ -50,7 +50,7 @@ const UpdateLogo = () => {
         });
 
         if (updateResponse.ok) {
-          navigate("/admin/packages");
+          navigate("/admin/setting-general/");
         } else {
           // Handle the case where the update to MongoDB fails
         }

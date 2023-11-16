@@ -66,7 +66,7 @@ const TotalOrders = () => {
       <div className="project s2">
         <div className="p-3">
           <h4 className="text-center">Total Sales $({totalSpend})usd</h4>
-          <h4 className="text-center">Total Orders</h4>
+
           <OrderMenu></OrderMenu>
           <table className="rwd-table">
             <tbody>

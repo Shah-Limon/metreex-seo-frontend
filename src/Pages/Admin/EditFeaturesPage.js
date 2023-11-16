@@ -67,7 +67,7 @@ const EditFeaturesPage = () => {
         });
 
         if (sliderResponse.ok) {
-          navigate("/admin/setting-homepage/");
+          navigate("/admin/feature-page");
         } else {
           alert("Failed to add feature.");
         }
@@ -143,8 +143,8 @@ const EditFeaturesPage = () => {
             </tr>
             {feature.map((item) => (
               <tr key={item._id}>
-                <td>{rowNumber++}</td>
-                <td>{item.featureTitle}</td>
+                <td data-th="SL No.">{rowNumber++}</td>
+                <td data-th="Feature Title">{item.featureTitle}</td>
                 <td data-th="Edit">
                   <Link to={`/admin/edit-feature/${item._id}`}>Edit</Link>
                 </td>

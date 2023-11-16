@@ -6,7 +6,7 @@ const BrandSection = () => {
   const [brandImage, setBrandImage] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/brand-images/`)
+    fetch(`http://localhost:5000/sliders`)
       .then((res) => res.json())
       .then((info) => setBrandImage(info));
   }, []);
@@ -21,30 +21,26 @@ const BrandSection = () => {
       <div className="container">
         <div className="row">
           <div className="col-md-12 text-center">
-            <p className="p-lg grey-color">
-              Used by startups, e-stores, web designers, and teams including:
-            </p>
-
             <AliceCarousel
               mouseTracking
               animationType="fadeout"
               animationDuration={1500}
               disableButtonsControls
               autoPlay
-              paddingLeft={50}
-              paddingRight={50}
               infinite
               items={brandImage.map((item, index) => (
-              
+                <>
+                  <p className="p-lg grey-color">{item.sliderDesc}</p>
+
                   <li className="brand-logo">
                     <img
                       className="img-fluid"
-                      src={item.img}
+                      src={item.sliderImg}
                       alt={`brand-logo-${index}`}
                       responsive={responsive}
                     />
                   </li>
-                
+                </>
               ))}
             />
           </div>

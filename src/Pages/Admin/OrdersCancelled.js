@@ -38,7 +38,7 @@ const currentItems = OrdersCancelled.slice(indexOfFirstItem, indexOfLastItem);
 
   return (
     <>
-      <div className="hight-full">
+      <div className="hight-full p-3">
         <h4 className="text-center">Total Orders Cancelled</h4>
         <OrderMenu></OrderMenu>
         <table className="rwd-table">
