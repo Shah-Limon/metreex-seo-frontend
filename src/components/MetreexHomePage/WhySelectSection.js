@@ -2,11 +2,17 @@ import React, { useEffect, useState } from "react";
 
 const WhySelectSection = () => {
   const [solution, setSolution] = useState([]);
+  const [title, setTitle] = useState([]);
 
   useEffect(() => {
     fetch(`http://localhost:5000/solutions`)
       .then((res) => res.json())
       .then((info) => setSolution(info));
+  }, []);
+  useEffect(() => {
+    fetch(`http://localhost:5000/solutions-title`)
+      .then((res) => res.json())
+      .then((info) => setTitle(info));
   }, []);
   return (
     <>
@@ -17,16 +23,18 @@ const WhySelectSection = () => {
               className="col-lg-10 offset-lg-1 section-title wow fadeInUp"
               data-wow-delay="0.2s"
             >
-              <h3 className="h3-sm indigo-color">
-                We know exactly how to increase your website traffic and grow up
-                your business
+              {
+                title.map(e =>
+                  <>
+                  <h3 className="h3-sm indigo-color">
+               {e.title}
               </h3>
 
               <p className="p-lg">
-                Aliquam a augue suscipit, luctus neque purus ipsum neque dolor
-                primis libero tempus, blandit posuere and ligula varius magna a
-                porta elementum massa risus
+                {e.desc}
               </p>
+              </>)
+              }
             </div>
           </div>
 

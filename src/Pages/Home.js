@@ -20,11 +20,12 @@ const Home = () => {
       <HeroSection></HeroSection>
       <BrandSection></BrandSection>
       <FeatureSection></FeatureSection>
-      <WhySelectSection></WhySelectSection>
-      <StatisticSetion></StatisticSetion>
       <AboutSection></AboutSection>
+      <WhySelectSection></WhySelectSection>
+      {/* <StatisticSetion></StatisticSetion>
+      
       <AboutCompany></AboutCompany>
-      <ServicesSection></ServicesSection>
+      <ServicesSection></ServicesSection> */}
       <TestimonialSection></TestimonialSection>
       <OurWorkSection></OurWorkSection>
       <Pricing></Pricing>

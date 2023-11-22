@@ -9,19 +9,19 @@ const HelpDeskMenu = () => {
       <nav id="main-nav" className="main-nav">
         <ul id="menu-primary-menu" className="menu custom-orders-ul">
           <li className="menu-item menu-item-has-children">
-            <Link to="/admin/help-desk/open-ticket" class="action-btn">
+            <Link to="/admin/help-desk/open-ticket" class="btn btn-green tra-black-hover">
               Open Ticket
             </Link>
           </li>
 
           <li className="menu-item menu-item-has-children">
-            <Link to="/admin/help-desk/replied-ticket" class="action-btn ">
+            <Link to="/admin/help-desk/replied-ticket" class="btn btn-green tra-black-hover ">
               Replied Ticket
             </Link>
           </li>
 
           <li className="menu-item">
-            <Link to="/admin/help-desk/solved-ticket" class="action-btn ">
+            <Link to="/admin/help-desk/solved-ticket" class="btn btn-green tra-black-hover ">
               Solved Ticket
             </Link>
           </li>

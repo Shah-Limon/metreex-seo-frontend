@@ -3,6 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "../firebase.init";
 import HelpDeskMenu from "./HelpDeskMenu";
+import BackToAdminDashboard from "./Admin/BackToAdminDashboard";
 
 const HelpDesk = () => {
   const [user] = useAuthState(auth);
@@ -38,19 +39,17 @@ const HelpDesk = () => {
 
   return (
     <>
-      <section className="faq">
+    <BackToAdminDashboard></BackToAdminDashboard>
+      <section className="faq centered-form-container">
         <div className="container">
           <div className="row mt-15">
             <div className="col-12">
               <div className="row mb-0"></div>
 
               <div className="block-text center">
-                <h6 className="sub-heading">
-                  <span>Help Desk</span>
-                </h6>
-                <h3 className="heading">Customer Support Hub</h3>
+                <h3 className="heading text-center">Customer Support Hub</h3>
 
-                <div className="container">
+                <div className="container text-center">
                   <h5 mt-15>List of the User Submitted Tickets</h5>
                   <HelpDeskMenu></HelpDeskMenu> <br></br>
                   <table className="rwd-table" style={{ marginTop: "2rem" }}>
@@ -84,33 +83,35 @@ const HelpDesk = () => {
                     </tbody>
                   </table>
                 </div>
-                <div className="pagination pagination__margin">
-                  <ul>
-                    <li className="d-flex">
-                      {currentPage > 1 && (
-                        <Link onClick={() => paginate(currentPage - 1)}>
-                          {"<"}
-                        </Link>
-                      )}
-                      {Array.from(
-                        { length: endDigit - startDigit + 1 },
-                        (_, index) => (
-                          <Link
-                            key={startDigit + index}
-                            onClick={() => paginate(startDigit + index)}
-                          >
-                            {startDigit + index}
-                          </Link>
-                        )
-                      )}
-                      {currentPage < totalPages && (
-                        <Link onClick={() => paginate(currentPage + 1)}>
-                          {">"}
-                        </Link>
-                      )}
-                    </li>
-                  </ul>
-                </div>
+                <div className="pagination justify-content-center pagination__margin">
+  <ul className="pagination">
+    <li className="page-item">
+      {currentPage > 1 && (
+        <Link className="page-link" onClick={() => paginate(currentPage - 1)}>
+          {"<"}
+        </Link>
+      )}
+    </li>
+    {Array.from({ length: endDigit - startDigit + 1 }, (_, index) => (
+      <li key={startDigit + index} className="page-item">
+        <Link
+          className={`page-link ${startDigit + index === currentPage ? 'active' : ''}`}
+          onClick={() => paginate(startDigit + index)}
+        >
+          {startDigit + index}
+        </Link>
+      </li>
+    ))}
+    <li className="page-item">
+      {currentPage < totalPages && (
+        <Link className="page-link" onClick={() => paginate(currentPage + 1)}>
+          {">"}
+        </Link>
+      )}
+    </li>
+  </ul>
+</div>
+
               </div>
             </div>
           </div>

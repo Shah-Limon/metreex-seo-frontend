@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
 import { Link } from "react-router-dom";
-import DashboardMenu from "./DashboardMenu";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import BackToAdminDashboard from "./BackToAdminDashboard";
@@ -47,25 +46,32 @@ const InCompleteAuditRequest = () => {
       </tr>
     ));
 
-  const renderPaginationLinks = () => {
-    const links = [];
-    for (let i = 1; i <= pageCount; i++) {
-      links.push(
-        <Link
-          key={i}
-          onClick={() => handlePageChange(i)}
-          className={i === currentPage ? "active" : ""}
-        >
-          {i}
-        </Link>
+    const renderPaginationLinks = () => {
+      const links = [];
+      for (let i = 1; i <= pageCount; i++) {
+        links.push(
+          <li key={i} className={`page-item ${i === currentPage ? "active" : ""}`}>
+            <Link
+              onClick={() => handlePageChange(i)}
+              className="page-link"
+            >
+              {i}
+            </Link>
+          </li>
+        );
+      }
+      return (
+        <nav aria-label="Pagination">
+          <ul className="pagination">
+            {links}
+          </ul>
+        </nav>
       );
-    }
-    return links;
-  };
+    };
 
   return (
-    <div>
-       <BackToAdminDashboard></BackToAdminDashboard>
+    <div className="centered-form-container">
+      <BackToAdminDashboard></BackToAdminDashboard>
       {users.map(
         (u) =>
           user?.email === u.userEmail &&
@@ -87,7 +93,7 @@ const InCompleteAuditRequest = () => {
                         <li className="menu-item menu-item-has-children">
                           <Link
                             to="/admin/complete-audit-request/"
-                            class="action-btn"
+                            class="btn btn-green tra-black-hover mb-20"
                           >
                             Complete Audit Request
                           </Link>
@@ -95,7 +101,7 @@ const InCompleteAuditRequest = () => {
                         <li className="menu-item menu-item-has-children">
                           <Link
                             to="/admin/incomplete-audit-request/"
-                            class="action-btn"
+                            class="btn btn-green tra-black-hover mb-20"
                           >
                             Incomplete Audit Request
                           </Link>
@@ -117,14 +123,10 @@ const InCompleteAuditRequest = () => {
                     {displayData}
                   </tbody>
                 </table>
-                <div className="pagination">
-                  <ul>
+                <div className="pagination d-flex justify-content-center">
+                  <ul className="list-unstyled">
                     <li>
-                      <div className="d-flex">
-                     
-                      {renderPaginationLinks()}
-                      
-                      </div>
+                      <div>{renderPaginationLinks()}</div>
                     </li>
                   </ul>
                 </div>

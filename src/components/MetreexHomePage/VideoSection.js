@@ -1,72 +1,55 @@
-import React from 'react';
+import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
 const VideoSection = () => {
-    return (
-        <>
-           <section
-            id="video-3"
-            className="bg-indigo bg-map wide-60 video-section division"
-          >
-            <div className="container white-color">
-              <div className="row d-flex align-items-center">
-                {/* VIDEO TEXT */}
-                <div className="col-lg-5">
-                  <div className="video-txt mb-40">
-                    {/* Title */}
-                    <h4 className="h4-lg">
-                      They are always forthcoming, coming up with good solutions
-                      for us to improve processes
-                    </h4>
-                    {/* Text */}
-                    <p>
-                      An enim nullam tempor sapien gravida donec enim ipsum
-                      porta justo integer at odio velna vitae auctor integer
-                      congue magna at pretium purus pretium ligula rutrum luctus
-                      risus ultrice luctus in ligula blandit congue magna
-                    </p>
-                    {/* QUOTE */}
-                    <div className="quote">
-                      {/* Quote Avatar */}
-                      <div className="quote-avatar">
-                        <img src="https://jthemes.net/themes/html/metreex/files/images/quote-avatar.jpg" alt="quote-avatar" />
-                      </div>
-                      {/* Quote Author */}
-                      <div className="quote-author">
-                        <h5 className="h5-xs">Sean Mcmarthy </h5>
-                        <span>Founder of Metreex</span>
-                      </div>
-                    </div>
+  const [videoSection, setVideoSection] = useState([]);
+  useEffect(() => {
+    fetch(`http://localhost:5000/video-sections`)
+      .then((res) => res.json())
+      .then((info) => setVideoSection(info));
+  }, []);
+  return (
+    <>
+      {videoSection.map((e) => (
+        <section
+          id="video-3"
+          className="bg-indigo bg-map wide-60 video-section division"
+        >
+          <div className="container white-color">
+            <div className="row d-flex align-items-center">
+              <div className="col-lg-5">
+                <div className="video-txt mb-40">
+                  <h4 className="h4-lg">{e.videoHeading}</h4>
+
+                  <p>{e.description}</p>
+                </div>
+              </div>
+              <div className="col-lg-7 mb-40">
+                <div className="video-link text-center">
+                  <div className="play-btn play-btn-primary text-center">
+                    <Link
+                      className="video-popup3 video-play-button"
+                      to={e.youtubeLink}
+                    >
+                      <span />
+                    </Link>
+
+                    <img
+                      className="img-fluid"
+                      src={e.ctaImage}
+                      alt="video-preview"
+                    />
                   </div>
-                </div>{" "}
-                {/* END VIDEO TEXT */}
-                {/* VIDEO LINK */}
-                <div className="col-lg-7 mb-40">
-                  <div className="video-link text-center">
-                    {/* Change the link HERE!!! */}
-                    <div className="play-btn play-btn-primary text-center">
-                      <a
-                        className="video-popup3 video-play-button"
-                        href="https://www.youtube.com/embed/0gv7OC9L2s8"
-                      >
-                        <span />
-                      </a>
-                      {/* Preview Image */}
-                      <img
-                        className="img-fluid"
-                        src="https://jthemes.net/themes/html/metreex/files/images/video-3.jpg"
-                        alt="video-preview"
-                      />
-                    </div>
-                  </div>
-                </div>{" "}
-                {/* END VIDEO LINK */}
-              </div>{" "}
-              {/* End row */}
-            </div>{" "}
-            {/* End container */}
-          </section>  
-        </>
-    );
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      ))}
+    </>
+  );
 };
 
 export default VideoSection;

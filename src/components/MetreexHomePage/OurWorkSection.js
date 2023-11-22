@@ -1,51 +1,53 @@
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const OurWorkSection = () => {
+  const [feature, setFeature] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/features-two/`)
+      .then((res) => res.json())
+      .then((info) => setFeature(info));
+  }, []);
+
   return (
     <>
-      
       <section
-            id="content-8"
-            className="bg-lightgrey wide-60 content-section division"
-          >
-            <div className="container">
-              <div className="row d-flex align-items-center">
-                {/* TEXT BLOCK */}
+        id="content-8"
+        className="bg-lightgrey wide-60 content-section division"
+      >
+        <div className="container">
+          <div className="row d-flex align-items-center">
+            {feature.map((e) => (
+              <>
                 <div className="col-md-6 col-lg-5">
                   <div
                     className="txt-block pc-25 mb-40 wow fadeInLeft"
                     data-wow-delay="0.4s"
                   >
                     {/* Title */}
-                    <h4 className="h4-xl indigo-color">
-                      We're working towards your business goals
-                    </h4>
+                    <h4 className="h4-xl indigo-color">{e.featureTitle}</h4>
                     {/* Text */}
-                    <p>
-                      An enim nullam tempor sapien gravida purus pretium donec
-                      undo ipsum porta justo integer and velna vitae auctor
-                      integera congue magna at purus pretium ligula rutrum
-                      luctus ultrice sapien gravida donec
-                    </p>
+                    <p>{e.Desc}</p>
                     {/* List */}
                     <ul className="ico-list">
                       <li>
                         <i className="fas fa-check primary-color" />{" "}
-                        <span>Digital Competitive Analysis</span>
+                        <span>{e.featureDescOne}</span>
                       </li>
                       <li>
                         <i className="fas fa-check primary-color" />{" "}
-                        <span>Search Engine Optimization (SEO)</span>
+                        <span>{e.featureDescTwo}</span>
                       </li>
                       <li>
                         <i className="fas fa-check primary-color" />{" "}
-                        <span>Strategy and Analytics Consulting</span>
+                        <span>{e.featureDescThree}</span>
                       </li>
                     </ul>
                   </div>
-                </div>{" "}
-                {/* END TEXT BLOCK */}
-                {/* IMAGE BLOCK */}
+                </div>
+
                 <div className="col-md-6 col-lg-7">
                   <div
                     className="img-block pl-25 mb-40 wow fadeInRight"
@@ -53,16 +55,16 @@ const OurWorkSection = () => {
                   >
                     <img
                       className="img-fluid"
-                      src="https://jthemes.net/themes/html/metreex/files/images/image-10.png"
-                      alt="content-image"
+                      src={e.featureImg}
+                      alt="content-images"
                     />
                   </div>
                 </div>
-              </div>{" "}
-              {/* End row */}
-            </div>{" "}
-            {/* End container */}
-          </section>
+              </>
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   );
 };

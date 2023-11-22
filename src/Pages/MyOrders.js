@@ -32,7 +32,7 @@ const MyOrders = () => {
       {orders.filter((order) => order.customerEmail === user?.email).length >=
         1 && (
         <div className="container">
-          <h3 className="text-center">My Orders</h3>
+          <h3 className="text-center mt-20">My Orders</h3>
 
           <table className="rwd-table">
             <tbody>
@@ -89,20 +89,20 @@ const MyOrders = () => {
 
           {/* Pagination for Orders */}
           <div className="pagination">
-            <ul>
+            <ul className="pagination justify-content-center">
+              {" "}
+              {/* Bootstrap classes */}
               {Array.from({ length: totalPagesOrders }, (_, index) => {
                 return (
-                  <li>
-                    {" "}
-                    <Link
-                      key={index}
+                  <li className="page-item" key={index}>
+                    <button
                       onClick={() => handlePageChangeOrders(index + 1)}
-                      className={
+                      className={`page-link ${
                         currentPageOrders === index + 1 ? "active" : ""
-                      }
+                      }`}
                     >
                       {index + 1}
-                    </Link>
+                    </button>
                   </li>
                 );
               })}
@@ -114,8 +114,6 @@ const MyOrders = () => {
         0 && (
         <div className="container">
           <h3 className="text-center">No Orders</h3>
-
-         
         </div>
       )}
     </div>

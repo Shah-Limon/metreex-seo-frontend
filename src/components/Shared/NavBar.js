@@ -7,6 +7,7 @@ import PageHero from "./PageHero";
 
 const NavBar = () => {
   const [logo, setLogo] = useState([]);
+  const [contact, setContact] = useState([]);
   const [user] = useAuthState(auth);
   const location = useLocation();
 
@@ -18,6 +19,11 @@ const NavBar = () => {
     fetch(`http://localhost:5000/logo`)
       .then((res) => res.json())
       .then((info) => setLogo(info));
+  }, []);
+  useEffect(() => {
+    fetch(`http://localhost:5000/contact`)
+      .then((res) => res.json())
+      .then((info) => setContact(info));
   }, []);
 
   const isHomePage = location.pathname === "/";
@@ -34,24 +40,32 @@ const NavBar = () => {
                 <span />
               </Link>
               <span className="smllogo smllogo-black">
-                {logo.length > 0 && (
-                  <img
-                    src={logo[0].logo}
-                    width={162}
-                    height={40}
-                    alt="header-logo"
-                  />
-                )}
+                <>
+                  <Link to="/">
+                    {logo.length > 0 && (
+                      <img
+                        src={logo[0].logo}
+                        width={162}
+                        height={40}
+                        alt="header-logo"
+                      />
+                    )}
+                  </Link>
+                </>
               </span>
               <span className="smllogo smllogo-white">
-                {logo.length > 0 && (
-                  <img
-                    src={logo[0].logo}
-                    width={162}
-                    height={40}
-                    alt="header-logo"
-                  />
-                )}
+                <>
+                  <Link to="/">
+                    {logo.length > 0 && (
+                      <img
+                        src={logo[0].logo}
+                        width={162}
+                        height={40}
+                        alt="header-logo"
+                      />
+                    )}
+                  </Link>
+                </>
               </span>
               <a href="mailto:email@website.com" className="callusbtn">
                 <i className="fas fa-envelope" />
@@ -100,6 +114,11 @@ const NavBar = () => {
                       </Link>
                     </li>
                     <li className="nl-simple">
+                      <Link to="/pricing" aria-haspopup="true">
+                        Pricing
+                      </Link>
+                    </li>
+                    <li className="nl-simple">
                       <Link to="/about-us" aria-haspopup="true">
                         About Us
                       </Link>
@@ -109,30 +128,54 @@ const NavBar = () => {
                         Contact Us
                       </Link>
                     </li>
-                    <li className="nl-simple">
-                      <Link to="/admin/dashboard" aria-haspopup="true">
-                        Admin
-                      </Link>
-                    </li>
+                    {/* <li className="nl-simple mobile_link">
+                      <div className="menu-container">
+                        {user ? (
+                          <Link
+                            className="btn btn-md btn-primary tra-black-hover"
+                            to="/user-dashboard"
+                          >
+                            <span>Dashboard</span>
+                          </Link>
+                        ) : (
+                          <Link
+                            to="/login"
+                            className="btn btn-md btn-primary tra-black-hover"
+                          >
+                            <span>Login Now</span>
+                          </Link>
+                        )}
+                      </div>
+                    </li> */}
 
-                    <li className="nl-simple green-scroll">
-                      <a
-                        href="mailto:email@website.com"
-                        aria-haspopup="true"
-                        className="callusbtn"
-                      >
-                        <i className="fas fa-envelope" />
-                      </a>
-                    </li>
+                    {contact.map((e) => (
+                      <li className="nl-simple green-scroll">
+                        <a
+                          href={`mailto:${e.email}`}
+                          aria-haspopup="true"
+                          className="callusbtn"
+                        >
+                          <i className="fas fa-envelope" />
+                        </a>
+                      </li>
+                    ))}
 
                     <li class="nl-simple">
-                      <Link
-                        to="/login"
-                        aria-haspopup="true"
-                        class="btn btn-green tra-white-hover last-link"
-                      >
-                        Login
-                      </Link>
+                      {user ? (
+                        <Link
+                          className="btn btn-md btn-primary tra-black-hover last-link"
+                          to="/user-dashboard"
+                        >
+                          <span>Dashboard</span>
+                        </Link>
+                      ) : (
+                        <Link
+                          to="/login"
+                          className="btn btn-md btn-primary tra-black-hover last-link"
+                        >
+                          <span>Login Now</span>
+                        </Link>
+                      )}
                     </li>
                   </ul>
                 </nav>

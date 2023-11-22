@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import BackToAdminDashboard from "./BackToAdminDashboard";
 const FaqsEdit = () => {
   const navigate = useNavigate();
   const [faqs, setFaqs] = useState([]);
@@ -35,14 +36,16 @@ const FaqsEdit = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        navigate("/admin/setting-homepage/");
+        navigate("/admin/faqs");
       });
   };
 
   return (
-    <div>
+    <>
+    <BackToAdminDashboard></BackToAdminDashboard>
+    <div className="form seo-form centered-form-container"> 
       <form class="form" onSubmit={handleFaqs}>
-        <h4 className="mb-15">Add Faqs Question</h4>
+        <h4 className="mb-15 text-center">Add Faqs Question</h4>
         <div class="container">
           <div class="justify-content-center align-items-baseline">
             <div class="col-sm">
@@ -70,8 +73,8 @@ const FaqsEdit = () => {
               </div>
             </div>
 
-            <div class="col-sm">
-              <button type="submit" class="action-btn">
+            <div class="col-sm-3">
+              <button type="submit" class="btn btn-md btn-primary tra-black-hover">
                 <span>Update Faq</span>
               </button>
             </div>
@@ -79,6 +82,7 @@ const FaqsEdit = () => {
         </div>
       </form>
     </div>
+    </>
   );
 };
 

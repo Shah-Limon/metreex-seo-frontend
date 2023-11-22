@@ -8,6 +8,7 @@ const OurSolutionsList = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [feature, setFeature] = useState([]);
+  const [title, setTitle] = useState([]);
   const [image, setImage] = useState(null);
 
   let rowNumber = 1;
@@ -78,10 +79,30 @@ const OurSolutionsList = () => {
       .then((res) => res.json())
       .then((info) => setFeature(info));
   }, []);
+  useEffect(() => {
+    fetch(`http://localhost:5000/solutions-title`)
+      .then((res) => res.json())
+      .then((info) => setTitle(info));
+  }, []);
 
   return (
     <div>
       <BackToAdminDashboard></BackToAdminDashboard>
+
+      <div className="container">
+        <div className="justify-content-center align-items-baseline">
+          {
+            title.map(e =>
+              <Link
+            to={`/admin/soution-title-edit/${e._id}`}
+            className="col-sm-3 btn btn-green tra-black-hover mb-20"
+          >
+            Edit Title
+          </Link>)
+          }
+        </div>
+      </div>
+
       <form className="form seo-form" onSubmit={handleFeature}>
         <div className="container">
           <div className="justify-content-center align-items-baseline">
@@ -133,7 +154,6 @@ const OurSolutionsList = () => {
       </form>
 
       <div className="container">
-       
         <table className="rwd-table">
           <tbody>
             <tr>

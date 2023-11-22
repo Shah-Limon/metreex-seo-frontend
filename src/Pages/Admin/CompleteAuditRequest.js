@@ -51,72 +51,87 @@ const CompleteAuditRequest = () => {
     const links = [];
     for (let i = 1; i <= pageCount; i++) {
       links.push(
-        <Link
+        <li
           key={i}
-          onClick={() => handlePageChange(i)}
-          className={i === currentPage ? "active" : ""}
+          className={`page-item ${i === currentPage ? "active" : ""}`}
         >
-          {i}
-        </Link>
+          <Link onClick={() => handlePageChange(i)} className="page-link">
+            {i}
+          </Link>
+        </li>
       );
     }
-    return links;
+    return (
+      <nav aria-label="Pagination">
+        <ul className="pagination">{links}</ul>
+      </nav>
+    );
   };
 
   return (
     <div>
-       <BackToAdminDashboard></BackToAdminDashboard>
-      {users.map((u) =>
-        user?.email === u.userEmail &&
-        (u.userRole === "Admin" || u.userRole === "Manager") && (
-          <div className="payment-setting" data-aos="fade-up" data-aos-duration={2000}>
-            <div className="container">
-              <h5 className="text-center mt-15">Audit Request</h5>
-              <div className="custom-ordermenu">
-                <div className="header__right container custom-orders">
-                  <nav id="main-nav" className="main-nav">
-                    <ul id="menu-primary-menu" className="menu custom-orders-ul">
-                      <li className="menu-item menu-item-has-children">
-                        <Link to="/admin/complete-audit-request/" class="action-btn">
-                          Complete Audit Request
-                        </Link>
-                      </li>
-                      <li className="menu-item menu-item-has-children">
-                        <Link to="/admin/incomplete-audit-request/" class="action-btn">
-                          Incomplete Audit Request
-                        </Link>
-                      </li>
-                    </ul>
-                  </nav>
+      <BackToAdminDashboard></BackToAdminDashboard>
+      {users.map(
+        (u) =>
+          user?.email === u.userEmail &&
+          (u.userRole === "Admin" || u.userRole === "Manager") && (
+            <div
+              className="payment-setting"
+              data-aos="fade-up"
+              data-aos-duration={2000}
+            >
+              <div className="container">
+                <h5 className="text-center mt-15">Audit Request</h5>
+                <div className="custom-ordermenu">
+                  <div className="header__right container custom-orders">
+                    <nav id="main-nav" className="main-nav">
+                      <ul
+                        id="menu-primary-menu"
+                        className="menu custom-orders-ul"
+                      >
+                        <li className="menu-item menu-item-has-children">
+                          <Link
+                            to="/admin/complete-audit-request/"
+                            class="btn btn-green tra-black-hover mb-20"
+                          >
+                            Complete Audit Request
+                          </Link>
+                        </li>
+                        <li className="menu-item menu-item-has-children">
+                          <Link
+                            to="/admin/incomplete-audit-request/"
+                            class="btn btn-green tra-black-hover mb-20"
+                          >
+                            Incomplete Audit Request
+                          </Link>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
                 </div>
-              </div>
-              <table className="rwd-table">
-                <tbody>
-                  <tr>
-                    <th>SL No.</th>
-                    <th>Website Name</th>
-                    <th>Email</th>
-                    <th>Audit Status</th>
-                    <th>Edit</th>
-                    <th>-</th>
-                  </tr>
-                  {displayData}
-                </tbody>
-              </table>
-              <div className="pagination">
-                  <ul>
+                <table className="rwd-table">
+                  <tbody>
+                    <tr>
+                      <th>SL No.</th>
+                      <th>Website Name</th>
+                      <th>Email</th>
+                      <th>Audit Status</th>
+                      <th>Edit</th>
+                      <th>-</th>
+                    </tr>
+                    {displayData}
+                  </tbody>
+                </table>
+                <div className="pagination d-flex justify-content-center">
+                  <ul className="list-unstyled">
                     <li>
-                      <div className="d-flex">
-                     
-                      {renderPaginationLinks()}
-                     
-                      </div>
+                      <div>{renderPaginationLinks()}</div>
                     </li>
                   </ul>
                 </div>
+              </div>
             </div>
-          </div>
-        )
+          )
       )}
     </div>
   );

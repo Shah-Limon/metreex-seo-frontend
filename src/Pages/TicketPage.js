@@ -188,18 +188,18 @@ const TicketPage = () => {
 
   return (
     <>
-      <section className="touch" data-aos="fade-up" data-aos-duration={2000}>
+      <section className="touch centered-form-container" data-aos="fade-up" data-aos-duration={2000}>
         <div className="container">
           <div className="row">
-            <div className="col-12">
+            <div className="col-12 mt-10">
               <div className="block-text center">
-                <h6 className="sub-heading">
+                <h6 className="sub-heading text-center">
                   <span>Support</span>
                 </h6>
-                <h3 className="heading">Help Center</h3>
+                <h3 className="heading text-center">Help Center</h3>
               </div>
               <div className="touch__main">
-                <form onSubmit={UserContactMessage} className="form-box">
+                <form onSubmit={UserContactMessage} className="form seo-form mt-20">
                   <input type="text" value="Open" name="ticketStatus" hidden />
                   <input
                     type="text"
@@ -234,7 +234,8 @@ const TicketPage = () => {
                   <div className="row">
                     <div className="col">
                       <label>Message</label>
-                      <textarea required name="message" cols={30} rows={10} />
+                      <textarea required name="message" cols={30} rows={10} style={{ width: '100%', height: '100px' }}/>
+                      
                     </div>
                   </div>
 
@@ -252,8 +253,8 @@ const TicketPage = () => {
                   </div>
 
                   <div className="row mb-0">
-                    <div className="col">
-                      <button type="submit" className="action-btn"> {/* Fix typo "sumbit" to "submit" */}
+                    <div className="col-sm-3">
+                      <button type="submit" className="btn btn-md btn-primary tra-black-hover">
                         <span>Send Now</span>
                       </button>
                     </div>

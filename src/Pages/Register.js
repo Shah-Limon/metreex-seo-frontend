@@ -153,11 +153,14 @@ const Register = () => {
                       </div>
                       <div className="col-lg-6 text-center">
                         <div className="card-body p-4">
-                          {logo.map((e) => (
-                            <Link to="/">
-                              <img src={e.logo} alt="logo" />
-                            </Link>
-                          ))}
+                          {logo.length > 0 && (
+                            <img
+                              src={logo[0].logo}
+                              width={162}
+                              height={40}
+                              alt="header-logo"
+                            />
+                          )}
                           <div className="mt-5">
                             <img
                               src="https://img.freepik.com/free-vector/sign-up-concept-illustration_114360-7965.jpg"

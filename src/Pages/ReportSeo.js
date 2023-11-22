@@ -36,7 +36,7 @@ const ReportSeo = () => {
           <div class="col">
             <h3>SEO Report Dashboard</h3>
             <table class="table table-bordered custom-table">
-              <tbody style={{ color: "#fff" }}>
+              <tbody>
                 <tr key={website._id}>
                   <th>Email:</th>
                   <td>{website.email}</td>
@@ -84,9 +84,13 @@ const ReportSeo = () => {
               </tbody>
             </table>
             <div className="row mb-0">
-            <div className="col">
-                {website.pdfLink && ( // Only render the download button if pdfLink is available
-                  <button type="button" className="action-btn" onClick={downloadPDF}>
+              <div className="col">
+                {website.pdfLink && (
+                  <button
+                    type="button"
+                    className="btn btn-md btn-primary tra-black-hover"
+                    onClick={downloadPDF}
+                  >
                     <span>View PDF</span>
                   </button>
                 )}

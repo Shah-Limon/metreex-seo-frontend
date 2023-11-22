@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import BackToAdminDashboard from "../../Pages/Admin/BackToAdminDashboard";
 
-const SpecialityOptionEdit = () => {
+const AboutUsEdit = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [about, setAbout] = useState([]);
@@ -16,13 +16,9 @@ const SpecialityOptionEdit = () => {
     event.preventDefault();
     const title = event.target.title.value;
     const subText = event.target.subText.value;
-    const btnText = event.target.btnText.value;
-    const btnUrl = event.target.btnUrl.value;
 
-    // Use a let variable for img to allow reassignment
     let img = imageFile ? imagePreview : storedImage;
 
-    // If an image is being uploaded, send it to imgbb
     if (imageFile) {
       try {
         const formData = new FormData();
@@ -37,7 +33,7 @@ const SpecialityOptionEdit = () => {
         img = imgbbResponse.data.data.url;
       } catch (error) {
         console.error("Image upload to imgbb failed:", error);
-        return; // Don't proceed if image upload fails
+        return;
       }
     }
 
@@ -45,8 +41,6 @@ const SpecialityOptionEdit = () => {
       img,
       title,
       subText,
-      btnText,
-      btnUrl,
     };
 
     const url = `http://localhost:5000/edit-about/${id}`;
@@ -75,107 +69,89 @@ const SpecialityOptionEdit = () => {
     fetch(`http://localhost:5000/about/${id}`)
       .then((res) => res.json())
       .then((info) => {
-        const storedImg = info[0].img;
-        setAbout(info);
+        const storedImg = info.img; // Access 'img' directly from the response
+        setAbout(info); // Set the entire 'info' object in 'about' state
         setStoredImage(storedImg);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
       });
   }, [id]);
 
   return (
     <div
-      className="payment-setting"
+      className="centered-form-container"
       data-aos="fade-up"
       data-aos-duration={2000}
     >
       <BackToAdminDashboard></BackToAdminDashboard>
-      <form onSubmit={handleEditAbout}>
-        {about.map((e) => (
-          <div class="container">
-            <div class="justify-content-center align-items-baseline">
-              <div class="col-sm">
-                <label className="mt-1">Banner Image</label>
-                <div class="form-group mb-3">
-                  <input
-                    type="file"
-                    class="form-control"
-                    accept="image/*"
-                    onChange={handleImageChange}
-                  />
-                </div>
-                {imagePreview && (
-                  <img
-                    src={imagePreview}
-                    alt="Images Preview"
-                    style={{ maxWidth: "100px" }}
-                  />
-                )}
-                {!imageFile && !imagePreview && storedImage && (
-                  <img
-                    src={storedImage}
-                    alt="Storeds"
-                    style={{ maxWidth: "100px" }}
-                  />
-                )}
+      <form className="form seo-form" onSubmit={handleEditAbout}>
+        <div class="container">
+          <div class="justify-content-center align-items-baseline">
+            <div class="col-sm">
+              <label className="mt-1">Banner Image</label>
+              <div class="form-group mb-3">
+                <input
+                  type="file"
+                  class="form-control"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                />
               </div>
-              <div class="col-sm">
-                <label className="mt-1">Banner Title</label>
-                <div class="form-group mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Banner Title"
-                    name="title"
-                    defaultValue={e.title}
-                  />
-                </div>
-              </div>
-              <div class="col-sm">
-                <label className="mt-1">Banner About Text</label>
-                <div class="form-group mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Your Sub Text"
-                    name="subText"
-                    defaultValue={e.subText}
-                  />
-                </div>
-              </div>
-              <div class="col-sm">
-                <label className="mt-1">Banner Button Text</label>
-                <div class="form-group mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Your Button Text"
-                    name="btnText"
-                    defaultValue={e.btnText}
-                  />
-                </div>
-              </div>
-              <div class="col-sm">
-                <label className="mt-1">Banner Button URL</label>
-                <div class="form-group mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Your Button URL"
-                    name="btnUrl"
-                    defaultValue={e.btnUrl}
-                  />
-                </div>
-              </div>
-              <div class="col-sm">
-                <button type="submit" class="action-btn">
-                  <span>Update About</span>
-                </button>
+              {imagePreview && (
+                <img
+                  src={imagePreview}
+                  alt="Images Preview"
+                  style={{ maxWidth: "100px" }}
+                />
+              )}
+              {!imageFile && !imagePreview && storedImage && (
+                <img
+                  src={storedImage}
+                  alt="Storeds"
+                  style={{ maxWidth: "100px" }}
+                />
+              )}
+            </div>
+            <div class="col-sm">
+              <label className="mt-1">Banner Title</label>
+              <div class="form-group mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Banner Title"
+                  name="title"
+                  defaultValue={about.title}
+                />
               </div>
             </div>
+            <div class="col-sm">
+              <label className="mt-1">Banner About Text</label>
+              <div class="form-group mb-3">
+                <textarea
+                  type="text"
+                  style={{ width: "100%", minHeight: "200px" }}
+                  class="form-control"
+                  placeholder="Your Sub Text"
+                  name="subText"
+                  defaultValue={about.subText}
+                />
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <button
+                type="submit"
+                class="btn btn-md btn-primary tra-black-hover"
+              >
+                <span>Update About</span>
+              </button>
+            </div>
           </div>
-        ))}
+        </div>
       </form>
     </div>
   );
 };
 
-export default SpecialityOptionEdit;
+export default AboutUsEdit;

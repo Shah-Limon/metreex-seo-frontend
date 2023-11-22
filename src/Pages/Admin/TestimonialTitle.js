@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import BackToAdminDashboard from "./BackToAdminDashboard";
 const TestimonialTitle = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -14,14 +15,14 @@ const TestimonialTitle = () => {
 
   const handleTitle = (event) => {
     event.preventDefault();
-    const titleTopText = event.target.titleTopText.value;
-    const titleOne = event.target.titleOne.value;
-    const titleTwo = event.target.titleTwo.value;
+    const title = event.target.title.value;
+    const desc = event.target.desc.value;
+    const reviewNumber = event.target.reviewNumber.value;
 
     const testimonialTitle = {
-      titleTopText,
-      titleOne,
-      titleTwo,
+      title,
+      desc,
+      reviewNumber,
     };
 
     const url = `http://localhost:5000/testimonial-title/${id}`;
@@ -39,49 +40,51 @@ const TestimonialTitle = () => {
   };
 
   return (
+    <>
+    <BackToAdminDashboard></BackToAdminDashboard>
     <div className="payment-setting" data-aos="fade-up" data-aos-duration={2000}>
-      <form class="form" onSubmit={handleTitle}>
+      <form class="form seo-form centered-form-container" onSubmit={handleTitle}>
         <div class="container">
           <div class="justify-content-center align-items-baseline">
             <div class="col-sm">
-              <label className="mt-1">Title Top Text</label>
+              <label className="mt-1">Enter Reviews Number</label>
               <div class="form-group mb-3">
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="Type Title Top Text"
-                  name="titleTopText"
-                  defaultValue={title.titleTopText}
+                  placeholder="Enter Reviews Number"
+                  name="reviewNumber"
+                  defaultValue={title.reviewNumber}
                 />
               </div>
             </div>
             <div class="col-sm">
-              <label className="mt-1">Enter Title (1st part)</label>
+              <label className="mt-1">Enter Title</label>
               <div class="form-group mb-3">
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="Enter Title (1st part)"
-                  name="titleOne"
-                  defaultValue={title.titleOne}
+                  placeholder="Enter Title"
+                  name="title"
+                  defaultValue={title.title}
                 />
               </div>
             </div>
             <div class="col-sm">
-              <label className="mt-1">Enter Title (2st part)</label>
+              <label className="mt-1">Enter Short Description</label>
               <div class="form-group mb-3">
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="Enter Title (2st part)"
-                  name="titleTwo"
-                  defaultValue={title.titleTwo}
+                  placeholder="Enter Short Description"
+                  name="desc"
+                  defaultValue={title.desc}
                 />
               </div>
             </div>
 
-            <div class="col-sm">
-              <button type="submit" class="action-btn">
+            <div class="col-sm-3">
+              <button type="submit" class="btn btn-md btn-primary tra-black-hover">
                 <span>Update Title</span>
               </button>
             </div>
@@ -89,6 +92,7 @@ const TestimonialTitle = () => {
         </div>
       </form>
     </div>
+    </>
   );
 };
 

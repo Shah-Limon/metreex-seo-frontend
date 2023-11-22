@@ -102,28 +102,28 @@ const UserDashboard = () => {
                 ))}
             </tbody>
           </table>
-
           {/* Pagination for Orders */}
-          <div className="pagination">
-            <ul>
-              {Array.from({ length: totalPagesOrders }, (_, index) => {
-                return (
-                  <li>
-                    {" "}
-                    <Link
-                      key={index}
-                      onClick={() => handlePageChangeOrders(index + 1)}
-                      className={
-                        currentPageOrders === index + 1 ? "active" : ""
-                      }
-                    >
-                      {index + 1}
-                    </Link>
-                  </li>
-                );
-              })}
+          <nav aria-label="Orders Pagination mb-20">
+            <ul className="pagination justify-content-center">
+              {Array.from({ length: totalPagesOrders }, (_, index) => (
+                <li
+                  key={index}
+                  className={`page-item ${
+                    currentPageOrders === index + 1 ? "active" : ""
+                  }`}
+                >
+                  <Link
+                    to="#"
+                    className="page-link"
+                    onClick={() => handlePageChangeOrders(index + 1)}
+                  >
+                    {index + 1}
+                  </Link>
+                </li>
+              ))}
             </ul>
-          </div>
+          </nav>
+          <br></br>
         </div>
       )}
 
@@ -145,7 +145,7 @@ const UserDashboard = () => {
                 <th>Website Name</th>
                 <th>Email</th>
                 <th>Status</th>
-                <th>Edit</th>
+
                 <th>Report</th>
               </tr>
 
@@ -161,9 +161,7 @@ const UserDashboard = () => {
                     <td data-th="Website Name">{list.website}</td>
                     <td data-th="Email">{list.email}</td>
                     <td data-th="Email">{list.auditStatus}</td>
-                    <td data-th="Edit">
-                      <Link to={`/admin/website-edit/${list._id}`}>Edit</Link>
-                    </td>
+
                     <td data-th="View">
                       <Link to={`/report/${list._id}`} className="action-btn">
                         <span>View</span>
@@ -173,28 +171,26 @@ const UserDashboard = () => {
                 ))}
             </tbody>
           </table>
-
-          {/* Pagination for Data */}
-          <div className="pagination">
-            <ul>
-              {(() => {
-                const li = [];
-                for (let index = 1; index <= totalPagesData; index++) {
-                  li.push(
-                    <li>
-                      <Link
-                        key={index}
-                        onClick={() => handlePageChangeData(index)}
-                        className={currentPageData === index ? "active" : ""}
-                      >
-                        {index}
-                      </Link>
-                    </li>
-                  );
-                }
-                return li;
-              })()}
-            </ul>
+          <div className="container d-flex justify-content-center align-items-center">
+            <div className="pagination">
+              <ul className="pagination">
+                {Array.from({ length: totalPagesData }, (_, index) => (
+                  <li
+                    key={index + 1}
+                    className={`page-item ${
+                      currentPageData === index + 1 ? "active" : ""
+                    }`}
+                  >
+                    <Link
+                      className="page-link"
+                      onClick={() => handlePageChangeData(index + 1)}
+                    >
+                      {index + 1}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       )}

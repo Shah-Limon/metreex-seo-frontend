@@ -6,13 +6,14 @@ const Footer = () => {
   const [logo, setLogo] = useState([]);
   const [footer, setFooter] = useState([]);
   const [social, setSocial] = useState([]);
+  const [contact, setContact] = useState([]);
   useEffect(() => {
     fetch(`http://localhost:5000/logo`)
       .then((res) => res.json())
       .then((info) => setLogo(info));
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:5000/footer-links`)
+    fetch(`http://localhost:5000/footer-about`)
       .then((res) => res.json())
       .then((info) => setFooter(info));
   }, []);
@@ -20,6 +21,11 @@ const Footer = () => {
     fetch(`http://localhost:5000/footer-social`)
       .then((res) => res.json())
       .then((info) => setSocial(info));
+  }, []);
+  useEffect(() => {
+    fetch(`http://localhost:5000/contact`)
+      .then((res) => res.json())
+      .then((info) => setContact(info));
   }, []);
 
   const scrollToTop = () => {
@@ -48,6 +54,7 @@ const Footer = () => {
         navigate("/news-letter-submit");
       });
   };
+  const blackLogo = logo.find((logo) => logo.logoFor === "black");
 
   return (
     <>
@@ -60,18 +67,18 @@ const Footer = () => {
               <div className="footer-info mb-40">
                 {/* Footer Logo */}
                 {/* For Retina Ready displays take a image with double the amount of pixels that your image will be displayed (e.g 364 x 90 pixels) */}
-                <img
-                  src="https://i.ibb.co/StnJdc8/logo-3.png"
-                  width={182}
-                  height={45}
-                  alt="footer-logo"
-                />
+
+                {blackLogo && (
+                  <img
+                    src={blackLogo.logo}
+                    width={182}
+                    height={45}
+                    alt="Black Logo"
+                  />
+                )}
+
                 {/* Text */}
-                <p>
-                  Aliquam orci a nullam tempor sapien gravida donec enim ipsum
-                  porta justo velna an auctor undo congue magna laoreet augue
-                  sapien
-                </p>
+                <p>{footer.map((e) => e.FooterAbout)}</p>
               </div>
             </div>
             {/* FOOTER PRODUCTS LINKS */}
@@ -81,20 +88,30 @@ const Footer = () => {
                 <h5 className="h5-sm indigo-color">Quick Links</h5>
                 {/* Footer Links */}
                 <ul className="foo-links clearfix">
-                  <li>
-                    <a href="#">About Us</a>
+                  <li className="nl-simple">
+                    <Link to="/" aria-haspopup="true">
+                      Home
+                    </Link>
                   </li>
-                  <li>
-                    <a href="#">Case Studies</a>
+                  <li className="nl-simple">
+                    <Link to="/services" aria-haspopup="true">
+                      Services
+                    </Link>
                   </li>
-                  <li>
-                    <a href="#">Lawyer SEO</a>
+                  <li className="nl-simple">
+                    <Link to="/pricing" aria-haspopup="true">
+                      Pricing
+                    </Link>
                   </li>
-                  <li>
-                    <a href="#">Testimonials</a>
+                  <li className="nl-simple">
+                    <Link to="/about-us" aria-haspopup="true">
+                      About Us
+                    </Link>
                   </li>
-                  <li>
-                    <a href="#">From the Blog</a>
+                  <li className="nl-simple">
+                    <Link to="/contact-us" aria-haspopup="true">
+                      Contact Us
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -103,25 +120,25 @@ const Footer = () => {
             <div className="col-md-4 col-lg-3 col-xl-3">
               <div className="footer-links mb-40">
                 {/* Title */}
-                <h5 className="h5-sm indigo-color">Featured Services</h5>
+                <h5 className="h5-sm indigo-color">Quick Connect</h5>
                 {/* Footer Links */}
-                <ul className="clearfix">
-                  <li>
-                    <a href="#">Local SEO</a>
-                  </li>
-                  <li>
-                    <a href="#">Social Media Marketing</a>
-                  </li>
-                  <li>
-                    <a href="#">Pay Per Click Management</a>
-                  </li>
-                  <li>
-                    <a href="#">Search Engine Optimization</a>
-                  </li>
-                  <li>
-                    <a href="#">Free SEO Analysis</a>
-                  </li>
-                </ul>
+                {contact.map((e) => (
+                  <ul className="clearfix">
+                    <li>
+                      <p>
+                        <a href={`tel:${e.phone}`}>{e.phone}</a>
+                      </p>
+                    </li>
+                    <li>
+                      <p className="last-li">
+                        <a href={`mailto:${e.email}`}>{e.email}</a>
+                      </p>
+                    </li>
+                    <li>
+                      <p className="last-li">{e.address}</p>
+                    </li>
+                  </ul>
+                ))}
               </div>
             </div>
             {/* FOOTER NEWSLETTER FORM */}
@@ -130,14 +147,14 @@ const Footer = () => {
                 {/* Title */}
                 <h5 className="h5-sm indigo-color">Follow the Best</h5>
                 {/* Newsletter Form Input */}
-                <form className="newsletter-form">
+                <form className="newsletter-form" onSubmit={newsLetter}>
                   <div className="input-group">
                     <input
                       type="email"
                       className="form-control"
                       placeholder="Email Address"
                       required=""
-                      id="s-email"
+                      name="email"
                     />
                     <span className="input-group-btn">
                       <button type="submit" className="btn">
@@ -160,56 +177,43 @@ const Footer = () => {
               <div className="col-lg-8">
                 <ul className="bottom-footer-list">
                   <li>
-                    <p>© Copyright Metreex 2020</p>
-                  </li>
-                  <li>
-                    <p>
-                      <a href="tel:123456789">508.746.9892</a>
-                    </p>
-                  </li>
-                  <li>
-                    <p className="last-li">
-                      <a href="mailto:yourdomain@mail.com">hello@domain.com</a>
-                    </p>
+                    <p>{footer.map((e) => e.CopyRight)}</p>
                   </li>
                 </ul>
               </div>
               {/* FOOTER SOCIALS LINKS */}
-              <div className="col-lg-4 text-right">
-                <ul className="foo-socials text-center clearfix">
-                  <li>
-                    <a href="#" className="ico-facebook">
-                      <i className="fab fa-facebook-f" />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="ico-twitter">
-                      <i className="fab fa-twitter" />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="ico-google-plus">
-                      <i className="fab fa-google-plus-g" />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="ico-tumblr">
-                      <i className="fab fa-tumblr" />
-                    </a>
-                  </li>
-                  {/*
-									<li><a href="#" class="ico-behance"><i class="fab fa-behance"></i></a></li>	
-									<li><a href="#" class="ico-dribbble"><i class="fab fa-dribbble"></i></a></li>									
-									<li><a href="#" class="ico-instagram"><i class="fab fa-instagram"></i></a></li>	
-									<li><a href="#" class="ico-linkedin"><i class="fab fa-linkedin-in"></i></a></li>
-									<li><a href="#" class="ico-pinterest"><i class="fab fa-pinterest-p"></i></a></li>								
-									<li><a href="#" class="ico-youtube"><i class="fab fa-youtube"></i></a></li>										
-									<li><a href="#" class="ico-vk"><i class="fab fa-vk"></i></a></li>
-									<li><a href="#" class="ico-yelp"><i class="fab fa-yelp"></i></a></li>
-									<li><a href="#" class="ico-yahoo"><i class="fab fa-yahoo"></i></a></li>
-								    */}
-                </ul>
-              </div>
+
+              {social.map((e) => (
+                <div className="col-lg-4 text-right">
+                  <ul className="foo-socials text-center clearfix">
+                    <li>
+                      <Link to={e.facebook} className="ico-facebook">
+                        <i className="fab fa-facebook-f" />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to={e.twitter} className="ico-twitter">
+                        <i className="fab fa-twitter" />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to={e.instragram} class="ico-instagram">
+                        <i class="fab fa-instagram"></i>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to={e.youtube} class="ico-youtube">
+                        <i class="fab fa-youtube"></i>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to={e.linkedin} class="ico-linkedin">
+                        <i class="fab fa-linkedin-in"></i>
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              ))}
             </div>
           </div>{" "}
           {/* END BOTTOM FOOTER */}

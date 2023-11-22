@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
-import auth from "../../firebase.init";
+import BackToAdminDashboard from "./BackToAdminDashboard";
 const TestimonialsList = () => {
   const navigate = useNavigate();
   const [testimonial, setTestimonial] = useState([]);
   const [title, setTitle] = useState([]);
-  const [user] = useAuthState(auth);
+
   const { id } = useParams();
 
   useEffect(() => {
@@ -52,7 +51,8 @@ const TestimonialsList = () => {
 
   return (
     <div>
-      {/* <form class="form" onSubmit={handleTestimonials}>
+      <BackToAdminDashboard></BackToAdminDashboard>
+      <form class="form seo-form" onSubmit={handleTestimonials}>
         <div class="container">
           <div class="justify-content-center align-items-baseline">
             <div class="col-sm">
@@ -100,36 +100,40 @@ const TestimonialsList = () => {
               </div>
             </div>
 
-            <div class="col-sm">
-              <button type="submit" class="action-btn">
+            <div class="col-sm-3">
+              <button
+                type="submit"
+                class="btn btn-md btn-primary tra-black-hover"
+              >
                 <span>Add Testimonial</span>
               </button>
             </div>
           </div>
         </div>
-      </form> */}
-      
+      </form>
 
-{/* add title which are center */}
+      {/* add title which are center */}
+
       <div className="container">
+       
 
-      <h3 className="text-center mb-15"> Testimonial List</h3>
-
-      <div class="container">
-        <div class="justify-content-center align-items-baseline mt-15"></div>
-        <div class="col-sm">
-          {title.map((e) => (
-            <>
-              <Link
-                to={`/admin/edit-testimonial-title/${e._id}`}
-                class="action-btn"
-              >
-                <span>Update Testimonial Title</span>
-              </Link>
-            </>
-          ))}
+        <div class="container">
+          <div class="justify-content-center align-items-baseline mt-30"></div>
+          <div class="col-sm">
+         
+            {title.map((e) => (
+              <>
+                <Link
+                  to={`/admin/edit-testimonial-title/${e._id}`}
+                  class="col-sm-3 btn btn-green tra-black-hover mb-20"
+                >
+                  <span>Update Testimonial Title</span>
+                </Link>
+              </>
+            ))}
+             <h3 className="text-center mb-15"> Testimonial List</h3>
+          </div>
         </div>
-      </div>
         <table className="rwd-table">
           <tbody>
             <tr>

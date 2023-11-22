@@ -2,15 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const AboutUsOption = () => {
-
-
-
-
   const navigate = useNavigate();
-
-
-
-
 
   const handleAddAbout = (event) => {
     event.preventDefault();
@@ -21,11 +13,11 @@ const AboutUsOption = () => {
     const btnUrl = event.target.btnUrl.value;
 
     const about = {
-        img,
-        title,
-        subText,
-        btnText,
-        btnUrl,
+      img,
+      title,
+      subText,
+      btnText,
+      btnUrl,
     };
 
     const url = `http://localhost:5000/add-about`;
@@ -79,13 +71,7 @@ const AboutUsOption = () => {
           placeholder="Your Button URL"
           name="btnUrl"
         />
-        <input
-          required
-          type="submit"
-          class="form-control"
-       
-        
-        />
+        <input required type="submit" class="form-control" />
       </form>
     </>
   );

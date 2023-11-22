@@ -49,7 +49,7 @@ const ManageUsers = () => {
   };
   return (
     <div
-      className="payment-setting"
+      className="payment-setting centered-form-container"
       data-aos="fade-up"
       data-aos-duration={2000}
     >
@@ -87,7 +87,7 @@ const ManageUsers = () => {
         </table>
       </div>
 
-      <form onSubmit={handleAddUsers} class="form">
+      <form onSubmit={handleAddUsers} class="form seo-form">
         <div class="container">
           <div class="justify-content-center align-items-baseline">
             <div class="col-sm">
@@ -96,7 +96,7 @@ const ManageUsers = () => {
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="Your Email"
+                  placeholder="Your Name"
                   name="userName"
                 />
               </div>
@@ -104,7 +104,7 @@ const ManageUsers = () => {
             <div class="col-sm">
               <label className="mt-1">User Email</label>
               <div class="form-group">
-                <input type="text" class="form-control" name="userEmail" />
+                <input type="text" class="form-control"   placeholder="Your Mail" name="userEmail" />
               </div>
               <div class="col-sm">
                 <label className="mt-1">User Role</label>
@@ -120,8 +120,8 @@ const ManageUsers = () => {
                 </div>
               </div>
             </div>
-            <div class="col-sm">
-              <button type="submit" class="action-btn">
+            <div class="col-sm-3">
+              <button type="submit" class="btn btn-md btn-primary tra-black-hover">
                 <span>Add User</span>
               </button>
             </div>

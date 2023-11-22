@@ -7,19 +7,13 @@ import BackToAdminDashboard from "./BackToAdminDashboard";
 const HomaPageSetting = () => {
   const { id } = useParams();
   const [user] = useAuthState(auth);
-
-  const [about, setAbout] = useState([]);
   const [banner, setBanner] = useState([]);
   const [speciality, SetSpeciality] = useState([]);
   const [choose, SetChoose] = useState([]);
   const [road, SetRoad] = useState([]);
   const [title, setTitle] = useState([]);
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/about`)
-      .then((res) => res.json())
-      .then((info) => setAbout(info));
-  }, []);
+
   useEffect(() => {
     fetch(`http://localhost:5000/banner/`)
       .then((res) => res.json())
@@ -46,6 +40,22 @@ const HomaPageSetting = () => {
       .then((info) => setTitle(info));
   }, []);
 
+  const [cta, setCta] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/cta-lists`)
+      .then((res) => res.json())
+      .then((info) => setCta(info));
+  }, []);
+
+  const [videoSection, setVideoSection] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/video-sections`)
+      .then((res) => res.json())
+      .then((info) => setVideoSection(info));
+  }, []);
+
   return (
     <div>
       <section className="participants payment-setting">
@@ -60,7 +70,7 @@ const HomaPageSetting = () => {
                     <div className="hover-overlay">
                       <img
                         className="img-fluid"
-                        src="https://img.freepik.com/free-vector/purple-labels-set_1146-79.jpg"
+                        src="https://img.freepik.com/free-vector/insert-block-concept-illustration_114360-4291.jpg"
                         alt="project-preview"
                       />
                       <div className="item-overlay" />
@@ -81,7 +91,7 @@ const HomaPageSetting = () => {
                   <div className="hover-overlay">
                     <img
                       className="img-fluid"
-                      src="https://img.freepik.com/free-vector/purple-labels-set_1146-79.jpg"
+                      src="https://img.freepik.com/free-vector/gradient-colored-ui-sliders-collection_23-2149194881.jpg"
                       alt="project-preview"
                     />
                     <div className="item-overlay" />
@@ -94,13 +104,13 @@ const HomaPageSetting = () => {
               </div>
             </div>
             <div className="col-md-6 col-lg-3">
-              <div className="project-2 wow fadeInUp" data-wow-delay="0.4s">
+              <div className="project-2 wow fadeInUp" data-wow-delay="0.5s">
                 <Link to="/admin/feature-page">
                   {/* Project Preview */}
                   <div className="hover-overlay">
                     <img
                       className="img-fluid"
-                      src="https://img.freepik.com/free-vector/purple-labels-set_1146-79.jpg"
+                      src="https://img.freepik.com/free-vector/features-overview-concept-illustration_114360-1500.jpg"
                       alt="project-preview"
                     />
                     <div className="item-overlay" />
@@ -113,13 +123,13 @@ const HomaPageSetting = () => {
               </div>
             </div>
             <div className="col-md-6 col-lg-3">
-              <div className="project-2 wow fadeInUp" data-wow-delay="0.4s">
+              <div className="project-2 wow fadeInUp" data-wow-delay="0.6s">
                 <Link to="/admin/solution-lists">
                   {/* Project Preview */}
                   <div className="hover-overlay">
                     <img
                       className="img-fluid"
-                      src="https://img.freepik.com/free-vector/purple-labels-set_1146-79.jpg"
+                      src="https://img.freepik.com/free-vector/wireframing-concept-illustration_114360-1388.jpg"
                       alt="project-preview"
                     />
                     <div className="item-overlay" />
@@ -132,13 +142,13 @@ const HomaPageSetting = () => {
               </div>
             </div>
             <div className="col-md-6 col-lg-3">
-              <div className="project-2 wow fadeInUp" data-wow-delay="0.4s">
+              <div className="project-2 wow fadeInUp" data-wow-delay="0.7s">
                 <Link to="/admin/counter-option">
                   {/* Project Preview */}
                   <div className="hover-overlay">
                     <img
                       className="img-fluid"
-                      src="https://img.freepik.com/free-vector/purple-labels-set_1146-79.jpg"
+                      src="https://img.freepik.com/free-vector/infographic-gradient-set_23-2148353791.jpg"
                       alt="project-preview"
                     />
                     <div className="item-overlay" />
@@ -151,104 +161,152 @@ const HomaPageSetting = () => {
               </div>
             </div>
             <div className="col-md-6 col-lg-3">
-              <div className="project-2 wow fadeInUp" data-wow-delay="0.4s">
-                {about.map((e) => (
-                  <Link to={`/admin/about-edit/${e._id}`}>
+              <div className="project-2 wow fadeInUp" data-wow-delay="0.8s">
+                 <Link to="/admin/about-option">
                     {/* Project Preview */}
                     <div className="hover-overlay">
                       <img
                         className="img-fluid"
-                        src="https://img.freepik.com/free-vector/purple-labels-set_1146-79.jpg"
+                        src="https://img.freepik.com/free-vector/about-us-concept-illustration_114360-639.jpg"
                         alt="project-preview"
                       />
                       <div className="item-overlay" />
                       {/* Project Description */}
                       <div className="project-description white-color">
-                        <h3 className="p-md">About Option</h3>
+                        <h3 className="p-md">Service Deteils</h3>
+                      </div>
+                    </div>
+                  </Link>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-3">
+              <div className="project-2 wow fadeInUp" data-wow-delay="0.9s">
+                <Link to={`/admin/about-company-option/`}>
+                  <div className="hover-overlay">
+                    <img
+                      className="img-fluid"
+                      src="https://img.freepik.com/free-vector/company-concept-illustration_114360-2721.jpg"
+                      alt="project-preview"
+                    />
+                    <div className="item-overlay" />
+
+                    <div className="project-description white-color">
+                      <h3 className="p-md">About Company</h3>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-3">
+              <div className="project-2 wow fadeInUp" data-wow-delay="0.10s">
+                <Link to={`/admin/services-list/`}>
+                  <div className="hover-overlay">
+                    <img
+                      className="img-fluid"
+                      src="https://img.freepik.com/free-vector/hand-drawn-our-services-infographic-template_23-2149889312.jpg"
+                      alt="project-preview"
+                    />
+                    <div className="item-overlay" />
+
+                    <div className="project-description white-color">
+                      <h3 className="p-md">Our Services Card</h3>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-3">
+              <div className="project-2 wow fadeInUp" data-wow-delay="0.11s">
+                <Link to="/admin/testimonials">
+                  <div className="hover-overlay">
+                    <img
+                      className="img-fluid"
+                      src="https://img.freepik.com/free-vector/testimonial-review-template-with-star-rating-remark_1017-44232.jpg"
+                      alt="project-preview"
+                    />
+                    <div className="item-overlay" />
+
+                    <div className="project-description white-color">
+                      <h3 className="p-md">Testimonials</h3>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-3">
+              <div className="project-2 wow fadeInUp" data-wow-delay="0.12s">
+                <Link to="/admin/feature-page-two">
+                  <div className="hover-overlay">
+                    <img
+                      className="img-fluid"
+                      src="https://img.freepik.com/free-vector/packaged-software-abstract-concept-illustration_335657-3887.jpg"
+                      alt="project-preview"
+                    />
+                    <div className="item-overlay" />
+
+                    <div className="project-description white-color">
+                      <h3 className="p-md">Feature Two Option</h3>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-3">
+              <div className="project-2 wow fadeInUp" data-wow-delay="0.12s">
+                <Link to="/admin/faqs">
+                  <div className="hover-overlay">
+                    <img
+                      className="img-fluid"
+                      src="https://img.freepik.com/free-vector/flat-people-asking-questions_23-2148929673.jpg"
+                      alt="project-preview"
+                    />
+                    <div className="item-overlay" />
+
+                    <div className="project-description white-color">
+                      <h3 className="p-md">Faqs Option</h3>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-3">
+              <div className="project-2 wow fadeInUp" data-wow-delay="0.12s">
+                {cta.map((e) => (
+                  <Link to={`/admin/cta-edit/${e._id}`}>
+                    <div className="hover-overlay">
+                      <img
+                        className="img-fluid"
+                        src="https://img.freepik.com/free-vector/click-collect-button-collection_23-2148795653.jpg"
+                        alt="project-preview"
+                      />
+                      <div className="item-overlay" />
+
+                      <div className="project-description white-color">
+                        <h3 className="p-md">CTA Option</h3>
                       </div>
                     </div>
                   </Link>
                 ))}
               </div>
             </div>
+            <div className="col-md-6 col-lg-3">
+              <div className="project-2 wow fadeInUp" data-wow-delay="0.12s">
+                {videoSection.map((e) => (
+                  <Link to={`/admin/video-section-edit/${e._id}`}>
+                    <div className="hover-overlay">
+                      <img
+                        className="img-fluid"
+                        src="https://img.freepik.com/free-vector/e-sport-game-streaming-abstract-concept-illustration_335657-3855.jpg"
+                        alt="project-preview"
+                      />
+                      <div className="item-overlay" />
 
-            {/* old */}
-
-            <div className="col-lg-3">
-              <div className="block-text center">
-                <div className="col">
-                  <h5 className="heading">Our Speciality Option</h5>
-
-                  {speciality.map((e) => (
-                    <Link
-                      to={`/admin/speciality-edit/${e._id}`}
-                      className="action-btn"
-                    >
-                      <span>Edit</span>
-                    </Link>
-                  ))}
-                  <hr></hr>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-3">
-              <div className="block-text center">
-                <div className="col">
-                  <h5 className="heading">Why Choose Option</h5>
-
-                  {choose.map((e) => (
-                    <Link
-                      to={`/admin/why-choose-edit/${e._id}`}
-                      className="action-btn"
-                    >
-                      <span>Edit</span>
-                    </Link>
-                  ))}
-                  <hr></hr>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-3">
-              <div className="block-text center">
-                <div className="col">
-                  <h5 className="heading">Road Map Option</h5>
-
-                  {road.map((e) => (
-                    <Link
-                      to={`/admin/road-edit/${e._id}`}
-                      className="action-btn"
-                    >
-                      <span>Edit</span>
-                    </Link>
-                  ))}
-                  <hr></hr>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-3">
-              <div className="block-text center">
-                <div className="col">
-                  <h5 className="heading">Team Members Option</h5>
-
-                  <Link to={`/admin/team/`} className="action-btn">
-                    <span>Edit</span>
+                      <div className="project-description white-color">
+                        <h3 className="p-md">Video Section</h3>
+                      </div>
+                    </div>
                   </Link>
-
-                  <hr></hr>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-3">
-              <div className="block-text center">
-                <div className="col">
-                  <h5 className="heading">Testimonials Option</h5>
-
-                  <Link to="/admin/testimonials" className="action-btn">
-                    <span>Edit</span>
-                  </Link>
-
-                  <hr></hr>
-                </div>
+                ))}
               </div>
             </div>
           </div>

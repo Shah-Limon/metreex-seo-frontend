@@ -92,6 +92,24 @@ import ErrorPage from './Pages/ErrorPage';
 import ServicesPage from './Pages/ServicesPage';
 import OurSolutionsList from './Pages/Admin/OurSolutionsList';
 import EditOurSolutions from './Pages/Admin/EditOurSolutions';
+import CouterOptionEdit from './Pages/Admin/CouterOptionEdit';
+import CounterEdit from './Pages/Admin/CounterEdit';
+import AboutCompanyOption from './Pages/Admin/AboutCompanyOption';
+import AboutCompanyEdit from './Pages/Admin/AboutCompanyEdit';
+import AboutCompanyListEdit from './Pages/Admin/AboutCompanyListEdit';
+import OurServicesList from './Pages/Admin/OurServicesList';
+import OurServicesTilteEdit from './Pages/Admin/OurServicesTilteEdit';
+import OurSolutionTitleEdit from './Pages/Admin/OurSolutionTitleEdit';
+import EditFeaturesPageTwo from './Pages/Admin/EditFeaturesPageTwo';
+import EditFeatureTwo from './Pages/Admin/EditFeatureTwo';
+import CtaEdit from './Pages/Admin/CtaEdit';
+import VideoSectionEdit from './Pages/Admin/VideoSectionEdit';
+import AboutUsServiceList from './Pages/Admin/AboutUsServiceList';
+import EmailContact from './Pages/EmailContact';
+import EditOurService from './Pages/Admin/EditOurService';
+import AboutPageOption from './Pages/Admin/AboutPageOption';
+
+
 
 
 function App() {
@@ -102,6 +120,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/contact-us' element={<ContactPage></ContactPage>}></Route>
+        <Route path='/email' element={<EmailContact></EmailContact>}></Route>
+      
         <Route path='/about-us' element={<AboutPage></AboutPage>}></Route>
         <Route path='/services' element={<ServicesPage></ServicesPage>}></Route>
 
@@ -142,7 +162,7 @@ function App() {
         <Route path='/received-payment/:id' element={<RequireAuth><ReceivedPayment></ReceivedPayment></RequireAuth>}></Route>
 
 
-        <Route path='/admin/dashboard' element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}></Route>
+        <Route path='/admin/dashboard' element={<RequireAuth><AdminRoute><Dashboard></Dashboard></AdminRoute></RequireAuth>}></Route>
 
 
         <Route path='/admin/help-desk' element={<RequireAuth><AdminRoute><HelpDesk></HelpDesk></AdminRoute></RequireAuth>}></Route>
@@ -151,18 +171,7 @@ function App() {
         <Route path='/admin/help-desk/replied-ticket' element={<RequireAuth><AdminRoute><RepliedTicket></RepliedTicket></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/help-desk/solved-ticket' element={<RequireAuth><AdminRoute><SolvedTicket></SolvedTicket></AdminRoute></RequireAuth>}></Route>
 
-
-
-       
-
-
-
-
-
         <Route path='/admin/subscription-email/' element={<RequireAuth><AdminRoute><SubscriptionMail></SubscriptionMail></AdminRoute></RequireAuth>}></Route>
-
-   
-
 
         <Route path='/admin/setting' element={<RequireAuth><AdminRoute><Setting></Setting></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/manage-users/' element={<RequireAuth><AdminRoute><ManageUsers></ManageUsers></AdminRoute></RequireAuth>}></Route>
@@ -178,25 +187,33 @@ function App() {
         <Route path='/admin/slider-banner/' element={<RequireAuth><AdminRoute><BannerSliderList></BannerSliderList></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/edit-slider/:id' element={<RequireAuth><AdminRoute><EditBannerSlider></EditBannerSlider></AdminRoute></RequireAuth>}></Route>
 
-
-
-
-
-
         <Route path='/admin/feature-page/' element={<RequireAuth><AdminRoute><EditFeaturesPage></EditFeaturesPage></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/edit-feature/:id' element={<RequireAuth><AdminRoute><EditFeature></EditFeature></AdminRoute></RequireAuth>}></Route>
 
+        <Route path='/admin/feature-page-two/' element={<RequireAuth><AdminRoute> <EditFeaturesPageTwo></EditFeaturesPageTwo></AdminRoute></RequireAuth>}></Route>
+        <Route path='/admin/edit-feature-two/:id' element={<RequireAuth><AdminRoute> <EditFeatureTwo></EditFeatureTwo></AdminRoute></RequireAuth>}></Route>
 
         <Route path='/admin/solution-lists/' element={<RequireAuth><AdminRoute><OurSolutionsList></OurSolutionsList> </AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/edit-solution/:id' element={<RequireAuth><AdminRoute><EditOurSolutions></EditOurSolutions></AdminRoute></RequireAuth>}></Route>
+        <Route path='/admin/soution-title-edit/:id' element={<RequireAuth><AdminRoute><OurSolutionTitleEdit></OurSolutionTitleEdit></AdminRoute></RequireAuth>}></Route>
        
+        <Route path='/admin/counter-option/' element={<RequireAuth><AdminRoute><CouterOptionEdit></CouterOptionEdit> </AdminRoute></RequireAuth>}></Route>
+        <Route path='/admin/counter-option/:id' element={<RequireAuth><AdminRoute><CounterEdit></CounterEdit> </AdminRoute></RequireAuth>}></Route>
 
 
+        <Route path='/admin/about-company-option/' element={<RequireAuth><AdminRoute><AboutCompanyOption></AboutCompanyOption> </AdminRoute></RequireAuth>}></Route>
+        <Route path='/admin/company-option/:id' element={<RequireAuth><AdminRoute><AboutCompanyListEdit></AboutCompanyListEdit></AdminRoute></RequireAuth>}></Route>
+        <Route path='/admin/company-about-edit/:id' element={<RequireAuth><AdminRoute><AboutCompanyEdit></AboutCompanyEdit> </AdminRoute></RequireAuth>}></Route>
 
-
-
-
+        <Route path='/admin/about-option' element={<RequireAuth><AdminRoute><AboutUsServiceList></AboutUsServiceList></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/about-edit/:id' element={<RequireAuth><AdminRoute><AboutUsEdit></AboutUsEdit></AdminRoute></RequireAuth>}></Route>
+        <Route path='/admin/about-page-option/' element={<RequireAuth><AdminRoute><AboutPageOption></AboutPageOption></AdminRoute></RequireAuth>}></Route>
+
+        <Route path='/admin/services-list/' element={<RequireAuth><AdminRoute> <OurServicesList></OurServicesList> </AdminRoute></RequireAuth>}></Route>
+        <Route path='/admin/service-edit/:id' element={<RequireAuth><AdminRoute> <EditOurService></EditOurService> </AdminRoute></RequireAuth>}></Route>
+
+
+        <Route path='/admin/service-title-edit/:id' element={<RequireAuth><AdminRoute><OurServicesTilteEdit></OurServicesTilteEdit></AdminRoute></RequireAuth>}></Route>
 
         <Route path='/admin/speciality-edit/:id' element={<RequireAuth><AdminRoute><SpecialityOptionEdit></SpecialityOptionEdit></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/why-choose-edit/:id' element={<RequireAuth><AdminRoute><WhyChooseEdit></WhyChooseEdit></AdminRoute></RequireAuth>}></Route>
@@ -207,22 +224,16 @@ function App() {
         <Route path='/admin/team-edit/:id' element={<RequireAuth><AdminRoute><TeamMemberEdit></TeamMemberEdit></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/edit-team-title/:id' element={<RequireAuth><AdminRoute><UpdateTeamTitle></UpdateTeamTitle></AdminRoute></RequireAuth>}></Route>
 
-
-
         <Route path='/admin/packages' element={<RequireAuth><AdminRoute><Packages></Packages></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/package-edit/:id' element={<RequireAuth><AdminRoute><EditPackage></EditPackage></AdminRoute></RequireAuth>}></Route>
-
 
         <Route path='/admin/testimonials' element={<RequireAuth><AdminRoute><TestimonialsList></TestimonialsList></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/testimonial-edit/:id' element={<RequireAuth><AdminRoute><TestimonialEdit></TestimonialEdit></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/edit-testimonial-title/:id' element={<RequireAuth><AdminRoute><TestimonialTitle></TestimonialTitle></AdminRoute></RequireAuth>}></Route>
 
-
-
         <Route path='/admin/setting-footer' element={<RequireAuth><AdminRoute><FooterEdit></FooterEdit></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/edit-footer/:id' element={<RequireAuth><AdminRoute><EditFooterLink></EditFooterLink></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/edit-social/:id' element={<RequireAuth><AdminRoute><EditSocialLinks></EditSocialLinks></AdminRoute></RequireAuth>}></Route>
-
 
         <Route path='/admin/edit-contact-page/:id' element={<RequireAuth><AdminRoute><ContactPageEdit></ContactPageEdit></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/contact-messages/' element={<RequireAuth><AdminRoute><ContactUsMessages></ContactUsMessages></AdminRoute></RequireAuth>}></Route>
@@ -232,21 +243,16 @@ function App() {
 
         <Route path='/admin/contact-message/:id' element={<RequireAuth><AdminRoute><ContactUsMessageRead></ContactUsMessageRead></AdminRoute></RequireAuth>}></Route>
        
-
-
         <Route path='/admin/faqs' element={<RequireAuth><AdminRoute><FaqsList></FaqsList></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/faq-edit/:id' element={<RequireAuth><AdminRoute><FaqsEdit></FaqsEdit></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/faqs-title/:id' element={<RequireAuth><AdminRoute><EditFaqTitle></EditFaqTitle></AdminRoute></RequireAuth>}></Route>
 
-
-
+        <Route path='/admin/video-section-edit/:id' element={<RequireAuth><AdminRoute><VideoSectionEdit></VideoSectionEdit></AdminRoute></RequireAuth>}></Route>
+        <Route path='/admin/cta-edit/:id' element={<RequireAuth><AdminRoute><CtaEdit></CtaEdit></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/audit-request' element={<RequireAuth><ManagerRoute><AuditRequest></AuditRequest></ManagerRoute></RequireAuth>}></Route>
         <Route path='/admin/complete-audit-request/' element={<RequireAuth><ManagerRoute><CompleteAuditRequest></CompleteAuditRequest></ManagerRoute></RequireAuth>}></Route>
         <Route path='/admin/incomplete-audit-request/' element={<RequireAuth><ManagerRoute><InCompleteAuditRequest></InCompleteAuditRequest></ManagerRoute></RequireAuth>}></Route>
         <Route path='/admin/website-edit/:id' element={<RequireAuth><ManagerRoute><EditWebsite></EditWebsite></ManagerRoute></RequireAuth>}></Route>
-
-
-
 
         <Route path='/admin/orders' element={<RequireAuth><AdminRoute><TotalOrders></TotalOrders></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/order/:id' element={<RequireAuth><AdminRoute><OrderAction></OrderAction></AdminRoute></RequireAuth>}></Route>
@@ -258,12 +264,6 @@ function App() {
         <Route path='/admin/payments/cancelled' element={<RequireAuth><AdminRoute><PaymentsCancelled></PaymentsCancelled></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/payments/refunded' element={<RequireAuth><AdminRoute><PaymentsRefunded></PaymentsRefunded></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/orders/delivered' element={<RequireAuth><AdminRoute><DeliveredOrders></DeliveredOrders></AdminRoute></RequireAuth>}></Route>
-
-
-
-
-
-
 
         <Route path='/admin/setting-payment' element={<RequireAuth><AdminRoute><SettingPayment></SettingPayment></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/paypal/:id' element={<RequireAuth><AdminRoute><Updatepaypal></Updatepaypal></AdminRoute></RequireAuth>}></Route>

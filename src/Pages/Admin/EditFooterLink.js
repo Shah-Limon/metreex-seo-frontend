@@ -20,7 +20,7 @@ const EditFooterLink = () => {
       CopyRight,
     };
 
-    const url = `http://localhost:5000/footer-link/${id}/`;
+    const url = `http://localhost:5000/footer-about/${id}/`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -35,7 +35,7 @@ const EditFooterLink = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/footer-link/${id}`)
+    fetch(`http://localhost:5000/footer-about/${id}`)
       .then((res) => res.json())
       .then((info) => setFooterLink(info));
   }, [id]);

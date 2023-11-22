@@ -8,13 +8,11 @@ const EditSocialLinks = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-
   useEffect(() => {
     fetch(`http://localhost:5000/footer-social/${id}`)
       .then((res) => res.json())
       .then((info) => setSocial(info));
   }, [id]);
-
 
   const handleFooter = (event) => {
     event.preventDefault();
@@ -22,14 +20,14 @@ const EditSocialLinks = () => {
     const twitter = event.target.twitter.value;
     const instragram = event.target.instragram.value;
     const youtube = event.target.youtube.value;
-    const email = event.target.email.value;
+    const linkedin = event.target.linkedin.value;
 
     const footerSocial = {
       facebook,
       twitter,
       instragram,
       youtube,
-      email
+      linkedin,
     };
 
     const url = `http://localhost:5000/footer-social/${id}`;
@@ -49,7 +47,10 @@ const EditSocialLinks = () => {
   return (
     <div>
       <BackToAdminDashboard></BackToAdminDashboard>
-      <form class="form mb-15 seo-form centered-form-container" onSubmit={handleFooter}>
+      <form
+        class="form mb-15 seo-form centered-form-container"
+        onSubmit={handleFooter}
+      >
         <div class="container">
           <div class="justify-content-center align-items-baseline">
             <h4 className="mb-15 text-center">Update Social Account</h4>
@@ -102,20 +103,23 @@ const EditSocialLinks = () => {
               </div>
             </div>
             <div class="col-sm">
-              <label className="mt-1">Enter Email</label>
+              <label className="mt-1">Enter LinkedIn</label>
               <div class="form-group mb-3">
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="Enter Email"
-                  name="email"
-                  defaultValue={social.email}
+                  placeholder="Enter LinkedIn"
+                  name="linkedin"
+                  defaultValue={social.linkedin}
                 />
               </div>
             </div>
 
             <div class="col-sm-4">
-              <button type="submit" class="btn btn-md btn-primary tra-black-hover">
+              <button
+                type="submit"
+                class="btn btn-md btn-primary tra-black-hover"
+              >
                 <span>Update</span>
               </button>
             </div>

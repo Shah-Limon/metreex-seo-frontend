@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import auth from "../../firebase.init";
+import BackToAdminDashboard from "./BackToAdminDashboard";
 const FaqsList = () => {
   const navigate = useNavigate();
   const [faqs, setFaqs] = useState([]);
@@ -15,7 +16,7 @@ const FaqsList = () => {
       .then((info) => setFaqs(info));
   }, []);
   const [faqTitle, setFaqTitle] = useState([]);
- 
+
   useEffect(() => {
     fetch(`http://localhost:5000/faqs-title`)
       .then((res) => res.json())
@@ -50,20 +51,14 @@ const FaqsList = () => {
       });
   };
 
-
-
-
-
   const handleFaqs = (event) => {
     event.preventDefault();
     const question = event.target.question.value;
     const answer = event.target.answer.value;
-    
 
     const faq = {
       question,
-      answer
-      
+      answer,
     };
 
     const url = `http://localhost:5000/faq`;
@@ -86,8 +81,9 @@ const FaqsList = () => {
   }, [id]);
 
   return (
-    <div>
-        {/* <form class="form" onSubmit={handleTitle}>
+    <div className="centered-form-container">
+      <BackToAdminDashboard></BackToAdminDashboard>
+      {/* <form class="form" onSubmit={handleTitle}>
         <div class="container">
           <div class="justify-content-center align-items-baseline">
             <div class="col-sm">
@@ -135,9 +131,9 @@ const FaqsList = () => {
           </div>
         </div>
       </form> */}
-      
-      <form class="form" onSubmit={handleFaqs}>
-        <h4 className="mb-15">Add Faqs Question</h4>
+
+      <form class="form seo-form" onSubmit={handleFaqs}>
+        <h4 className="mb-15 text-center">Add Faqs Question</h4>
         <div class="container">
           <div class="justify-content-center align-items-baseline">
             <div class="col-sm">
@@ -162,24 +158,27 @@ const FaqsList = () => {
                 />
               </div>
             </div>
-           
 
-            <div class="col-sm">
-              <button type="submit" class="action-btn">
+            <div class="col-sm-3">
+              <button
+                type="submit"
+                class="btn btn-md btn-primary tra-black-hover"
+              >
                 <span>Add Faq</span>
               </button>
+              <hr></hr>
             </div>
           </div>
         </div>
       </form>
-      <div class="container">
+      <div class="container mt-20">
         <div class="justify-content-center align-items-baseline"></div>
         <div class="col-sm">
           {faqTitle.map((e) => (
             <>
               <Link
                 to={`/admin/faqs-title/${e._id}`}
-                class="action-btn"
+                class=" btn btn-green tra-black-hover mb-20"
               >
                 <span>Update Faqs Title</span>
               </Link>
@@ -195,15 +194,14 @@ const FaqsList = () => {
             <tr>
               <th>SL No.</th>
               <th>Question</th>
-
               <th>Edit</th>
             </tr>
             {faqs.map((item, index) => (
               <tr key={item._id}>
-                <td>{index + 1}</td>
-                <td>{item.question}</td>
+                <td data-th="SL No.">{index + 1}</td>
+                <td data-th="Question">{item.question}</td>
 
-                <td>
+                <td data-th="Edit">
                   <Link to={`/admin/faq-edit/${item._id}`}>Edit</Link>
                 </td>
               </tr>

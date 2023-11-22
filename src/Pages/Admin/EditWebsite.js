@@ -43,7 +43,6 @@ const EditWebsite = () => {
       backlinks,
       img,
       pdfLink,
-
     };
 
     const url = `http://localhost:5000/edit-website/${id}`;
@@ -65,10 +64,15 @@ const EditWebsite = () => {
     <div className="mb-15">
       <BackToAdminDashboard></BackToAdminDashboard>
       <form onSubmit={handleEditWebsite} class="form">
-
         <div class="container">
           <div class="justify-content-center align-items-baseline">
-          <input hidden required type="text" name="auditStatus" value="Complete"/>
+            <input
+              hidden
+              required
+              type="text"
+              name="auditStatus"
+              value="Complete"
+            />
             <div class="col-sm">
               <label className="mt-1">Email</label>
               <div class="form-group mb-3">
@@ -86,7 +90,7 @@ const EditWebsite = () => {
               <label className="mt-1">Website</label>
               <div class="form-group">
                 <input
-                readOnly
+                  readOnly
                   type="text"
                   class="form-control"
                   defaultValue={website.website}
@@ -191,8 +195,8 @@ const EditWebsite = () => {
               />
             </div>
 
-            <div class="col-sm">
-              <button type="submit" class="action-btn">
+            <div class="col-sm-4">
+              <button type="submit" class="btn btn-md btn-primary tra-black-hover mt-3">
                 <span>Update</span>
               </button>
             </div>

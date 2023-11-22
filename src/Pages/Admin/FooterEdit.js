@@ -11,7 +11,7 @@ const FooterEdit = () => {
   const [social, setSocial] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/footer-links/`)
+    fetch(`http://localhost:5000/footer-about/`)
       .then((res) => res.json())
       .then((info) => setFooterLink(info));
   }, [id]);
@@ -224,7 +224,7 @@ const FooterEdit = () => {
                     <div className="hover-overlay">
                       <img
                         className="img-fluid"
-                        src="https://img.freepik.com/free-vector/purple-labels-set_1146-79.jpg"
+                        src="https://img.freepik.com/free-vector/insert-block-concept-illustration_114360-4291.jpg"
                         alt="project-preview"
                       />
                       <div className="item-overlay" />
@@ -238,13 +238,13 @@ const FooterEdit = () => {
               </div>
             </div>
             <div className="col-md-6 col-lg-3">
-              <div className="project-2 wow fadeInUp" data-wow-delay="0.4s">
+              <div className="project-2 wow fadeInUp" data-wow-delay="0.6s">
                 {social.map((e) => (
                   <Link to={`/admin/edit-social/${e._id}`}>
                     <div className="hover-overlay">
                       <img
                         className="img-fluid"
-                        src="https://img.freepik.com/free-vector/purple-labels-set_1146-79.jpg"
+                        src="https://img.freepik.com/free-vector/new-notifications-concept-illustration_114360-4514.jpg"
                         alt="project-preview"
                       />
                       <div className="item-overlay" />

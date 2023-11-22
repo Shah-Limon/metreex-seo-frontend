@@ -27,19 +27,25 @@ const ContactUsMessagesRead = () => {
 
   return (
     <>
-      <div className="container">
-      <BackToAdminDashboard></BackToAdminDashboard>
+      <div className="container centered-form-container">
+        <BackToAdminDashboard></BackToAdminDashboard>
         <div className="custom-ordermenu">
           <div className="header__right container custom-orders">
             <nav id="main-nav" className="main-nav">
               <ul id="menu-primary-menu" className="menu custom-orders-ul">
                 <li className="menu-item menu-item-has-children">
-                  <Link to="/admin/contact-message-unread/" class="action-btn">
+                  <Link
+                    to="/admin/contact-message-unread/"
+                    class="btn btn-green tra-black-hover mb-20"
+                  >
                     Unread Contact Messages
                   </Link>
                 </li>
                 <li className="menu-item menu-item-has-children">
-                  <Link to="/admin/contact-message-read/" class="action-btn">
+                  <Link
+                    to="/admin/contact-message-read/"
+                    class="btn btn-green tra-black-hover mb-20"
+                  >
                     Read Contact Messages
                   </Link>
                 </li>
@@ -58,44 +64,50 @@ const ContactUsMessagesRead = () => {
               <th>Status</th>
               <th>Details</th>
             </tr>
-            {currentMessages.map((item, index) => (
-              <tr key={item._id}>
-                <td>{index + 1 + indexOfFirstItem}</td>
-                <td>{item.date}</td>
-                <td>{item.name}</td>
-                <td>{item.email}</td>
-                <td>{item.subject}</td>
-                <td>{item.messageStatus}</td>
-                <td>
-                  <Link
-                    to={`/admin/contact-message/${item._id}`}
-                    className="title"
-                  >
-                    View
-                  </Link>
-                </td>
-              </tr>
-            ))}
+            {currentMessages
+              .filter((item) => item.messageStatus === "Read")
+              .map((item, index) => (
+                <tr key={item._id}>
+                  <td>{index + 1 + indexOfFirstItem}</td>
+                  <td>{item.date}</td>
+                  <td>{item.name}</td>
+                  <td>{item.email}</td>
+                  <td>{item.subject}</td>
+                  <td>{item.messageStatus}</td>
+                  <td>
+                    <Link
+                      to={`/admin/contact-message/${item._id}`}
+                      className="title"
+                    >
+                      View
+                    </Link>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
-
-        {/* Pagination */}
-        <div className="pagination">
-          <ul>
-            <li className="pagination-contact">
-              {Array(Math.ceil(messages.length / itemsPerPage))
-                .fill()
-                .map((_, index) => (
-                  <Link
-                    key={index}
-                    className={index + 1 === currentPage ? "active" : ""}
-                    onClick={() => handlePageChange(index + 1)}
-                  >
-                    {index + 1}
-                  </Link>
-                ))}
-            </li>
-          </ul>
+        <div class="row">
+          <div class="col-md-12">
+            <nav aria-label="Page navigation">
+              <ul class="pagination justify-content-center">
+                <li className="page-item">
+                  {Array(Math.ceil(messages.length / itemsPerPage))
+                    .fill()
+                    .map((_, index) => (
+                      <Link
+                        key={index}
+                        className={
+                          index + 1 === currentPage ? "active" : "page-item"
+                        }
+                        onClick={() => handlePageChange(index + 1)}
+                      >
+                        {index + 1}
+                      </Link>
+                    ))}
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
       </div>
     </>

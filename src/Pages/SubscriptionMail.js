@@ -40,7 +40,7 @@ const SubscriptionMail = () => {
         data-aos-duration={2000}
       >
         <BackToAdminDashboard></BackToAdminDashboard>
-        <h5 className="mb-15">Subscription Email</h5>
+        <h5 className="mb-15 text-center">Subscription Email</h5>
         <table className="rwd-table">
           <tbody>
             <tr>
@@ -50,32 +50,30 @@ const SubscriptionMail = () => {
             </tr>
             {currentItems.map((item, index) => (
               <tr key={item._id}>
-                <td>{index + 1}</td>
+                <td data-th="SL No.">{index + 1}</td>
                 <td data-th="Email">{item.email}</td>
                 <td>-</td>
               </tr>
             ))}
           </tbody>
         </table>
-        <div className="pagination pagination__margin">
-          <ul>
-            <li className="d-flex">
-              {currentPage > 1 && (
-                <Link onClick={() => paginate(currentPage - 1)}>{"<"}</Link>
-              )}
-              {Array.from({ length: endDigit - startDigit + 1 }, (_, index) => (
-                <Link
-                  key={startDigit + index}
-                  onClick={() => paginate(startDigit + index)}
-                >
-                  {startDigit + index}
-                </Link>
-              ))}
-              {currentPage < totalPages && (
-                <Link onClick={() => paginate(currentPage + 1)}>{">"}</Link>
-              )}
-            </li>
-          </ul>
+        <div class="row">
+          <div class="col-md-12">
+            <nav aria-label="Page navigation">
+              <ul class="pagination justify-content-center">
+                {Array.from({ length: totalPages }, (_, index) => (
+                  <li className="page-link active" key={index}>
+                    <Link
+                      key={startDigit + index}
+                      onClick={() => paginate(startDigit + index)}
+                    >
+                      {startDigit + index}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
         </div>
       </div>
     </>

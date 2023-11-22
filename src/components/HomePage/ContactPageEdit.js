@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import BackToAdminDashboard from "../../Pages/Admin/BackToAdminDashboard";
 
 const ContactPageEdit = () => {
   const navigate = useNavigate();
@@ -8,7 +9,6 @@ const ContactPageEdit = () => {
   const [contact, setContact] = useState([]);
   const [imgUrl, setImgUrl] = useState(contact.img || "");
   const [imageFile, setImageFile] = useState(null);
-  
 
   const handleEditContactPage = (event) => {
     event.preventDefault();
@@ -20,13 +20,13 @@ const ContactPageEdit = () => {
     const email = event.target.email.value;
 
     const contact = {
-        titleTopText,
-        titleOne,
-        titleTwo,
-        address,
-        phone,
-        email,
-        img: imgUrl,
+      titleTopText,
+      titleOne,
+      titleTwo,
+      address,
+      phone,
+      email,
+      img: imgUrl,
     };
 
     const url = `http://localhost:5000/contact/${id}`;
@@ -45,15 +45,17 @@ const ContactPageEdit = () => {
   const handleImageUpload = async (event) => {
     const formData = new FormData();
     formData.append("image", event.target.files[0]);
-    
+
     try {
-      const response = await axios.post("https://api.imgbb.com/1/upload?key=1f8cc98e0f42a06989fb5e2589a9a8a4", formData);
+      const response = await axios.post(
+        "https://api.imgbb.com/1/upload?key=1f8cc98e0f42a06989fb5e2589a9a8a4",
+        formData
+      );
       setImgUrl(response.data.data.url);
     } catch (error) {
       console.error("Image upload failed: ", error);
     }
   };
-  
 
   useEffect(() => {
     fetch(`http://localhost:5000/contact/${id}`)
@@ -65,14 +67,16 @@ const ContactPageEdit = () => {
   }, [id]);
 
   return (
-    <div>
+    <div className="centered-form-container">
+
+      <BackToAdminDashboard></BackToAdminDashboard>
       <form class="form mb-15" onSubmit={handleEditContactPage}>
         <div class="container">
           <div class="justify-content-center align-items-baseline">
             <div class="col-sm">
-              <label className="mt-1">Title Top Text</label>
               <div class="form-group mb-3">
                 <input
+                  hidden
                   type="text"
                   class="form-control"
                   placeholder="Type Title Top Text"
@@ -142,21 +146,23 @@ const ContactPageEdit = () => {
               </div>
             </div>
             <div className="col-sm">
-          <label className="mt-1">Upload Image</label>
-          <div className="form-group mb-3">
-            <input
-              type="file"
-              class="form-control-file"
-              name="image"
-              accept="image/*"
-              onChange={handleImageUpload}
-            />
-            {imgUrl && <img src={imgUrl} alt="Uploaded" style={{ width: "100px" }} />}
-          </div>
-        </div>
+              <div className="form-group mb-3">
+                <input
+                  hidden
+                  type="file"
+                  class="form-control-file"
+                  name="image"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                />
+              </div>
+            </div>
 
             <div class="col-sm">
-              <button type="submit" class="action-btn">
+              <button
+                type="submit"
+                class="btn btn-md btn-primary tra-black-hover"
+              >
                 <span>Update Contact</span>
               </button>
             </div>

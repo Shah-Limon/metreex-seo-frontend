@@ -43,7 +43,7 @@ const SolvedTicket = () => {
 
   return (
     <>
-      <section className="faq">
+      <section className="faq centered-form-container">
         <div className="container">
           <BackToAdminDashboard></BackToAdminDashboard>
           <div className="row mt-15">
@@ -51,12 +51,10 @@ const SolvedTicket = () => {
               <div className="row mb-0"></div>
 
               <div className="block-text center">
-                <h6 className="sub-heading">
-                  <span>Help Desk</span>
-                </h6>
-                <h3 className="heading">Customer Support Hub</h3>
+                
+                <h3 className="heading text-center">Customer Support Hub</h3>
 
-                <div className="container">
+                <div className="container text-center">
                   <h5 mt-15>List of the Open Tickets</h5>
                   <HelpDeskMenu></HelpDeskMenu> <br></br>
                   <table className="rwd-table" style={{ marginTop: "2rem" }}>
@@ -91,33 +89,35 @@ const SolvedTicket = () => {
                     </tbody>
                   </table>
                 </div>
-                <div className="pagination pagination__margin">
-                  <ul>
-                    <li className="d-flex">
-                      {currentPage > 1 && (
-                        <Link onClick={() => paginate(currentPage - 1)}>
-                          {"<"}
-                        </Link>
-                      )}
-                      {Array.from(
-                        { length: endDigit - startDigit + 1 },
-                        (_, index) => (
-                          <Link
-                            key={startDigit + index}
-                            onClick={() => paginate(startDigit + index)}
-                          >
-                            {startDigit + index}
-                          </Link>
-                        )
-                      )}
-                      {currentPage < totalPages && (
-                        <Link onClick={() => paginate(currentPage + 1)}>
-                          {">"}
-                        </Link>
-                      )}
-                    </li>
-                  </ul>
-                </div>
+                <div className="pagination justify-content-center pagination__margin">
+  <ul className="pagination">
+    <li className="page-item">
+      {currentPage > 1 && (
+        <Link className="page-link" onClick={() => paginate(currentPage - 1)}>
+          {"<"}
+        </Link>
+      )}
+    </li>
+    {Array.from({ length: endDigit - startDigit + 1 }, (_, index) => (
+      <li key={startDigit + index} className="page-item">
+        <Link
+          className={`page-link ${startDigit + index === currentPage ? 'active' : ''}`}
+          onClick={() => paginate(startDigit + index)}
+        >
+          {startDigit + index}
+        </Link>
+      </li>
+    ))}
+    <li className="page-item">
+      {currentPage < totalPages && (
+        <Link className="page-link" onClick={() => paginate(currentPage + 1)}>
+          {">"}
+        </Link>
+      )}
+    </li>
+  </ul>
+</div>
+
               </div>
             </div>
           </div>

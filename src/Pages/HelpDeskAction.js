@@ -107,18 +107,20 @@ const HelpDeskAction = () => {
   return (
     <>
       <BackToAdminDashboard></BackToAdminDashboard>
-      <section className="touch" data-aos="fade-up" data-aos-duration={2000}>
+      <section
+        className="touch centered-form-container"
+        data-aos="fade-up"
+        data-aos-duration={2000}
+      >
         <div className="container">
           <div className="row">
             <div className="col-12">
               <div className="block-text center">
-                <h6 className="sub-heading">
-                  <span>Support</span>
-                </h6>
-                <h3 className="heading">Help Center</h3>
+                
+                <h3 className="heading text-center">Help Center</h3>
               </div>
               <div className="touch__main">
-                <form onSubmit={HandleTicketStatus} className="form-box__left">
+                <form onSubmit={HandleTicketStatus} className="form-box__left form seo-form">
                   <div className="row">
                     <div className="col mb-15 ">
                       <div>
@@ -132,8 +134,8 @@ const HelpDeskAction = () => {
                     </div>
                   </div>
                   <div className="row mb-0">
-                    <div className="col">
-                      <button type="sumbit" className="action-btn">
+                    <div className="col-sm-2">
+                      <button type="sumbit" className="btn btn-md btn-primary tra-black-hover mb-20">
                         <span>Submit</span>
                       </button>
                     </div>
@@ -141,7 +143,7 @@ const HelpDeskAction = () => {
                 </form>
 
                 <form
-                  className="form-box box__color"
+                  className="form-box box__color form seo-form"
                   onSubmit={HandleTicketReply}
                 >
                   <input
@@ -177,6 +179,7 @@ const HelpDeskAction = () => {
                       <label>Subject</label>
                       <input
                         required
+                        readOnly
                         type="text"
                         className="form-control"
                         name="subject"
@@ -232,15 +235,15 @@ const HelpDeskAction = () => {
                       <label>Reply</label>
                       <textarea
                         required
+                        className="form-control message"
                         name="adminMessage"
-                        cols={30}
-                        rows={10}
+                        style={{ width: '100%', height: '100px' }}
                       />
                     </div>
                   </div>
                   <div className="row mb-0">
-                    <div className="col">
-                      <button type="sumbit" className="action-btn">
+                    <div className="col-sm-3">
+                      <button type="sumbit" className="btn btn-md btn-primary tra-black-hover">
                         <span>Reply Now</span>
                       </button>
                     </div>
@@ -251,7 +254,6 @@ const HelpDeskAction = () => {
           </div>
         </div>
       </section>
-     
     </>
   );
 };

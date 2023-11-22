@@ -20,12 +20,12 @@ const ContactUsMessages = () => {
             <nav id="main-nav" className="main-nav">
               <ul id="menu-primary-menu" className="menu custom-orders-ul">
                 <li className="menu-item menu-item-has-children">
-                  <Link to="/admin/contact-message-unread/" class="action-btn">
+                  <Link to="/admin/contact-message-unread/" class="btn btn-green tra-black-hover mb-20">
                     Unread Contact Messages
                   </Link>
                 </li>
                 <li className="menu-item menu-item-has-children">
-                  <Link to="/admin/contact-message-read/" class="action-btn">
+                  <Link to="/admin/contact-message-read/" class="btn btn-green tra-black-hover mb-20">
                     Read Contact Messages
                   </Link>
                 </li>
