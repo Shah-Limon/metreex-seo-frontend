@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import BackToAdminDashboard from "../../Pages/Admin/BackToAdminDashboard";
 
 const AboutPageOption = () => {
   const navigate = useNavigate();
-  const { id } = useParams();
   const [about, setAbout] = useState([]);
   const [aboutTitle, setAboutTitle] = useState([]);
   const [imageFile, setImageFile] = useState(null);

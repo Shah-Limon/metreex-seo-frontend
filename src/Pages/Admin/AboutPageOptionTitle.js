@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import BackToAdminDashboard from "./BackToAdminDashboard";
 const AboutPageOptionTitle = () => {
   const { id } = useParams();
