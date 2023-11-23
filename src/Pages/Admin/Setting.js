@@ -123,6 +123,27 @@ const Setting = () => {
                   ))}
                 </div>
               </div>
+              <div className="col-md-6 col-lg-3">
+                <div className="project-2 wow fadeInUp" data-wow-delay="0.4s">
+                
+                    <Link to="/admin/about-page-option/">
+                      {/* Project Preview */}
+                      <div className="hover-overlay">
+                        <img
+                          className="img-fluid"
+                          src="https://img.freepik.com/free-vector/software-requirement-description-abstract-concept-illustration_335657-3813.jpg"
+                          alt="project-preview"
+                        />
+                        <div className="item-overlay" />
+                        {/* Project Description */}
+                        <div className="project-description white-color">
+                          <h3 className="p-md">About Page</h3>
+                        </div>
+                      </div>
+                    </Link>
+              
+                </div>
+              </div>
             </div>
 
             

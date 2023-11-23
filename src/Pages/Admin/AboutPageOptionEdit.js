@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import BackToAdminDashboard from "../../Pages/Admin/BackToAdminDashboard";
 
-const AboutPageOption = () => {
+const AboutPageOptionEdit = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [about, setAbout] = useState([]);
-  const [aboutTitle, setAboutTitle] = useState([]);
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [storedImage, setStoredImage] = useState("");
@@ -44,9 +43,9 @@ const AboutPageOption = () => {
       subText,
     };
 
-    const url = `http://localhost:5000/add-about-page/`;
+    const url = `http://localhost:5000/edit-about-page/${id}`;
     fetch(url, {
-      method: "POST",
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
@@ -67,17 +66,17 @@ const AboutPageOption = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/abouts-page`)
+    fetch(`http://localhost:5000/about-page/${id}`)
       .then((res) => res.json())
-      .then((info) => setAbout(info));
-  }, []);
-  useEffect(() => {
-    fetch(`http://localhost:5000/about-page-titles`)
-      .then((res) => res.json())
-      .then((info) => setAboutTitle(info));
-  }, []);
-
-  let rowNumber = 1;
+      .then((info) => {
+        const storedImg = info.img; // Access 'img' directly from the response
+        setAbout(info); // Set the entire 'info' object in 'about' state
+        setStoredImage(storedImg);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, [id]);
 
   return (
     <div
@@ -86,23 +85,11 @@ const AboutPageOption = () => {
       data-aos-duration={2000}
     >
       <BackToAdminDashboard></BackToAdminDashboard>
-      <div
-        className="header__action mt-20 mb-20 container"
-        style={{
-          display: "flex",
-      
-          alignItems: "center",
-        }}
-      >
-        
-          <h4> Add About Section</h4>
-       
-      </div>
-      <form className="form seo-form mb-30" onSubmit={handleEditAbout}>
+      <form className="form seo-form" onSubmit={handleEditAbout}>
         <div class="container">
           <div class="justify-content-center align-items-baseline">
             <div class="col-sm">
-              <label className="mt-1">About Image</label>
+              <label className="mt-1">Banner Image</label>
               <div class="form-group mb-3">
                 <input
                   type="file"
@@ -118,27 +105,36 @@ const AboutPageOption = () => {
                   style={{ maxWidth: "100px" }}
                 />
               )}
+              {!imageFile && !imagePreview && storedImage && (
+                <img
+                  src={storedImage}
+                  alt="Storeds"
+                  style={{ maxWidth: "100px" }}
+                />
+              )}
             </div>
             <div class="col-sm">
-              <label className="mt-1">About Title</label>
+              <label className="mt-1">Banner Title</label>
               <div class="form-group mb-3">
                 <input
                   type="text"
                   class="form-control"
                   placeholder="Banner Title"
                   name="title"
+                  defaultValue={about.title}
                 />
               </div>
             </div>
             <div class="col-sm">
-              <label className="mt-1">About Description</label>
+              <label className="mt-1">Banner About Text</label>
               <div class="form-group mb-3">
                 <textarea
                   type="text"
                   style={{ width: "100%", minHeight: "200px" }}
                   class="form-control"
-                  placeholder="About Description"
+                  placeholder="Your Sub Text"
                   name="subText"
+                  defaultValue={about.subText}
                 />
               </div>
             </div>
@@ -148,48 +144,14 @@ const AboutPageOption = () => {
                 type="submit"
                 class="btn btn-md btn-primary tra-black-hover"
               >
-                <span>Add</span>
+                <span>Update About</span>
               </button>
             </div>
           </div>
         </div>
       </form>
-      <hr className="w-50"></hr>
-      <div className="container mt-30">
-        <div className="justify-content-center align-items-baseline">
-          {aboutTitle.map((e) => (
-            <Link
-              to={`/admin/about-title-edit/${e._id}`}
-              className="col-sm-3 btn btn-green tra-black-hover mb-20"
-            >
-              Edit Title
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      <div className="container">
-        <table className="rwd-table">
-          <tbody>
-            <tr>
-              <th>SL No.</th>
-              <th>Title</th>
-              <th>Edit</th>
-            </tr>
-            {about.map((item) => (
-              <tr key={item._id}>
-                <td data-th="SL No.">{rowNumber++}</td>
-                <td data-th="Title">{item.title}</td>
-                <td data-th="Edit">
-                  <Link to={`/admin/about-option-edit/${item._id}`}>Edit</Link>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
     </div>
   );
 };
 
-export default AboutPageOption;
+export default AboutPageOptionEdit;

@@ -108,6 +108,8 @@ import AboutUsServiceList from './Pages/Admin/AboutUsServiceList';
 import EmailContact from './Pages/EmailContact';
 import EditOurService from './Pages/Admin/EditOurService';
 import AboutPageOption from './Pages/Admin/AboutPageOption';
+import AboutPageOptionTitle from './Pages/Admin/AboutPageOptionTitle';
+import AboutPageOptionEdit from './Pages/Admin/AboutPageOptionEdit';
 
 
 
@@ -206,8 +208,13 @@ function App() {
         <Route path='/admin/company-about-edit/:id' element={<RequireAuth><AdminRoute><AboutCompanyEdit></AboutCompanyEdit> </AdminRoute></RequireAuth>}></Route>
 
         <Route path='/admin/about-option' element={<RequireAuth><AdminRoute><AboutUsServiceList></AboutUsServiceList></AdminRoute></RequireAuth>}></Route>
+        <Route path='/admin/about-option-edit/:id' element={<RequireAuth><AdminRoute><AboutPageOptionEdit></AboutPageOptionEdit></AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/about-edit/:id' element={<RequireAuth><AdminRoute><AboutUsEdit></AboutUsEdit></AdminRoute></RequireAuth>}></Route>
+
+
+
         <Route path='/admin/about-page-option/' element={<RequireAuth><AdminRoute><AboutPageOption></AboutPageOption></AdminRoute></RequireAuth>}></Route>
+        <Route path='/admin/about-title-edit/:id' element={<RequireAuth><AdminRoute><AboutPageOptionTitle></AboutPageOptionTitle></AdminRoute></RequireAuth>}></Route>
 
         <Route path='/admin/services-list/' element={<RequireAuth><AdminRoute> <OurServicesList></OurServicesList> </AdminRoute></RequireAuth>}></Route>
         <Route path='/admin/service-edit/:id' element={<RequireAuth><AdminRoute> <EditOurService></EditOurService> </AdminRoute></RequireAuth>}></Route>

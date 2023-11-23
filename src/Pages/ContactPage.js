@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import VideoSection from "../components/MetreexHomePage/VideoSection";
+import CallToAction from "../components/MetreexHomePage/CallToAction";
 
 const ContactPage = () => {
   const { id } = useParams();
@@ -184,6 +186,8 @@ const ContactPage = () => {
           </div>
         </div>
       </section>
+      
+      <CallToAction></CallToAction>
     </>
   );
 };
