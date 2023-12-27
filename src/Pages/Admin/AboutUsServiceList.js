@@ -10,7 +10,7 @@ const AboutUsServiceList = () => {
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [storedImage, setStoredImage] = useState("");
-  const imgbbApiKey = "1f8cc98e0f42a06989fb5e2589a9a8a4"; // Your imgbb API key
+  const imgbbApiKey = "700a0a5acaa1284b2c712502fcb2fe23"; // Your imgbb API key
 
   const handleEditAbout = async (event) => {
     event.preventDefault();
@@ -43,7 +43,7 @@ const AboutUsServiceList = () => {
       subText,
     };
 
-    const url = `http://localhost:5000/add-about/`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/add-about/`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -66,7 +66,7 @@ const AboutUsServiceList = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/abouts`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/abouts`)
       .then((res) => res.json())
       .then((info) => setAbout(info));
   }, []);
@@ -81,10 +81,12 @@ const AboutUsServiceList = () => {
     >
       <BackToAdminDashboard></BackToAdminDashboard>
       <form className="form seo-form" onSubmit={handleEditAbout}>
+     
         <div class="container">
+        <h2 className="mt-1"> Add Service</h2>
           <div class="justify-content-center align-items-baseline">
             <div class="col-sm">
-              <label className="mt-1">Banner Image</label>
+              <label className="mt-1"> Image</label>
               <div class="form-group mb-3">
                 <input
                   type="file"
@@ -102,7 +104,7 @@ const AboutUsServiceList = () => {
               )}
             </div>
             <div class="col-sm">
-              <label className="mt-1">Banner Title</label>
+              <label className="mt-1"> Title</label>
               <div class="form-group mb-3">
                 <input
                   type="text"
@@ -113,7 +115,7 @@ const AboutUsServiceList = () => {
               </div>
             </div>
             <div class="col-sm">
-              <label className="mt-1">Banner About Text</label>
+              <label className="mt-1"> About Text</label>
               <div class="form-group mb-3">
                 <textarea
                   type="text"

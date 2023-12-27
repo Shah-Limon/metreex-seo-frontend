@@ -10,12 +10,12 @@ const AboutCompanyOption = () => {
   const [companyAbount, setCompanyAbout] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/about-company-list`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/about-company-list`)
       .then((res) => res.json())
       .then((info) => setCounter(info));
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:5000/company-about-title`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/company-about-title`)
       .then((res) => res.json())
       .then((info) => setCompanyAbout(info));
   }, []);
@@ -32,7 +32,7 @@ const AboutCompanyOption = () => {
       counterNumber,
     };
 
-    const url = `http://localhost:5000/add-about-company`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/add-about-company`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -76,7 +76,7 @@ const AboutCompanyOption = () => {
             </div>
 
             <div class="col-sm">
-              <button type="submit" class="action-btn">
+              <button type="submit" class="btn btn-md btn-primary tra-black-hover">
                 <span>Add Counter</span>
               </button>
             </div>

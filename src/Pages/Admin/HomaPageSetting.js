@@ -15,27 +15,27 @@ const HomaPageSetting = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/banner/`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/banner/`)
       .then((res) => res.json())
       .then((info) => setBanner(info));
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:5000/speciality/`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/speciality/`)
       .then((res) => res.json())
       .then((info) => SetSpeciality(info));
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:5000/why-choose/`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/why-choose/`)
       .then((res) => res.json())
       .then((info) => SetChoose(info));
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:5000/road/`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/road/`)
       .then((res) => res.json())
       .then((info) => SetRoad(info));
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:5000/team-title`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/team-title`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, []);
@@ -43,7 +43,7 @@ const HomaPageSetting = () => {
   const [cta, setCta] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/cta-lists`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/cta-lists`)
       .then((res) => res.json())
       .then((info) => setCta(info));
   }, []);
@@ -51,7 +51,7 @@ const HomaPageSetting = () => {
   const [videoSection, setVideoSection] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/video-sections`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/video-sections`)
       .then((res) => res.json())
       .then((info) => setVideoSection(info));
   }, []);
@@ -302,7 +302,7 @@ const HomaPageSetting = () => {
                       <div className="item-overlay" />
 
                       <div className="project-description white-color">
-                        <h3 className="p-md">Video Section</h3>
+                        <h3 className="p-md">With Us Section</h3>
                       </div>
                     </div>
                   </Link>

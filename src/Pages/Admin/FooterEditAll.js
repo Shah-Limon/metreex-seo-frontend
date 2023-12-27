@@ -22,7 +22,7 @@ const FooterEditAll = () => {
       youtube
     };
 
-    const url = `http://localhost:5000/footer-social/`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/footer-social/`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -52,7 +52,7 @@ const FooterEditAll = () => {
         linkFive
     };
 
-    const url = `http://localhost:5000/footer-link`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/footer-link`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -121,7 +121,7 @@ const FooterEditAll = () => {
             </div>
 
             <div class="col-sm">
-              <button type="submit" class="action-btn">
+              <button type="submit" class="btn btn-md btn-primary tra-black-hover">
                 <span>Update</span>
               </button>
             </div>
@@ -190,7 +190,7 @@ const FooterEditAll = () => {
             </div>
 
             <div class="col-sm">
-              <button type="submit" class="action-btn">
+              <button type="submit" class="btn btn-md btn-primary tra-black-hover">
                 <span>Update</span>
               </button>
             </div>
@@ -206,7 +206,7 @@ const FooterEditAll = () => {
                 <div className="col">
                   <h5 className="heading">Footer Social Options</h5>
 
-                  <Link className="action-btn">
+                  <Link className="btn btn-md btn-primary tra-black-hover">
                     <span>update</span>
                   </Link>
 
@@ -219,7 +219,7 @@ const FooterEditAll = () => {
                 <div className="col">
                   <h5 className="heading">Footer Links Options</h5>
 
-                  <Link className="action-btn">
+                  <Link className="btn btn-md btn-primary tra-black-hover">
                     <span>update</span>
                   </Link>
 

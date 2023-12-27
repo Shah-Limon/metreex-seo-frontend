@@ -10,7 +10,7 @@ const AboutUsEdit = () => {
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [storedImage, setStoredImage] = useState("");
-  const imgbbApiKey = "1f8cc98e0f42a06989fb5e2589a9a8a4"; // Your imgbb API key
+  const imgbbApiKey = "700a0a5acaa1284b2c712502fcb2fe23"; // Your imgbb API key
 
   const handleEditAbout = async (event) => {
     event.preventDefault();
@@ -43,7 +43,7 @@ const AboutUsEdit = () => {
       subText,
     };
 
-    const url = `http://localhost:5000/edit-about/${id}`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/edit-about/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -53,7 +53,7 @@ const AboutUsEdit = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        navigate("/admin/setting-homepage");
+        navigate("/admin/about-option");
       });
   };
 
@@ -66,7 +66,7 @@ const AboutUsEdit = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/about/${id}`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/about/${id}`)
       .then((res) => res.json())
       .then((info) => {
         const storedImg = info.img; // Access 'img' directly from the response
@@ -89,7 +89,7 @@ const AboutUsEdit = () => {
         <div class="container">
           <div class="justify-content-center align-items-baseline">
             <div class="col-sm">
-              <label className="mt-1">Banner Image</label>
+              <label className="mt-1"> Image</label>
               <div class="form-group mb-3">
                 <input
                   type="file"
@@ -114,7 +114,7 @@ const AboutUsEdit = () => {
               )}
             </div>
             <div class="col-sm">
-              <label className="mt-1">Banner Title</label>
+              <label className="mt-1"> Title</label>
               <div class="form-group mb-3">
                 <input
                   type="text"
@@ -126,7 +126,7 @@ const AboutUsEdit = () => {
               </div>
             </div>
             <div class="col-sm">
-              <label className="mt-1">Banner About Text</label>
+              <label className="mt-1"> About Text</label>
               <div class="form-group mb-3">
                 <textarea
                   type="text"

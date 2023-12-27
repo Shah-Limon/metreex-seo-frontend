@@ -6,7 +6,7 @@ const BrandSection = () => {
   const [brandImage, setBrandImage] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/sliders`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/sliders`)
       .then((res) => res.json())
       .then((info) => setBrandImage(info));
   }, []);

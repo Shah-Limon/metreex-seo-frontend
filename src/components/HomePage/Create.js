@@ -11,7 +11,7 @@ const Create = () => {
                 <div className="content">
                   <h4 className="heading">Create your NFT portfolio</h4>
                   <p>Get udpated with news, tips &amp; tricks</p>
-                  <a href="contact.html" className="action-btn">
+                  <a href="contact.html" className="btn btn-md btn-primary tra-black-hover">
                     <span>Join Now</span>
                   </a>
                 </div>

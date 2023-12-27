@@ -6,7 +6,7 @@ import { Link, useParams } from "react-router-dom";
 const VideoSection = () => {
   const [videoSection, setVideoSection] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/video-sections`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/video-sections`)
       .then((res) => res.json())
       .then((info) => setVideoSection(info));
   }, []);
@@ -29,12 +29,7 @@ const VideoSection = () => {
               <div className="col-lg-7 mb-40">
                 <div className="video-link text-center">
                   <div className="play-btn play-btn-primary text-center">
-                    <Link
-                      className="video-popup3 video-play-button"
-                      to={e.youtubeLink}
-                    >
-                      <span />
-                    </Link>
+                   
 
                     <img
                       className="img-fluid"

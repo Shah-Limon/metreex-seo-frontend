@@ -10,7 +10,7 @@ const EditRoadMaps = () => {
   const [road, SetRoad] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/road/`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/road/`)
       .then((res) => res.json())
       .then((info) => SetRoad(info));
   }, []);
@@ -59,7 +59,7 @@ const EditRoadMaps = () => {
       cardDescFive,
     };
 
-    const url = `http://localhost:5000/edit-road/${id}`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/edit-road/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -318,7 +318,7 @@ const EditRoadMaps = () => {
               </div>
 
               <div class="col-sm">
-                <button type="submit" class="action-btn">
+                <button type="submit" class="btn btn-md btn-primary tra-black-hover">
                   <span>Update Road Map</span>
                 </button>
               </div>

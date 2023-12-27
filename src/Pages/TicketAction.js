@@ -11,13 +11,13 @@
 //   const [ticket, setTicket] = useState([]);
 
 //   useEffect(() => {
-//     fetch(`http://localhost:5000/ticket/${id}`)
+//     fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/ticket/${id}`)
 //       .then((res) => res.json())
 //       .then((info) => setTicket(info));
 //   }, [id]);
 
 //   useEffect(() => {
-//     fetch(`http://localhost:5000/reply-tickets`)
+//     fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/reply-tickets`)
 //       .then((res) => res.json())
 //       .then((info) => setTickets(info));
 //   }, []);
@@ -114,7 +114,7 @@
 //                   </div>
 //                   <div className="row mb-0">
 //                     <div className="col">
-//                       <button type="sumbit" className="action-btn">
+//                       <button type="sumbit" className="btn btn-md btn-primary tra-black-hover">
 //                         <span>Reply Now</span>
 //                       </button>
 //                     </div>
@@ -143,13 +143,13 @@ const TicketAction = () => {
   const [ticket, setTicket] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:5000/ticket/${id}`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/ticket/${id}`)
       .then((res) => res.json())
       .then((info) => setTicket(info));
   }, [id]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reply-tickets`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/reply-tickets`)
       .then((res) => res.json())
       .then((info) => setTickets(info));
   }, []);
@@ -198,7 +198,7 @@ const TicketAction = () => {
                   </div>
                   <div className="row mb-0">
                     <div className="col">
-                      <button type="submit" className="action-btn">
+                      <button type="submit" className="btn btn-md btn-primary tra-black-hover">
                         <span>Reply Now</span>
                       </button>
                     </div>

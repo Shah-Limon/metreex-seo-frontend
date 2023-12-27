@@ -24,7 +24,7 @@ const Package = () => {
   const [selectedCountry, setSelectedCountry] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/package/${id}`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/package/${id}`)
       .then((res) => res.json())
       .then((info) => setPackage(info));
   }, [id]);
@@ -64,7 +64,7 @@ const Package = () => {
       orderDate: orderDate,
     };
 
-    const url = `http://localhost:5000/new-order`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/new-order`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -195,7 +195,7 @@ const Package = () => {
           </div>
         </div>
         <div class="col-sm">
-          <button type="submit" class="action-btn">
+          <button type="submit" class="btn btn-md btn-primary tra-black-hover">
             <span>Place Order and Continue For Make Payment</span>
           </button>
         </div>

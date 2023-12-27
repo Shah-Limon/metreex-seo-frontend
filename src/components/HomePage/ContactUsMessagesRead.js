@@ -8,7 +8,7 @@ const ContactUsMessagesRead = () => {
   const [itemsPerPage] = useState(5); // Number of items to display per page
 
   useEffect(() => {
-    fetch(`http://localhost:5000/contact-messages`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/contact-messages`)
       .then((res) => res.json())
       .then((info) => setMessages(info.reverse()));
   }, []);

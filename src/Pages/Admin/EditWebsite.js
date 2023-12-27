@@ -8,7 +8,7 @@ const EditWebsite = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/website/${id}`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/website/${id}`)
       .then((res) => res.json())
       .then((info) => setWebsite(info));
   }, [id]);
@@ -45,7 +45,7 @@ const EditWebsite = () => {
       pdfLink,
     };
 
-    const url = `http://localhost:5000/edit-website/${id}`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/edit-website/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

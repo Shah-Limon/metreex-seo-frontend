@@ -29,7 +29,7 @@ const ContactPageEdit = () => {
       img: imgUrl,
     };
 
-    const url = `http://localhost:5000/contact/${id}`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/contact/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -48,7 +48,7 @@ const ContactPageEdit = () => {
 
     try {
       const response = await axios.post(
-        "https://api.imgbb.com/1/upload?key=1f8cc98e0f42a06989fb5e2589a9a8a4",
+        "https://api.imgbb.com/1/upload?key=700a0a5acaa1284b2c712502fcb2fe23",
         formData
       );
       setImgUrl(response.data.data.url);
@@ -58,7 +58,7 @@ const ContactPageEdit = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/contact/${id}`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/contact/${id}`)
       .then((res) => res.json())
       .then((info) => {
         setContact(info);

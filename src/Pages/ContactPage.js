@@ -16,7 +16,7 @@ const ContactPage = () => {
     toast.success("Message sent successfully!");
   };
   useEffect(() => {
-    fetch(`http://localhost:5000/contact/`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/contact/`)
       .then((res) => res.json())
       .then((info) => setContact(info));
   }, [id]);
@@ -39,7 +39,7 @@ const ContactPage = () => {
       messageStatus,
     };
 
-    const url = `http://localhost:5000/add-contact-message`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/add-contact-message`;
     fetch(url, {
       method: "POST",
       headers: {

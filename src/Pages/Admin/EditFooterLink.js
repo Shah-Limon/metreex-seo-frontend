@@ -20,7 +20,7 @@ const EditFooterLink = () => {
       CopyRight,
     };
 
-    const url = `http://localhost:5000/footer-about/${id}/`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/footer-about/${id}/`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -35,7 +35,7 @@ const EditFooterLink = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/footer-about/${id}`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/footer-about/${id}`)
       .then((res) => res.json())
       .then((info) => setFooterLink(info));
   }, [id]);

@@ -33,7 +33,7 @@ const OurSolutionsList = () => {
     formData.append("image", image);
 
     // Upload the image to ImgBB using the ImgBB API key
-    const imgbbApiKey = "1f8cc98e0f42a06989fb5e2589a9a8a4";
+    const imgbbApiKey = "700a0a5acaa1284b2c712502fcb2fe23";
     const imgbbUploadUrl = `https://api.imgbb.com/1/upload?key=${imgbbApiKey}`;
 
     try {
@@ -52,7 +52,7 @@ const OurSolutionsList = () => {
           featureImg,
         };
 
-        const url = `http://localhost:5000/add-solution`;
+        const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/add-solution`;
         const sliderResponse = await fetch(url, {
           method: "POST",
           headers: {
@@ -75,12 +75,12 @@ const OurSolutionsList = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/solutions`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/solutions`)
       .then((res) => res.json())
       .then((info) => setFeature(info));
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:5000/solutions-title`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/solutions-title`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, []);

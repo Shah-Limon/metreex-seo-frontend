@@ -9,7 +9,7 @@ const VideoSectionEdit = () => {
   const [imageURL, setImageURL] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/video-sections`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/video-sections`)
       .then((res) => res.json())
       .then((info) => {
         setBanner(info);
@@ -32,7 +32,7 @@ const VideoSectionEdit = () => {
       ctaImage: imageURL,
     };
 
-    const url = `http://localhost:5000/video-section/${id}`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/video-section/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -52,10 +52,13 @@ const VideoSectionEdit = () => {
     formData.append("image", file);
 
     try {
-      const response = await fetch("https://api.imgbb.com/1/upload?key=1f8cc98e0f42a06989fb5e2589a9a8a4", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        "https://api.imgbb.com/1/upload?key=700a0a5acaa1284b2c712502fcb2fe23",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       const data = await response.json();
       if (data && data.data && data.data.url) {
@@ -99,18 +102,7 @@ const VideoSectionEdit = () => {
                 />
               </div>
             </div>
-            <div className="col-sm">
-              <label className="mt-1">Enter Youtube Link</label>
-              <div className="form-group mb-3">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Enter Youtube Link"
-                  name="youtubeLink"
-                  defaultValue={e.youtubeLink}
-                />
-              </div>
-            </div>
+
             <div className="col-sm">
               <label className="mt-1">Upload Background Image</label>
               <div className="form-group mb-3">
@@ -122,12 +114,19 @@ const VideoSectionEdit = () => {
                 />
               </div>
               {imageURL && (
-                <img src={imageURL} alt="Banner Preview" style={{ maxWidth: "50%", maxHeight: "200px" }} />
+                <img
+                  src={imageURL}
+                  alt="Banner Preview"
+                  style={{ maxWidth: "50%", maxHeight: "200px" }}
+                />
               )}
             </div>
-            
+
             <div className="col-sm-4 mt-30">
-              <button type="submit" className="btn btn-md btn-primary tra-black-hover">
+              <button
+                type="submit"
+                className="btn btn-md btn-primary tra-black-hover"
+              >
                 <span>Update</span>
               </button>
             </div>

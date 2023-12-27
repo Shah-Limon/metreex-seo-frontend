@@ -4,7 +4,7 @@ const AboutSection = () => {
   const [about, setAbout] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/abouts/`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/abouts/`)
       .then((res) => res.json())
       .then((info) => setAbout(info));
   }, []);

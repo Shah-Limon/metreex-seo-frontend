@@ -12,7 +12,7 @@ const EditBanner = () => {
   const [imageURL, setImageURL] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/banner/${id}`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/banner/${id}`)
       .then((res) => res.json())
       .then((info) => {
         setBanner(info);
@@ -37,7 +37,7 @@ const EditBanner = () => {
       bunnerImage: imageURL,
     };
 
-    const url = `http://localhost:5000/edit-banner/${id}`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/edit-banner/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -56,7 +56,7 @@ const EditBanner = () => {
     const formData = new FormData();
     formData.append("image", file);
 
-    fetch("https://api.imgbb.com/1/upload?key=1f8cc98e0f42a06989fb5e2589a9a8a4", {
+    fetch("https://api.imgbb.com/1/upload?key=700a0a5acaa1284b2c712502fcb2fe23", {
       method: "POST",
       body: formData,
     })

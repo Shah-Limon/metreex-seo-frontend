@@ -10,7 +10,7 @@ const FooterSetting = () => {
 
   /* footer about */
   useEffect(() => {
-    fetch(`http://localhost:5000/footer-about`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/footer-about`)
       .then((res) => res.json())
       .then((info) => setFooterAbout(info));
   }, [footerAbout]);
@@ -25,7 +25,7 @@ const FooterSetting = () => {
       aboutUs,
     };
 
-    const url = `http://localhost:5000/footer-about`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/footer-about`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -41,7 +41,7 @@ const FooterSetting = () => {
 
   /* footer Address */
   useEffect(() => {
-    fetch(`http://localhost:5000/footer-address`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/footer-address`)
       .then((res) => res.json())
       .then((info) => setFooterAddress(info));
   }, [footerAddress]);
@@ -58,7 +58,7 @@ const FooterSetting = () => {
       footerAdress,
     };
 
-    const url = `http://localhost:5000/footer-address`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/footer-address`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -73,7 +73,7 @@ const FooterSetting = () => {
   };
   /* Social Address */
   useEffect(() => {
-    fetch(`http://localhost:5000/footer-social`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/footer-social`)
       .then((res) => res.json())
       .then((info) => setFooterSocial(info));
   }, [footerSocial]);
@@ -90,7 +90,7 @@ const FooterSetting = () => {
       twitter,
     };
 
-    const url = `http://localhost:5000/footer-social`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/footer-social`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -105,7 +105,7 @@ const FooterSetting = () => {
   };
   /* Copy Right */
   useEffect(() => {
-    fetch(`http://localhost:5000/footer-copyright`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/footer-copyright`)
       .then((res) => res.json())
       .then((info) => setFooterCopyright(info));
   }, [footerCopyright]);
@@ -118,7 +118,7 @@ const FooterSetting = () => {
       copyright,
     };
 
-    const url = `http://localhost:5000/footer-copyright`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/footer-copyright`;
     fetch(url, {
       method: "POST",
       headers: {

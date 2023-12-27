@@ -11,7 +11,7 @@ const BannerSliderList = () => {
   const [image, setImage] = useState(null); // To store the uploaded image
 
   useEffect(() => {
-    fetch(`http://localhost:5000/sliders`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/sliders`)
       .then((res) => res.json())
       .then((info) => setSliders(info));
   }, []);
@@ -37,7 +37,7 @@ const BannerSliderList = () => {
     formData.append("image", image);
 
     // Upload the image to ImgBB using the ImgBB API key
-    const imgbbApiKey = "1f8cc98e0f42a06989fb5e2589a9a8a4";
+    const imgbbApiKey = "700a0a5acaa1284b2c712502fcb2fe23";
     const imgbbUploadUrl = `https://api.imgbb.com/1/upload?key=${imgbbApiKey}`;
 
     try {
@@ -55,7 +55,7 @@ const BannerSliderList = () => {
           sliderImg,
         };
 
-        const url = `http://localhost:5000/slider`;
+        const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/slider`;
         const sliderResponse = await fetch(url, {
           method: "POST",
           headers: {

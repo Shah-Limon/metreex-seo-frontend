@@ -9,10 +9,10 @@ const OurServicesListEdit = () => {
   const [feature, setFeature] = useState({});
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
-  const [imgbbApiKey] = useState("1f8cc98e0f42a06989fb5e2589a9a8a4");
+  const [imgbbApiKey] = useState("700a0a5acaa1284b2c712502fcb2fe23");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/service/${id}`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/service/${id}`)
       .then((res) => res.json())
       .then((info) => setFeature(info));
   }, [id]);
@@ -55,7 +55,7 @@ const OurServicesListEdit = () => {
       serviceDesc,
     };
 
-    const url = `http://localhost:5000/service/${id}`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/service/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

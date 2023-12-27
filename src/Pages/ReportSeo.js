@@ -6,7 +6,7 @@ const ReportSeo = () => {
   const [website, setWebsite] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/website/${id}`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/website/${id}`)
       .then((res) => res.json())
       .then((data) => setWebsite(data));
   }, [id]);

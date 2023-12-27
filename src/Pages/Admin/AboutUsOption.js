@@ -20,7 +20,7 @@ const AboutUsOption = () => {
       btnUrl,
     };
 
-    const url = `http://localhost:5000/add-about`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/add-about`;
     fetch(url, {
       method: "POST",
       headers: {

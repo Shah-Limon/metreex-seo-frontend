@@ -14,7 +14,7 @@
 //   const [banner, setBanner] = useState([]);
 
 //   useEffect(() => {
-//     fetch(`http://localhost:5000/banner/`)
+//     fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/banner/`)
 //       .then((res) => res.json())
 //       .then((info) => setBanner(info));
 //   }, [id]);
@@ -41,7 +41,7 @@
 //       userMail,
 //     };
 
-//     const url = `http://localhost:5000/add-website`;
+//     const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/add-website`;
 //     fetch(url, {
 //       method: "POST",
 //       headers: {
@@ -125,7 +125,7 @@
 //                           value={user?.email}
 //                         />
 //                         <div class="col-sm">
-//                           <button type="submit" class="action-btn">
+//                           <button type="submit" class="btn btn-md btn-primary tra-black-hover">
 //                             <span>Submit</span>
 //                           </button>
 //                         </div>
@@ -253,12 +253,12 @@ const Banner = () => {
   const [sliders, setSliders] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/banner/`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/banner/`)
       .then((res) => res.json())
       .then((info) => setBanner(info));
   }, [id]);
   useEffect(() => {
-    fetch(`http://localhost:5000/sliders/`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/sliders/`)
       .then((res) => res.json())
       .then((info) => setSliders(info));
   }, [id]);
@@ -289,7 +289,7 @@ const Banner = () => {
       auditStatus
     };
 
-    const url = `http://localhost:5000/add-website`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/add-website`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -392,7 +392,7 @@ const Banner = () => {
                           value={user?.email}
                         />
                         <div class="col-sm">
-                          <button type="submit" class="action-btn">
+                          <button type="submit" class="btn btn-md btn-primary tra-black-hover">
                             <span>Submit</span>
                           </button>
                         </div>

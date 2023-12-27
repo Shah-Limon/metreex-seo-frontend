@@ -11,12 +11,12 @@ const FooterEdit = () => {
   const [social, setSocial] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/footer-about/`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/footer-about/`)
       .then((res) => res.json())
       .then((info) => setFooterLink(info));
   }, [id]);
   useEffect(() => {
-    fetch(`http://localhost:5000/footer-social/`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/footer-social/`)
       .then((res) => res.json())
       .then((info) => setSocial(info));
   }, [id]);
@@ -35,7 +35,7 @@ const FooterEdit = () => {
   //     youtube,
   //   };
 
-  //   const url = `http://localhost:5000/footer-social/`;
+  //   const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/footer-social/`;
   //   fetch(url, {
   //     method: "POST",
   //     headers: {
@@ -65,7 +65,7 @@ const FooterEdit = () => {
   //     linkFive,
   //   };
 
-  //   const url = `http://localhost:5000/footer-link`;
+  //   const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/footer-link`;
   //   fetch(url, {
   //     method: "POST",
   //     headers: {
@@ -131,7 +131,7 @@ const FooterEdit = () => {
             </div>
 
             <div class="col-sm">
-              <button type="submit" class="action-btn">
+              <button type="submit" class="btn btn-md btn-primary tra-black-hover">
                 <span>Update</span>
               </button>
             </div>
@@ -200,7 +200,7 @@ const FooterEdit = () => {
             </div>
 
             <div class="col-sm">
-              <button type="submit" class="action-btn">
+              <button type="submit" class="btn btn-md btn-primary tra-black-hover">
                 <span>Update</span>
               </button>
             </div>

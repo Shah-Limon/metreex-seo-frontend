@@ -7,7 +7,7 @@ const BannerOneEdit = () => {
     const navigate = useNavigate();
     
     useEffect(() => {
-        fetch(`http://localhost:5000/banner-one/${id}`)
+        fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/banner-one/${id}`)
           .then((res) => res.json())
           .then((info) => setbanner(info));
       }, [id]);
@@ -17,7 +17,7 @@ const BannerOneEdit = () => {
         const bannerImageOne = event.target.bannerImageOne.value;
         const bannerOneEdit = { bannerImageOne };
     
-        const url = `http://localhost:5000/banner-one-edit/${id}`;
+        const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/banner-one-edit/${id}`;
         fetch(url, {
           method: "PUT",
           headers: {

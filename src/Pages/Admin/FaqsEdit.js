@@ -9,7 +9,7 @@ const FaqsEdit = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/faq/${id}`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/faq/${id}`)
       .then((res) => res.json())
       .then((info) => setFaqs(info));
   }, [id]);
@@ -26,7 +26,7 @@ const FaqsEdit = () => {
       answer,
     };
 
-    const url = `http://localhost:5000/faq/${id}/`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/faq/${id}/`;
     fetch(url, {
       method: "PUT",
       headers: {

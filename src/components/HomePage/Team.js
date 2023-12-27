@@ -13,12 +13,12 @@ const Team = () => {
   const [title, setTitle] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/teams`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/teams`)
       .then((res) => res.json())
       .then((info) => setTeam(info));
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:5000/team-title/`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/team-title/`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, []);

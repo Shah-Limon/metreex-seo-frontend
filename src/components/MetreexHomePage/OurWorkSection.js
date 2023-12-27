@@ -6,7 +6,7 @@ const OurWorkSection = () => {
   const [feature, setFeature] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/features-two/`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/features-two/`)
       .then((res) => res.json())
       .then((info) => setFeature(info));
   }, []);

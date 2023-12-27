@@ -9,7 +9,7 @@ const AboutCompanyEdit = () => {
   const [companyAbount, setCompanyAbout] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/company-about-title/`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/company-about-title/`)
       .then((res) => res.json())
       .then((info) => setCompanyAbout(info));
   }, []);
@@ -26,7 +26,7 @@ const AboutCompanyEdit = () => {
       Desc,
     };
 
-    const url = `http://localhost:5000/company-about-title/${id}`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/company-about-title/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

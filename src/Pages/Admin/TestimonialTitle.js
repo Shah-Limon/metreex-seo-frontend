@@ -8,7 +8,7 @@ const TestimonialTitle = () => {
   const [title, setTitle] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/testimonial-title/${id}`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/testimonial-title/${id}`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, [id]);
@@ -25,7 +25,7 @@ const TestimonialTitle = () => {
       reviewNumber,
     };
 
-    const url = `http://localhost:5000/testimonial-title/${id}`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/testimonial-title/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

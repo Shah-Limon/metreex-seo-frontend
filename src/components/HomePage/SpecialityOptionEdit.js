@@ -35,7 +35,7 @@ const SpecialityOptionEdit = () => {
       cardDescriptionFour,
     };
 
-    const url = `http://localhost:5000/edit-speciality/${id}`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/edit-speciality/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -50,7 +50,7 @@ const SpecialityOptionEdit = () => {
   }
 
   useEffect(() => {
-    fetch(`http://localhost:5000/speciality/${id}`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/speciality/${id}`)
       .then((res) => res.json())
       .then((info) => SetSpeciality(info));
   }, [id]);
@@ -200,7 +200,7 @@ const SpecialityOptionEdit = () => {
               </div>
 
               <div class="col-sm">
-                <button type="submit" class="action-btn">
+                <button type="submit" class="btn btn-md btn-primary tra-black-hover">
                   <span>Update Card</span>
                 </button>
               </div>

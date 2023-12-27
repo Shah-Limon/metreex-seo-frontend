@@ -9,7 +9,7 @@ const CouterOptionEdit = () => {
   const [counter, setCounter] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/counter-list`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/counter-list`)
       .then((res) => res.json())
       .then((info) => setCounter(info));
   }, []);
@@ -26,7 +26,7 @@ const CouterOptionEdit = () => {
       counterNumber,
     };
 
-    const url = `http://localhost:5000/add-counter`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/add-counter`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -70,7 +70,7 @@ const CouterOptionEdit = () => {
             </div>
 
             <div class="col-sm">
-              <button type="submit" class="action-btn">
+              <button type="submit" class="btn btn-md btn-primary tra-black-hover">
                 <span>Add Counter</span>
               </button>
             </div>

@@ -11,7 +11,7 @@
 //   const [sliders, setSliders] = useState([]);
 
 //   useEffect(() => {
-//     fetch(`http://localhost:5000/slider/${id}`)
+//     fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/slider/${id}`)
 //       .then((res) => res.json())
 //       .then((info) => setSliders(info));
 //   }, [id]);
@@ -28,7 +28,7 @@
 //     try {
 //       const formData = new FormData();
 //       formData.append("image", fileInput);
-//       formData.append("key", "1f8cc98e0f42a06989fb5e2589a9a8a4"); // Your imgbb API key
+//       formData.append("key", "700a0a5acaa1284b2c712502fcb2fe23"); // Your imgbb API key
 
 //       const imgbbResponse = await axios.post(
 //         "https://api.imgbb.com/1/upload",
@@ -42,7 +42,7 @@
 //         sliderImg,
 //       };
 
-//       const url = `http://localhost:5000/slider/${id}`;
+//       const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/slider/${id}`;
 //       fetch(url, {
 //         method: "PUT",
 //         headers: {
@@ -117,7 +117,7 @@ const EditBannerSlider = () => {
   const [imagePreview, setImagePreview] = useState(null); // State for image preview
 
   useEffect(() => {
-    fetch(`http://localhost:5000/slider/${id}`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/slider/${id}`)
       .then((res) => res.json())
       .then((info) => {
         setSliders(info);
@@ -142,7 +142,7 @@ const EditBannerSlider = () => {
       if (fileInput) {
         const formData = new FormData();
         formData.append("image", fileInput);
-        formData.append("key", "1f8cc98e0f42a06989fb5e2589a9a8a4");
+        formData.append("key", "700a0a5acaa1284b2c712502fcb2fe23");
 
         const imgbbResponse = await axios.post(
           "https://api.imgbb.com/1/upload",
@@ -157,7 +157,7 @@ const EditBannerSlider = () => {
         sliderImg,
       };
 
-      const url = `http://localhost:5000/slider/${id}`;
+      const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/slider/${id}`;
       fetch(url, {
         method: "PUT",
         headers: {

@@ -10,7 +10,7 @@ const AboutPageOption = () => {
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [storedImage, setStoredImage] = useState("");
-  const imgbbApiKey = "1f8cc98e0f42a06989fb5e2589a9a8a4"; // Your imgbb API key
+  const imgbbApiKey = "700a0a5acaa1284b2c712502fcb2fe23"; // Your imgbb API key
 
   const handleEditAbout = async (event) => {
     event.preventDefault();
@@ -43,7 +43,7 @@ const AboutPageOption = () => {
       subText,
     };
 
-    const url = `http://localhost:5000/add-about-page/`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/add-about-page/`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -66,12 +66,12 @@ const AboutPageOption = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/abouts-page`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/abouts-page`)
       .then((res) => res.json())
       .then((info) => setAbout(info));
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:5000/about-page-titles`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/about-page-titles`)
       .then((res) => res.json())
       .then((info) => setAboutTitle(info));
   }, []);

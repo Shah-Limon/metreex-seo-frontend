@@ -10,7 +10,7 @@ const PackageTitleEdit = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/package-title/${id}`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/package-title/${id}`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, [id]);
@@ -28,7 +28,7 @@ const PackageTitleEdit = () => {
       description,
     };
 
-    const url = `http://localhost:5000/package-title/${id}`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/package-title/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

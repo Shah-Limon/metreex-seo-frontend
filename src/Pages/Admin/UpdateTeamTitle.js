@@ -10,7 +10,7 @@ const TeamList = () => {
   const [user] = useAuthState(auth);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/team-title`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/team-title`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, []);
@@ -27,7 +27,7 @@ const TeamList = () => {
       titleTwo,
     };
 
-    const url = `http://localhost:5000/edit-team-title/${id}`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/edit-team-title/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -86,7 +86,7 @@ const TeamList = () => {
               </div>
 
               <div class="col-sm">
-                <button type="submit" class="action-btn">
+                <button type="submit" class="btn btn-md btn-primary tra-black-hover">
                   <span>Update Title</span>
                 </button>
               </div>

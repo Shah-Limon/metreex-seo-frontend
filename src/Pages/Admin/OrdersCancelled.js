@@ -10,7 +10,7 @@ const PaymentPending = () => {
   const paginationDigits = 3;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/orders`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/orders`)
       .then((res) => res.json())
       .then((info) => setOrders(info));
   }, []);

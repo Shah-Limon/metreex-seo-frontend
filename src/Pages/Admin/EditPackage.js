@@ -19,7 +19,7 @@ const EditPackage = () => {
 
     try {
       const response = await axios.post(
-        "https://api.imgbb.com/1/upload?key=1f8cc98e0f42a06989fb5e2589a9a8a4",
+        "https://api.imgbb.com/1/upload?key=700a0a5acaa1284b2c712502fcb2fe23",
         formData
       );
       setImgUrl(response.data.data.url);
@@ -29,7 +29,7 @@ const EditPackage = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/package/${id}`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/package/${id}`)
       .then((res) => res.json())
       .then((info) => setPackage(info));
     setImgUrl(p.img || "");
@@ -68,7 +68,7 @@ const EditPackage = () => {
       featureTen,
     };
 
-    const url = `http://localhost:5000/edit-package/${id}`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/edit-package/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

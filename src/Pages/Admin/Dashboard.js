@@ -11,13 +11,13 @@ const Dashboard = () => {
   const [user] = useAuthState(auth);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/users`)
       .then((res) => res.json())
       .then((info) => setUsers(info.reverse()));
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/website`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/website`)
       .then((res) => res.json())
       .then((info) => setData(info.reverse()));
   }, []);

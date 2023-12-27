@@ -12,7 +12,7 @@ const GeneralOption = () => {
   const [logo, setLogo] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/logo`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/logo`)
       .then((res) => res.json())
       .then((info) => setLogo(info));
   }, []);

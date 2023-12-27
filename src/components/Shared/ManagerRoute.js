@@ -7,7 +7,7 @@ const ManagerRoute = ({ children }) => {
   const [user] = useAuthState(auth);
 
   useEffect(() => {
-    fetch("http://localhost:5000/users")
+    fetch("https://metreex-seo-9a225b1c6d1e.herokuapp.com/users")
       .then((res) => res.json())
       .then((data) => setUsers(data.reverse()));
   }, []);

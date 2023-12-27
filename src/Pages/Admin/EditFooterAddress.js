@@ -7,7 +7,7 @@ const EditFooterAddress = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/footer-address/${id}`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/footer-address/${id}`)
       .then((res) => res.json())
       .then((info) => setFooterAddress(info));
   }, [id]);
@@ -24,7 +24,7 @@ const EditFooterAddress = () => {
       footerAdress,
     };
 
-    const url = `http://localhost:5000/footer-address/${id}`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/footer-address/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

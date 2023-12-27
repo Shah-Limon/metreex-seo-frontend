@@ -11,7 +11,7 @@ const AboutPage = () => {
   const [about, setAbout] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/abouts-page/`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/abouts-page/`)
       .then((res) => res.json())
       .then((info) => setAbout(info));
   }, []);
@@ -22,7 +22,7 @@ const AboutPage = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/about-page-titles`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/about-page-titles`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, []);

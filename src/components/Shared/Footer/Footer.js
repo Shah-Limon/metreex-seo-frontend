@@ -8,22 +8,22 @@ const Footer = () => {
   const [social, setSocial] = useState([]);
   const [contact, setContact] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/logo`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/logo`)
       .then((res) => res.json())
       .then((info) => setLogo(info));
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:5000/footer-about`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/footer-about`)
       .then((res) => res.json())
       .then((info) => setFooter(info));
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:5000/footer-social`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/footer-social`)
       .then((res) => res.json())
       .then((info) => setSocial(info));
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:5000/contact`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/contact`)
       .then((res) => res.json())
       .then((info) => setContact(info));
   }, []);
@@ -41,7 +41,7 @@ const Footer = () => {
       email,
     };
 
-    const url = `http://localhost:5000/add-newsLetter/`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/add-newsLetter/`;
     fetch(url, {
       method: "POST",
       headers: {

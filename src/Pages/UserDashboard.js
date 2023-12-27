@@ -15,13 +15,13 @@ const UserDashboard = () => {
   const [currentPageData, setCurrentPageData] = useState(1);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/website`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/website`)
       .then((res) => res.json())
       .then((info) => setData(info.reverse()));
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/orders`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/orders`)
       .then((res) => res.json())
       .then((info) => setOrders(info.reverse()));
   }, []);
@@ -163,7 +163,7 @@ const UserDashboard = () => {
                     <td data-th="Email">{list.auditStatus}</td>
 
                     <td data-th="View">
-                      <Link to={`/report/${list._id}`} className="action-btn">
+                      <Link to={`/report/${list._id}`} className="btn btn-md btn-primary tra-black-hover">
                         <span>View</span>
                       </Link>
                     </td>

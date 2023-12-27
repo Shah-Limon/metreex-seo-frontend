@@ -8,7 +8,7 @@ const EditFeaturesPageTwo = () => {
   const [image, setImage] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/features-two`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/features-two`)
       .then((res) => res.json())
       .then((info) => setFeature(info));
   }, []);
@@ -35,7 +35,7 @@ const EditFeaturesPageTwo = () => {
     formData.append("image", image);
 
     // Upload the image to ImgBB using the ImgBB API key
-    const imgbbApiKey = "1f8cc98e0f42a06989fb5e2589a9a8a4";
+    const imgbbApiKey = "700a0a5acaa1284b2c712502fcb2fe23";
     const imgbbUploadUrl = `https://api.imgbb.com/1/upload?key=${imgbbApiKey}`;
 
     try {
@@ -54,7 +54,7 @@ const EditFeaturesPageTwo = () => {
           featureImg,
         };
 
-        const url = `http://localhost:5000/add-feature-two`;
+        const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/add-feature-two`;
         const sliderResponse = await fetch(url, {
           method: "POST",
           headers: {
@@ -118,7 +118,7 @@ const EditFeaturesPageTwo = () => {
               </div>
             </div>
             <div className="col-sm">
-              <button type="submit" className="action-btn">
+              <button type="submit" className="btn btn-md btn-primary tra-black-hover">
                 <span>Add Feature</span>
               </button>
             </div>

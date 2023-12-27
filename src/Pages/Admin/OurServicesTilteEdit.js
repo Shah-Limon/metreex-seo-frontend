@@ -7,7 +7,7 @@ const OurServicesTilteEdit = () => {
   const [title, setTitle] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/services-title/`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/services-title/`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, [id]);
@@ -23,7 +23,7 @@ const OurServicesTilteEdit = () => {
       desc,
     };
 
-    const url = `http://localhost:5000/services-title/${id}`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/services-title/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

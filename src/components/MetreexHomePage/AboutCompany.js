@@ -7,12 +7,12 @@ const AboutCompany = () => {
   const [about, setAbout] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/about-company-list/`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/about-company-list/`)
       .then((res) => res.json())
       .then((info) => setCounter(info));
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:5000/company-about-title/`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/company-about-title/`)
       .then((res) => res.json())
       .then((info) => setAbout(info));
   }, []);

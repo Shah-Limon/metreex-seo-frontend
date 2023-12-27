@@ -15,7 +15,7 @@ const CancelledPayment = () => {
     const updatePaymentStatus = async () => {
       try {
         const updateOrder = { paymentStatus: "Cancelled" };
-        const url = `http://localhost:5000/payment-cancelled/${id}`;
+        const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/payment-cancelled/${id}`;
         const response = await fetch(url, {
           method: "PUT",
           headers: {

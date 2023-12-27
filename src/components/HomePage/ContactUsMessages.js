@@ -6,7 +6,7 @@ const ContactUsMessages = () => {
   const [message, setMessage] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/contact-messages`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/contact-messages`)
       .then((res) => res.json())
       .then((info) => setMessage(info.reverse()));
   }, []);

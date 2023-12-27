@@ -10,7 +10,7 @@ const User = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/user/${id}`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/user/${id}`)
       .then((res) => res.json())
       .then((users) => {
         const user = users.find((user) => user._id === id);
@@ -31,7 +31,7 @@ const User = () => {
       userEmail,
       userRole,
     };
-    const url = `http://localhost:5000/user/${id}`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/user/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -92,7 +92,7 @@ const User = () => {
               </div>
             </div>
             <div class="col-sm">
-              <button type="submit" class="action-btn">
+              <button type="submit" class="btn btn-md btn-primary tra-black-hover">
                 <span>Update User</span>
               </button>
             </div>

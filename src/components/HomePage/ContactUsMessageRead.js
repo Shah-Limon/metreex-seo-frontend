@@ -10,7 +10,7 @@ const ContactUsMessageRead = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/contact-message/${id}`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/contact-message/${id}`)
       .then((res) => res.json())
       .then((info) => setContact(info));
   }, [id]);
@@ -23,7 +23,7 @@ const ContactUsMessageRead = () => {
       messageStatus,
     };
 
-    const url = `http://localhost:5000/contact-message/${id}`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/contact-message/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

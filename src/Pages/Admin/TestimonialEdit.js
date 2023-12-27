@@ -14,7 +14,7 @@ const TestimonialEdit = () => {
   const [imagePreview, setImagePreview] = useState(""); // To display a preview of the uploaded or existing image
 
   useEffect(() => {
-    fetch(`http://localhost:5000/testimonial/${id}`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/testimonial/${id}`)
       .then((res) => res.json())
       .then((info) => setTestimonial(info));
   }, [id]);
@@ -28,7 +28,7 @@ const TestimonialEdit = () => {
   let rowNumber = 1;
 
   const handleImageUpload = async (event) => {
-    const imgbbApiKey = "1f8cc98e0f42a06989fb5e2589a9a8a4"; // Replace with your imgbb API key
+    const imgbbApiKey = "700a0a5acaa1284b2c712502fcb2fe23"; // Replace with your imgbb API key
     const formData = new FormData();
     formData.append("image", event.target.files[0]);
 
@@ -69,7 +69,7 @@ const TestimonialEdit = () => {
       desc,
     };
 
-    const url = `http://localhost:5000/testimonial/${id}`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/testimonial/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

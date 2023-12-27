@@ -25,7 +25,7 @@ const HeroSection = () => {
       auditStatus,
     };
 
-    const url = `http://localhost:5000/add-website`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/add-website`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -40,7 +40,7 @@ const HeroSection = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/banner`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/banner`)
       .then((res) => res.json())
       .then((info) => setBanner(info));
     setIsLoading(false);

@@ -11,13 +11,13 @@ const Packages = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/package-titles/`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/package-titles/`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, [id]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/packages`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/packages`)
       .then((res) => res.json())
       .then((info) => setPackages(info));
   }, []);
@@ -36,7 +36,7 @@ const Packages = () => {
       description,
     };
 
-    const url = `http://localhost:5000/edit-package-title/`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/edit-package-title/`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -82,7 +82,7 @@ const Packages = () => {
   //     featureTen,
   //   };
 
-  //   const url = `http://localhost:5000/add-package`;
+  //   const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/add-package`;
   //   fetch(url, {
   //     method: "POST",
   //     headers: {

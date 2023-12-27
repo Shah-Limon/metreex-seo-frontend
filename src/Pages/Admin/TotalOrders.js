@@ -6,11 +6,11 @@ import OrderMenu from "./OrderMenu";
 const TotalOrders = () => {
   const [orders, setOrders] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 2;
+  const itemsPerPage = 10;
   const paginationDigits = 3;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/orders`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/orders`)
       .then((res) => res.json())
       .then((info) => setOrders(info.reverse()));
   }, []);

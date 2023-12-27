@@ -24,7 +24,7 @@ const DashboardMenu = () => {
               >
                 <div>
                   {user ? (
-                    <Link className="action-btn" onClick={handleSignout}>
+                    <Link className="btn btn-md btn-primary tra-black-hover" onClick={handleSignout}>
                       <span>Signout</span>
                     </Link>
                   ) : (

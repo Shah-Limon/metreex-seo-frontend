@@ -13,10 +13,10 @@ const TeamMemberEdit = () => {
   const [uploadedImageUrl, setUploadedImageUrl] = useState("");
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
-  const [imgbbApiKey] = useState("1f8cc98e0f42a06989fb5e2589a9a8a4"); // Your imgbb API key
+  const [imgbbApiKey] = useState("700a0a5acaa1284b2c712502fcb2fe23"); // Your imgbb API key
 
   useEffect(() => {
-    fetch(`http://localhost:5000/team/${id}`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/team/${id}`)
       .then((res) => res.json())
       .then((info) => setTeam(info));
   }, [id]);
@@ -58,7 +58,7 @@ const TeamMemberEdit = () => {
       twitter,
     };
 
-    const url = `http://localhost:5000/team/${id}`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/team/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -161,7 +161,7 @@ const TeamMemberEdit = () => {
             </div>
 
             <div className="col-sm">
-              <button type="submit" className="action-btn">
+              <button type="submit" className="btn btn-md btn-primary tra-black-hover">
                 <span>Update Team Member</span>
               </button>
             </div>

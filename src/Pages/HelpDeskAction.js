@@ -12,13 +12,13 @@ const HelpDeskAction = () => {
   const [ticket, setTicket] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/ticket/${id}`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/ticket/${id}`)
       .then((res) => res.json())
       .then((info) => setTicket(info));
   }, [id]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reply-tickets`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/reply-tickets`)
       .then((res) => res.json())
       .then((info) => setTickets(info));
   }, []);
@@ -68,7 +68,7 @@ const HelpDeskAction = () => {
       currentDate,
     };
 
-    const url = `http://localhost:5000/add-ticket-reply`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/add-ticket-reply`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -90,7 +90,7 @@ const HelpDeskAction = () => {
       ticketStatus,
     };
 
-    const url = `http://localhost:5000/ticket/${id}`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/ticket/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

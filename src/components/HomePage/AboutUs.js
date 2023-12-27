@@ -5,7 +5,7 @@ const AboutUs = () => {
   const { id } = useParams();
   const [about, setAbout] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/about/${id}`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/about/${id}`)
       .then((res) => res.json())
       .then((info) => setAbout(info));
   }, [id]);
@@ -69,7 +69,7 @@ const AboutUs = () => {
                     ))}
                   </p>
 
-                  <Link to={AboutData.btnUrl} className="action-btn">
+                  <Link to={AboutData.btnUrl} className="btn btn-md btn-primary tra-black-hover">
                     <span>{AboutData.btnText}</span>
                   </Link>
                 </div>

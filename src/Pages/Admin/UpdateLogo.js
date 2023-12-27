@@ -18,7 +18,7 @@ const UpdateLogo = () => {
     }
 
     // Upload the logo to ImgBB and get the URL
-    const imgbbApiKey = "1f8cc98e0f42a06989fb5e2589a9a8a4"; // Replace with your ImgBB API key
+    const imgbbApiKey = "700a0a5acaa1284b2c712502fcb2fe23"; // Replace with your ImgBB API key
     const formData = new FormData();
     formData.append("image", logoFile);
 
@@ -40,7 +40,7 @@ const UpdateLogo = () => {
           logo: logoUrl,
         };
 
-        const url = `http://localhost:5000/logo/${id}`;
+        const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/logo/${id}`;
         const updateResponse = await fetch(url, {
           method: "PUT",
           headers: {
@@ -76,7 +76,7 @@ const UpdateLogo = () => {
             </div>
 
             <div className="col-sm">
-              <button type="submit" className="action-btn">
+              <button type="submit" className="btn btn-md btn-primary tra-black-hover">
                 <span>Upload Logo</span>
               </button>
             </div>

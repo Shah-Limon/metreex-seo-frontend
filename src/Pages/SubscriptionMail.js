@@ -9,7 +9,7 @@ const SubscriptionMail = () => {
   const paginationDigits = 3;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/subscription-email`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/subscription-email`)
       .then((res) => res.json())
       .then((info) => setMail(info));
   }, []);

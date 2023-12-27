@@ -4,7 +4,7 @@ const RoadMap = () => {
   const [road, SetRoad] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/road/`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/road/`)
       .then((res) => res.json())
       .then((info) => SetRoad(info));
   }, []);
@@ -84,7 +84,7 @@ const RoadMap = () => {
                 </>
               ))}
               {/* <div className="button">
-                <a href="roadmap.html" className="action-btn">
+                <a href="roadmap.html" className="btn btn-md btn-primary tra-black-hover">
                   <span>View Full Road Map</span>
                 </a>
               </div> */}

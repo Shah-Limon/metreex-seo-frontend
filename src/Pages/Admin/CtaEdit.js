@@ -8,7 +8,7 @@ const CtaEdit = () => {
   const [cta, setCta] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/cta-lists`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/cta-lists`)
       .then((res) => res.json())
       .then((info) => setCta(info));
   }, []);
@@ -27,7 +27,7 @@ const CtaEdit = () => {
       buttonLink,
     };
 
-    const url = `http://localhost:5000/cta-list/${id}`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/cta-list/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

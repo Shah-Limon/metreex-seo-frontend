@@ -1185,7 +1185,7 @@ M.AutoInit = function (context) {
     TapTarget: root.querySelectorAll('.tap-target:not(.no-autoinit)'),
     Timepicker: root.querySelectorAll('.timepicker:not(.no-autoinit)'),
     Tooltip: root.querySelectorAll('.tooltipped:not(.no-autoinit)'),
-    FloatingActionButton: root.querySelectorAll('.fixed-action-btn:not(.no-autoinit)')
+    FloatingActionButton: root.querySelectorAll('.fixed-btn btn-md btn-primary tra-black-hover:not(.no-autoinit)')
   };
 
   for (var pluginName in registry) {

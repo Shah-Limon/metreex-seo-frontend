@@ -9,12 +9,12 @@ const TestimonialSection = () => {
   const [testimonial, setTestimonial] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/testimonials-title`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/testimonials-title`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:5000/testimonials`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/testimonials`)
       .then((res) => res.json())
       .then((info) => setTestimonial(info));
   }, []);

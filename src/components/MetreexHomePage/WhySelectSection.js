@@ -5,12 +5,12 @@ const WhySelectSection = () => {
   const [title, setTitle] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/solutions`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/solutions`)
       .then((res) => res.json())
       .then((info) => setSolution(info));
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:5000/solutions-title`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/solutions-title`)
       .then((res) => res.json())
       .then((info) => setTitle(info));
   }, []);

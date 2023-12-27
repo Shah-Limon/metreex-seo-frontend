@@ -7,7 +7,7 @@ const ManageUsers = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/users`)
       .then((res) => res.json())
       .then((info) => setUsers(info));
   }, []);
@@ -23,7 +23,7 @@ const ManageUsers = () => {
       userRole,
     };
 
-    const url = `http://localhost:5000/add-user`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/add-user`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -37,7 +37,7 @@ const ManageUsers = () => {
       });
   };
   const handleDeleteUser = (userId) => {
-    fetch(`http://localhost:5000/user/${userId}`, {
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/user/${userId}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

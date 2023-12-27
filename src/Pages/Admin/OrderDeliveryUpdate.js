@@ -7,7 +7,7 @@ const OrderDeliveryUpdate = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/order/${id}`)
+    fetch(`https://metreex-seo-9a225b1c6d1e.herokuapp.com/order/${id}`)
       .then((res) => res.json())
       .then((info) => setorder(info));
   }, [id]);
@@ -18,7 +18,7 @@ const OrderDeliveryUpdate = () => {
     
     const deliveryUpdate = {deliveryStatus};
 
-    const url = `http://localhost:5000/delivery-status/${order._id}`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/delivery-status/${order._id}`;
     fetch(url, {
         method: 'PUT',
         headers: {

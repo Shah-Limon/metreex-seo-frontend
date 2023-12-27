@@ -33,7 +33,7 @@
 //       subject,
 //     };
 
-//     const url = `http://localhost:5000/add-ticket`;
+//     const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/add-ticket`;
 //     fetch(url, {
 //       method: "POST",
 //       headers: {
@@ -88,7 +88,7 @@
 //                   </div>
 //                   <div className="row mb-0">
 //                     <div className="col">
-//                       <button type="sumbit" className="action-btn">
+//                       <button type="sumbit" className="btn btn-md btn-primary tra-black-hover">
 //                         <span>Send Now</span>
 //                       </button>
 //                     </div>
@@ -172,7 +172,7 @@ const TicketPage = () => {
       names
     };
 
-    const url = `http://localhost:5000/add-ticket`;
+    const url = `https://metreex-seo-9a225b1c6d1e.herokuapp.com/add-ticket`;
     fetch(url, {
       method: "POST",
       headers: {
