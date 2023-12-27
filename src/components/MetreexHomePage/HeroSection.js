@@ -136,7 +136,7 @@ const HeroSection = () => {
                     src={
                       banner.length > 0
                         ? banner[0].bunnerImage
-                        : "https://i.ibb.co/YZB5mvP/hero-2-img.png"
+                        : "https://i.ibb.co/3SpkvvF/people-using-search-box-query-engine-giving-result-74855-11000.jpg"
                     }
                     alt="hero images"
                   />

@@ -163,7 +163,10 @@ const UserDashboard = () => {
                     <td data-th="Email">{list.auditStatus}</td>
 
                     <td data-th="View">
-                      <Link to={`/report/${list._id}`} className="btn btn-md btn-primary tra-black-hover">
+                      <Link
+                        to={`/report/${list._id}`}
+                        className="btn btn-md btn-primary tra-black-hover"
+                      >
                         <span>View</span>
                       </Link>
                     </td>

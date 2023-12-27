@@ -6,6 +6,7 @@ import { signOut } from "firebase/auth";
 
 const UserDashboardMenu = () => {
   const [orders, setOrders] = useState([]);
+
   const [user] = useAuthState(auth);
   const handleSignout = () => {
     signOut(auth);
@@ -28,6 +29,8 @@ const UserDashboardMenu = () => {
     (total, order) => total + parseFloat(order.packagePrice),
     0
   );
+
+
 
   return (
     <>
@@ -60,7 +63,7 @@ const UserDashboardMenu = () => {
                   <div className="hover-overlay">
                     <img
                       className="img-fluid"
-                      src="https://img.freepik.com/free-vector/working-concept-illustration_114360-330.jpg"
+                      src="https://img.freepik.com/free-vector/taking-orders-by-phone-store-contact-center-customers-support-easy-order-fast-delivery-trade-service-call-center-operator-cartoon-character_335657-2564.jpg"
                       alt="project-preview"
                     />
                     <div className="item-overlay" />
@@ -82,7 +85,7 @@ const UserDashboardMenu = () => {
                   <div className="hover-overlay">
                     <img
                       className="img-fluid"
-                      src="https://img.freepik.com/free-vector/working-concept-illustration_114360-330.jpg"
+                      src="https://img.freepik.com/free-vector/hand-drawn-cost-living-illustration_23-2150892210.jpg"
                       alt="project-preview"
                     />
                     <div className="item-overlay" />
@@ -100,7 +103,7 @@ const UserDashboardMenu = () => {
                   <div className="hover-overlay">
                     <img
                       className="img-fluid"
-                      src="https://img.freepik.com/free-vector/working-concept-illustration_114360-330.jpg"
+                      src="https://img.freepik.com/free-vector/service-24-7-concept-illustration_114360-7380.jpg"
                       alt="project-preview"
                     />
                     <div className="item-overlay" />

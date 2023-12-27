@@ -67,11 +67,7 @@ const ContactPage = () => {
       <section
         id="contacts-1"
         className="wide-60 contacts-section division"
-        style={{
-          backgroundImage: `url(https://i.ibb.co/SBH8fTs/banner-bg.png)`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
+        
       >
         <div className="container">
           {contact.map((e) => (

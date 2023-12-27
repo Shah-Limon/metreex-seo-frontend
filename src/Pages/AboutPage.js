@@ -79,8 +79,6 @@ const AboutPage = () => {
           ))}
         </div>
       </section>
-      <StatisticSetion></StatisticSetion>
-      <AboutCompany></AboutCompany>
 
       <OurWorkSection></OurWorkSection>
       <TestimonialSection></TestimonialSection>
